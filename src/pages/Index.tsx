@@ -43,6 +43,14 @@ export default function Index() {
           className="sketch-hero-img"
         />
       </section>
+      {/* БЛОК 5.5 — КТО СПИКЕР */}
+      <section className="sketch-hero">
+        <img
+          src="https://cdn.poehali.dev/files/59eec9cb-8434-4134-9deb-6d61e9e12ec1.png"
+          alt="Кто спикер — Сергей Черников, AI-креатор и разработчик"
+          className="sketch-hero-img"
+        />
+      </section>
       {/* БЛОК 6 */}
       <section className="sketch-hero">
         <img
