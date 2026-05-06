@@ -17,6 +17,14 @@ export default function Index() {
           className="sketch-hero-img"
         />
       </section>
+      {/* БЛОК 3 */}
+      <section className="sketch-hero">
+        <img
+          src="https://cdn.poehali.dev/files/ab32ef52-b456-4663-8405-98b1732f2beb.png"
+          alt="Было хаос и боль — Стало понятный workflow"
+          className="sketch-hero-img"
+        />
+      </section>
     </div>
   );
 }
