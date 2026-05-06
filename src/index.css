@@ -108,6 +108,17 @@
   display: block;
 }
 
+.sketch-hero-cta {
+  position: relative;
+}
+
+.sketch-cta-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  cursor: pointer;
+}
+
 @media (min-width: 768px) {
   .sketch-root {
     background: #f0f0f0;
