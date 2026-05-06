@@ -51,6 +51,14 @@ export default function Index() {
           className="sketch-hero-img"
         />
       </section>
+      {/* БЛОК 7 */}
+      <section className="sketch-hero">
+        <img
+          src="https://cdn.poehali.dev/files/17ae0254-7a75-499f-a279-47dfd6b13b90.png"
+          alt="2 дня, 29-30 мая, 11:00-18:00, Русская 41а офис Хакни Нейросети"
+          className="sketch-hero-img"
+        />
+      </section>
     </div>
   );
 }
