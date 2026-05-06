@@ -67,6 +67,14 @@ export default function Index() {
           className="sketch-hero-img"
         />
       </section>
+      {/* БЛОК 9 */}
+      <section className="sketch-hero">
+        <img
+          src="https://cdn.poehali.dev/files/cd14699d-fefb-4560-a656-ea907b06f221.png"
+          alt="Что унесёшь с собой"
+          className="sketch-hero-img"
+        />
+      </section>
     </div>
   );
 }
