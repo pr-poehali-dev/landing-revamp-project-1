@@ -35,6 +35,14 @@ export default function Index() {
           className="sketch-hero-img"
         />
       </section>
+      {/* БЛОК 5 */}
+      <section className="sketch-hero">
+        <img
+          src="https://cdn.poehali.dev/files/fe96fb57-85e0-48fc-9fe5-0c9eddd3d914.png"
+          alt="День 2 — снимаем видеоконтент"
+          className="sketch-hero-img"
+        />
+      </section>
     </div>
   );
 }
