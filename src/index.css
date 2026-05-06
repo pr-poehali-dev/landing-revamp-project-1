@@ -84,7 +84,28 @@
   }
 }
 
-/* ─── Landing styles ─── */
+/* ─── Sketch landing ─── */
+
+.sketch-root {
+  background: #fff;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.sketch-hero {
+  width: 100%;
+  line-height: 0;
+}
+
+.sketch-hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ─── Old landing styles (unused) ─── */
 
 .landing-root {
   background: var(--l-bg);
