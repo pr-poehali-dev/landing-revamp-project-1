@@ -27,6 +27,14 @@ export default function Index() {
           className="sketch-hero-img"
         />
       </section>
+      {/* БЛОК 4 */}
+      <section className="sketch-hero">
+        <img
+          src="https://cdn.poehali.dev/files/838456fd-709a-41c8-a9bd-a7b42d88300b.png"
+          alt="День 1 — промт-инжиниринг, нейрофотосессии, карточки товаров, постеры"
+          className="sketch-hero-img"
+        />
+      </section>
     </div>
   );
 }
