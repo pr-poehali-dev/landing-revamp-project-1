@@ -11,6 +11,14 @@ export default function Index() {
       </section>
 
 
+      {/* БЛОК 2 */}
+      <section className="sketch-hero">
+        <img
+          src="https://cdn.poehali.dev/files/275af3e3-801d-4e5f-b248-924c60ebc9e2.png"
+          alt="Ничего не понятно — слишком много нейросетей"
+          className="sketch-hero-img"
+        />
+      </section>
     </div>
   );
 }
