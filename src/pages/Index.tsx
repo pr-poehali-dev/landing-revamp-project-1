@@ -121,7 +121,7 @@ export default function Index() {
       <section id="block-11" className="sketch-hero sketch-hero-cta">
         <img src="https://cdn.poehali.dev/files/c4375a03-052e-4086-a010-e3cb510bdcee.png" alt="Записаться" className="sketch-hero-img" />
         <a
-          href="ССЫЛКА_БУДЕТ_ЗДЕСЬ"
+          href="https://torguykriptoy.getcourse.ru/KartinockiVL"
           target="_blank"
           rel="noopener noreferrer"
           className="sketch-cta-overlay"
