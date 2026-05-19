@@ -26,35 +26,52 @@ export default function Index() {
   return (
     <div className="sketch-root">
 
-      {/* БАННЕР ОТМЕНЫ */}
+      {/* ЗАГЛУШКА ОТМЕНЫ — полный экран */}
       <div style={{
-        background: "linear-gradient(135deg, #ff2d55 0%, #ff6b35 50%, #ffcc00 100%)",
-        padding: "20px 24px",
+        position: "fixed",
+        inset: 0,
+        zIndex: 9999,
+        background: "linear-gradient(135deg, #ff2d55 0%, #ff6b35 55%, #ffcc00 100%)",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "32px 24px",
         textAlign: "center",
-        position: "relative",
-        zIndex: 1000,
-        boxShadow: "0 4px 20px rgba(255,45,85,0.4)",
-        borderBottom: "3px solid #000",
       }}>
+        <div style={{ fontSize: "clamp(48px, 12vw, 100px)", lineHeight: 1 }}>🚨</div>
         <div style={{
-          fontSize: "clamp(18px, 4vw, 28px)",
+          fontSize: "clamp(28px, 7vw, 72px)",
           fontWeight: 900,
           color: "#000",
-          fontFamily: "inherit",
-          letterSpacing: "-0.5px",
-          lineHeight: 1.3,
           textTransform: "uppercase",
+          letterSpacing: "-1px",
+          lineHeight: 1.1,
+          marginTop: "16px",
         }}>
-          🚨 ГАЛЯ, У НАС ОТМЕНА! 🚨
+          Галя, у нас отмена!
         </div>
         <div style={{
-          fontSize: "clamp(14px, 2.5vw, 20px)",
+          fontSize: "clamp(18px, 4vw, 36px)",
           fontWeight: 700,
           color: "#1a1a1a",
-          marginTop: "6px",
+          marginTop: "20px",
           lineHeight: 1.4,
+          maxWidth: "700px",
         }}>
-          Воркшоп отменяется. Возобновим мероприятия к сентябрю — ждём вас! 🔥
+          Воркшоп отменяется.<br />
+          Возобновим мероприятия к сентябрю — ждём вас! 🔥
+        </div>
+        <div style={{
+          marginTop: "40px",
+          fontSize: "clamp(14px, 2.5vw, 20px)",
+          color: "#333",
+          fontWeight: 600,
+          background: "rgba(0,0,0,0.1)",
+          borderRadius: "16px",
+          padding: "12px 24px",
+        }}>
+          Следите за обновлениями — до встречи в сентябре! 👋
         </div>
       </div>
 
