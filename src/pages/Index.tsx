@@ -26,6 +26,38 @@ export default function Index() {
   return (
     <div className="sketch-root">
 
+      {/* БАННЕР ОТМЕНЫ */}
+      <div style={{
+        background: "linear-gradient(135deg, #ff2d55 0%, #ff6b35 50%, #ffcc00 100%)",
+        padding: "20px 24px",
+        textAlign: "center",
+        position: "relative",
+        zIndex: 1000,
+        boxShadow: "0 4px 20px rgba(255,45,85,0.4)",
+        borderBottom: "3px solid #000",
+      }}>
+        <div style={{
+          fontSize: "clamp(18px, 4vw, 28px)",
+          fontWeight: 900,
+          color: "#000",
+          fontFamily: "inherit",
+          letterSpacing: "-0.5px",
+          lineHeight: 1.3,
+          textTransform: "uppercase",
+        }}>
+          🚨 ГАЛЯ, У НАС ОТМЕНА! 🚨
+        </div>
+        <div style={{
+          fontSize: "clamp(14px, 2.5vw, 20px)",
+          fontWeight: 700,
+          color: "#1a1a1a",
+          marginTop: "6px",
+          lineHeight: 1.4,
+        }}>
+          Воркшоп отменяется. Возобновим мероприятия к сентябрю — ждём вас! 🔥
+        </div>
+      </div>
+
       {/* ШАПКА */}
       <header className="sketch-header">
         <div className="sketch-header-inner">
