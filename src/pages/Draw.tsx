@@ -72,7 +72,7 @@ export default function Draw() {
   return (
     <div
       className="min-h-screen flex flex-col"
-      style={{ background: 'linear-gradient(160deg, #0a1628 0%, #112244 40%, #0d1e3a 100%)' }}
+      style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/ee8e85b7-5bc4-488b-81e2-ff6047f87421.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
       {/* Хедер с логотипами */}
       <header className="flex items-center justify-between px-6 py-4" style={{ borderBottom: '1px solid rgba(0,212,232,0.15)' }}>

@@ -9,7 +9,7 @@ const LOGO_BIZMORE = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5
 
 function PageWrapper({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(160deg, #0d1b35 0%, #1a2f5a 50%, #0f2040 100%)' }} className="flex flex-col items-center justify-center p-4">
+    <div style={{ minHeight: '100vh', backgroundImage: 'url(https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/ee8e85b7-5bc4-488b-81e2-ff6047f87421.png)', backgroundSize: 'cover', backgroundPosition: 'center' }} className="flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-sm">
         {/* Логотипы */}
         <div className="flex items-center justify-between mb-6 gap-3">
