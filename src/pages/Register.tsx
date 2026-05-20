@@ -217,21 +217,34 @@ export default function Register() {
       </div>
 
       {/* Trust-блок о школе */}
-      <div className="w-full max-w-sm mt-4 rounded-2xl px-5 py-4" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}>
-        <p className="text-xs font-semibold mb-1" style={{ color: 'rgba(255,255,255,0.55)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>О разработчике</p>
-        <p className="text-sm font-medium text-white mb-1">Школа ИИ «Хакни Нейросети»</p>
-        <p className="text-xs leading-relaxed mb-3" style={{ color: 'rgba(255,255,255,0.45)' }}>
-          Обучаем практическому применению нейросетей для бизнеса, работы, контента и автоматизации.
-        </p>
-        <a
-          href="https://chernikovgpt.ru"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-80"
-          style={{ color: '#00d4e8' }}
-        >
-          Узнать подробнее →
-        </a>
+      <div
+        className="w-full max-w-sm mt-4 rounded-2xl px-5 py-5"
+        style={{
+          background: 'linear-gradient(135deg, rgba(0,212,232,0.10) 0%, rgba(0,150,200,0.07) 100%)',
+          border: '1px solid rgba(0,212,232,0.3)',
+          backdropFilter: 'blur(8px)',
+        }}
+      >
+        <div className="flex items-start gap-3">
+          <div className="shrink-0 w-9 h-9 rounded-xl flex items-center justify-center text-lg" style={{ background: 'rgba(0,212,232,0.15)', border: '1px solid rgba(0,212,232,0.3)' }}>
+            🤖
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-bold text-white mb-0.5">Школа ИИ «Хакни Нейросети»</p>
+            <p className="text-xs leading-relaxed mb-3" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              Обучаем практическому применению нейросетей для бизнеса, работы, контента и автоматизации.
+            </p>
+            <a
+              href="https://chernikovgpt.ru"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg transition-opacity hover:opacity-80"
+              style={{ background: 'rgba(0,212,232,0.18)', color: '#00d4e8', border: '1px solid rgba(0,212,232,0.35)' }}
+            >
+              Узнать подробнее →
+            </a>
+          </div>
+        </div>
       </div>
 
       {/* Незаметная кнопка для администратора */}
