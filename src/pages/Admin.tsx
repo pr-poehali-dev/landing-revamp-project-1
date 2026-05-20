@@ -1,8 +1,13 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
+import confetti from 'canvas-confetti';
 import {
   adminLogin, adminLogout, getStats, getParticipants,
   getParticipantsCsvUrl, runDraw, getDrawHistory
 } from '@/lib/api';
+
+const BG_IMAGE = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/ee8e85b7-5bc4-488b-81e2-ff6047f87421.png';
+const LOGO_HACKNEURO = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/3e6191c2-c830-4bdb-b051-0e3d8dae2b2d.png';
+const LOGO_BIZMORE = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/7114106d-a8ac-4739-8ac5-4a9fe853d89f.png';
 
 type Tab = 'dashboard' | 'participants' | 'draw' | 'history';
 
@@ -39,11 +44,13 @@ export default function Admin() {
   const [statusFilter, setStatusFilter] = useState('');
   const [loadingPart, setLoadingPart] = useState(false);
 
-  const [drawTitle, setDrawTitle] = useState('');
   const [drawPrize, setDrawPrize] = useState('');
   const [drawLoading, setDrawLoading] = useState(false);
   const [drawWinner, setDrawWinner] = useState<DrawWinner | null>(null);
   const [drawError, setDrawError] = useState('');
+  const [drawPhase, setDrawPhase] = useState<'idle' | 'spinning' | 'winner'>('idle');
+  const [spinNumber, setSpinNumber] = useState(0);
+  const spinIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const [history, setHistory] = useState<DrawHistoryItem[]>([]);
 
@@ -95,23 +102,56 @@ export default function Admin() {
     }
   };
 
+  const fireConfetti = () => {
+    const duration = 4000;
+    const end = Date.now() + duration;
+    const colors = ['#00d4e8', '#ffffff', '#ffd700', '#00aaff', '#ff6bff'];
+    const frame = () => {
+      confetti({ particleCount: 6, angle: 60, spread: 70, origin: { x: 0 }, colors });
+      confetti({ particleCount: 6, angle: 120, spread: 70, origin: { x: 1 }, colors });
+      if (Date.now() < end) requestAnimationFrame(frame);
+    };
+    frame();
+  };
+
   const handleRunDraw = async () => {
     if (!drawPrize.trim()) {
       setDrawError('Укажите название приза');
       return;
     }
-    setDrawLoading(true);
     setDrawError('');
     setDrawWinner(null);
+    setDrawPhase('spinning');
+    setDrawLoading(true);
+
+    spinIntervalRef.current = setInterval(() => {
+      setSpinNumber(Math.floor(Math.random() * 9999) + 1);
+    }, 55);
+
+    await new Promise(r => setTimeout(r, 3500));
+
     const result = await runDraw(token, { title: drawPrize.trim(), prize_name: drawPrize.trim() });
+
+    if (spinIntervalRef.current) clearInterval(spinIntervalRef.current);
     setDrawLoading(false);
+
     if (result.status === 200 && result.data.success) {
       setDrawWinner(result.data.winner);
+      setDrawPhase('winner');
+      setTimeout(() => fireConfetti(), 300);
       fetchStats();
       fetchHistory();
     } else {
+      setDrawPhase('idle');
       setDrawError(result.data.error || 'Ошибка при проведении розыгрыша');
     }
+  };
+
+  const resetDraw = () => {
+    setDrawPhase('idle');
+    setDrawWinner(null);
+    setDrawPrize('');
+    setDrawError('');
   };
 
   if (!token) {
@@ -276,43 +316,134 @@ export default function Admin() {
 
         {/* РОЗЫГРЫШ */}
         {tab === 'draw' && (
-          <div className="max-w-lg">
-            <h2 className="text-xl font-bold mb-4">Запустить розыгрыш</h2>
-            <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6">
-              <div className="mb-6">
-                <label className="block text-sm text-gray-400 mb-1">Название приза</label>
-                <input
-                  value={drawPrize}
-                  onChange={e => setDrawPrize(e.target.value)}
-                  placeholder="Например: iPhone 15 Pro"
-                  className="w-full bg-gray-800 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-violet-500"
-                />
-              </div>
-              {drawError && (
-                <div className="mb-4 bg-red-950 border border-red-800 rounded-xl px-4 py-3 text-red-400 text-sm">
-                  {drawError}
-                </div>
-              )}
-              <button
-                onClick={handleRunDraw}
-                disabled={drawLoading}
-                className="w-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:opacity-90 text-white font-bold py-4 rounded-xl transition disabled:opacity-60 text-lg"
-              >
-                {drawLoading ? '🎰 Выбираем победителя...' : '🎰 Запустить розыгрыш'}
-              </button>
-            </div>
+          <div
+            className="fixed inset-0 flex flex-col"
+            style={{
+              top: 0, left: 0, right: 0, bottom: 0,
+              zIndex: 10,
+              backgroundImage: `url(${BG_IMAGE})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          >
+            {/* Тёмный оверлей */}
+            <div className="absolute inset-0" style={{ background: 'rgba(5,15,35,0.72)' }} />
 
-            {drawWinner && (
-              <div className="mt-6 bg-gradient-to-br from-yellow-900/40 to-orange-900/40 border border-yellow-700/50 rounded-2xl p-6 text-center">
-                <div className="text-4xl mb-2">🏆</div>
-                <div className="text-yellow-400 font-bold text-lg mb-1">Победитель!</div>
-                <div className="text-white text-2xl font-black mb-1">{drawWinner.full_name}</div>
-                <div className="text-gray-300 mb-2">{maskPhone(drawWinner.phone)}</div>
-                <div className="inline-block bg-yellow-500/20 border border-yellow-500/40 rounded-xl px-4 py-2">
-                  <span className="text-yellow-300 font-bold text-xl">#{drawWinner.ticket_number}</span>
-                </div>
+            {/* Контент */}
+            <div className="relative flex flex-col h-full">
+              {/* Хедер */}
+              <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: '1px solid rgba(0,212,232,0.2)' }}>
+                <img src={LOGO_HACKNEURO} alt="Хакни нейросети" className="h-8 object-contain" />
+                <button
+                  onClick={() => setTab('dashboard')}
+                  className="text-xs px-3 py-1.5 rounded-lg transition"
+                  style={{ background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)' }}
+                >
+                  ✕ Закрыть
+                </button>
+                <img src={LOGO_BIZMORE} alt="Бизнес у моря" className="h-8 object-contain" />
               </div>
-            )}
+
+              {/* Основная сцена */}
+              <div className="flex-1 flex flex-col items-center justify-center px-4 py-6">
+
+                <h1 className="text-white font-black text-center mb-8" style={{ fontSize: 'clamp(22px,4vw,40px)', letterSpacing: '-0.5px' }}>
+                  Розыгрыш призов
+                </h1>
+
+                {/* Барабан */}
+                <div className="relative flex items-center justify-center mb-8">
+                  <div className="absolute rounded-full" style={{ width: 200, height: 200, border: '1px solid rgba(0,212,232,0.12)' }} />
+                  <div className="absolute rounded-full" style={{ width: 250, height: 250, border: '1px solid rgba(0,212,232,0.07)' }} />
+                  <div
+                    className="relative flex items-center justify-center rounded-full transition-all duration-500"
+                    style={{
+                      width: 160, height: 160,
+                      background: drawPhase === 'winner' ? 'linear-gradient(135deg,#00d4e8,#0088aa)' : 'rgba(0,212,232,0.08)',
+                      border: `2px solid ${drawPhase === 'winner' ? '#00d4e8' : 'rgba(0,212,232,0.35)'}`,
+                      boxShadow: drawPhase !== 'idle' ? '0 0 60px rgba(0,212,232,0.5)' : '0 0 20px rgba(0,212,232,0.1)',
+                    }}
+                  >
+                    {drawPhase === 'idle' && <span style={{ fontSize: 52 }}>🎰</span>}
+                    {drawPhase === 'spinning' && (
+                      <span className="font-black tabular-nums" style={{ fontSize: 38, color: '#00d4e8' }}>
+                        {String(spinNumber).padStart(4, '0')}
+                      </span>
+                    )}
+                    {drawPhase === 'winner' && drawWinner && (
+                      <span className="font-black" style={{ fontSize: 40, color: '#0d1b35' }}>
+                        #{drawWinner.ticket_number}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Карточка победителя */}
+                {drawPhase === 'winner' && drawWinner && (
+                  <div
+                    className="w-full max-w-sm rounded-3xl p-6 text-center mb-6"
+                    style={{ background: 'rgba(0,212,232,0.1)', border: '1px solid rgba(0,212,232,0.4)', backdropFilter: 'blur(16px)' }}
+                  >
+                    <div className="text-4xl mb-2">🏆</div>
+                    <div className="font-bold mb-1 text-sm" style={{ color: '#00d4e8', letterSpacing: 2 }}>ПОБЕДИТЕЛЬ</div>
+                    <div className="text-white font-black mb-1" style={{ fontSize: 'clamp(20px,4vw,30px)' }}>{drawWinner.full_name}</div>
+                    <div className="mb-3 text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>{maskPhone(drawWinner.phone)}</div>
+                    {drawPrize && (
+                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl" style={{ background: 'rgba(255,215,0,0.12)', border: '1px solid rgba(255,215,0,0.3)' }}>
+                        <span>🎁</span>
+                        <span className="font-semibold text-sm" style={{ color: '#ffd700' }}>{drawPrize}</span>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Форма ввода */}
+                {drawPhase !== 'winner' && (
+                  <div className="w-full max-w-sm">
+                    <input
+                      type="text"
+                      value={drawPrize}
+                      onChange={e => { setDrawPrize(e.target.value); setDrawError(''); }}
+                      placeholder="Название приза..."
+                      disabled={drawPhase === 'spinning'}
+                      className="w-full rounded-xl px-4 py-3 text-center text-lg font-medium placeholder-white/30 mb-4"
+                      style={{ background: 'rgba(255,255,255,0.07)', border: drawError ? '1px solid #ff6b6b' : '1px solid rgba(0,212,232,0.3)', color: 'white', outline: 'none' }}
+                    />
+                    {drawError && <p className="text-red-400 text-sm text-center mb-3">{drawError}</p>}
+                    <button
+                      onClick={handleRunDraw}
+                      disabled={drawPhase === 'spinning'}
+                      className="w-full font-black py-5 rounded-2xl transition disabled:opacity-50 flex items-center justify-center gap-3"
+                      style={{
+                        background: drawPhase === 'spinning' ? 'rgba(0,212,232,0.25)' : 'linear-gradient(135deg,#00d4e8,#0077a8)',
+                        color: '#0d1b35', fontSize: 20,
+                        boxShadow: '0 8px 32px rgba(0,212,232,0.3)',
+                      }}
+                    >
+                      {drawPhase === 'spinning' ? (
+                        <>
+                          <svg className="animate-spin h-6 w-6" viewBox="0 0 24 24" fill="none">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                          </svg>
+                          Выбираем победителя...
+                        </>
+                      ) : '🎰 Запустить розыгрыш'}
+                    </button>
+                  </div>
+                )}
+
+                {drawPhase === 'winner' && (
+                  <button
+                    onClick={resetDraw}
+                    className="px-8 py-3 rounded-xl font-semibold transition"
+                    style={{ background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.55)', border: '1px solid rgba(255,255,255,0.12)' }}
+                  >
+                    Провести ещё один розыгрыш
+                  </button>
+                )}
+              </div>
+            </div>
           </div>
         )}
 
