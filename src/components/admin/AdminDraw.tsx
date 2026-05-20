@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import confetti from 'canvas-confetti';
 import { runDraw } from '@/lib/api';
 
-const BG_IMAGE = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/ee8e85b7-5bc4-488b-81e2-ff6047f87421.png';
+const BG_IMAGE = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/f56605f3-0e11-4830-8301-2649e0c92d94.png';
 const LOGO_BANNER = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/5dd48417-c7e4-4bcd-813a-59f545288154.png';
 
 interface DrawWinner { ticket_number: number; full_name: string; phone: string; }
