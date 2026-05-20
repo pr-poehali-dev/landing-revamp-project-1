@@ -17,6 +17,15 @@ interface DrawHistoryItem {
 
 const TOKEN_KEY = 'raffle_admin_token';
 
+const maskPhone = (phone: string) => {
+  if (!phone) return '—';
+  const digits = phone.replace(/\D/g, '');
+  if (digits.length >= 11) {
+    return `+7 (${digits.slice(1, 4)}) ***-**-${digits.slice(-2)}`;
+  }
+  return phone.slice(0, 3) + '***' + phone.slice(-2);
+};
+
 export default function Admin() {
   const [token, setToken] = useState(() => localStorage.getItem(TOKEN_KEY) || '');
   const [loginError, setLoginError] = useState('');
@@ -247,7 +256,7 @@ export default function Admin() {
                       <tr key={p.ticket_number} className={i % 2 === 0 ? 'bg-gray-900/40' : 'bg-gray-900/20'}>
                         <td className="px-4 py-3 font-bold text-violet-400">#{p.ticket_number}</td>
                         <td className="px-4 py-3 text-white">{p.full_name}</td>
-                        <td className="px-4 py-3 text-gray-300">{p.phone_normalized}</td>
+                        <td className="px-4 py-3 text-gray-300">{maskPhone(p.phone_normalized)}</td>
                         <td className="px-4 py-3">
                           <span className={`px-2 py-1 rounded-full text-xs font-medium ${p.status === 'active' ? 'bg-green-900/60 text-green-400' : 'bg-gray-800 text-gray-400'}`}>
                             {p.status === 'active' ? 'активен' : p.status}
@@ -307,7 +316,7 @@ export default function Admin() {
                 <div className="text-4xl mb-2">🏆</div>
                 <div className="text-yellow-400 font-bold text-lg mb-1">Победитель!</div>
                 <div className="text-white text-2xl font-black mb-1">{drawWinner.full_name}</div>
-                <div className="text-gray-300 mb-2">{drawWinner.phone}</div>
+                <div className="text-gray-300 mb-2">{maskPhone(drawWinner.phone)}</div>
                 <div className="inline-block bg-yellow-500/20 border border-yellow-500/40 rounded-xl px-4 py-2">
                   <span className="text-yellow-300 font-bold text-xl">#{drawWinner.ticket_number}</span>
                 </div>
@@ -338,7 +347,7 @@ export default function Admin() {
                         <div className="bg-yellow-900/30 border border-yellow-700/40 rounded-xl p-3 text-right min-w-[160px]">
                           <div className="text-yellow-400 text-xs font-medium mb-1">Победитель</div>
                           <div className="text-white font-bold">{item.winner_name}</div>
-                          <div className="text-gray-400 text-sm">{item.winner_phone}</div>
+                          <div className="text-gray-400 text-sm">{maskPhone(item.winner_phone)}</div>
                           <div className="text-yellow-400 font-bold">#{item.winner_ticket}</div>
                         </div>
                       )}
