@@ -1,15 +1,36 @@
 import { useState } from 'react';
-import { registerParticipant } from '@/lib/api';
+import { registerParticipant, adminLogin } from '@/lib/api';
+import { useNavigate } from 'react-router-dom';
 
 type Screen = 'form' | 'success' | 'duplicate' | 'error';
 
 export default function Register() {
+  const navigate = useNavigate();
   const [screen, setScreen] = useState<Screen>('form');
   const [ticketNumber, setTicketNumber] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [errors, setErrors] = useState<{ name?: string; phone?: string; general?: string }>({});
+
+  const [showAdminModal, setShowAdminModal] = useState(false);
+  const [adminPassword, setAdminPassword] = useState('');
+  const [adminError, setAdminError] = useState('');
+  const [adminLoading, setAdminLoading] = useState(false);
+
+  const handleAdminLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAdminLoading(true);
+    setAdminError('');
+    const result = await adminLogin(adminPassword);
+    setAdminLoading(false);
+    if (result.status === 200 && result.data.token) {
+      localStorage.setItem('raffle_admin_token', result.data.token);
+      navigate('/admin');
+    } else {
+      setAdminError(result.data.error || 'Неверный пароль');
+    }
+  };
 
   const validate = () => {
     const errs: typeof errors = {};
@@ -157,6 +178,52 @@ export default function Register() {
 
         <p className="text-center text-xs text-gray-400 mt-4">Один номер телефона — один номерок участника</p>
       </div>
+
+      {/* Незаметная кнопка для администратора */}
+      <button
+        onClick={() => { setShowAdminModal(true); setAdminError(''); setAdminPassword(''); }}
+        className="fixed bottom-4 right-4 text-gray-300/40 hover:text-gray-400/70 text-xs transition-colors"
+      >
+        ⚙️
+      </button>
+
+      {/* Модалка входа в админку */}
+      {showAdminModal && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-xs">
+            <div className="text-center mb-4">
+              <div className="text-3xl mb-1">🔐</div>
+              <h3 className="font-bold text-gray-900">Вход для администратора</h3>
+            </div>
+            <form onSubmit={handleAdminLogin}>
+              <input
+                type="password"
+                value={adminPassword}
+                onChange={e => { setAdminPassword(e.target.value); setAdminError(''); }}
+                placeholder="Пароль"
+                autoFocus
+                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-violet-500 mb-3"
+                disabled={adminLoading}
+              />
+              {adminError && <p className="text-red-500 text-sm mb-3">{adminError}</p>}
+              <button
+                type="submit"
+                disabled={adminLoading}
+                className="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 rounded-xl transition disabled:opacity-60 mb-2"
+              >
+                {adminLoading ? 'Вхожу...' : 'Войти'}
+              </button>
+              <button
+                type="button"
+                onClick={() => setShowAdminModal(false)}
+                className="w-full text-gray-400 text-sm py-1 hover:text-gray-600 transition"
+              >
+                Отмена
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
