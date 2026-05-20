@@ -122,16 +122,34 @@ export default function AdminDraw({ token, onClose, onDrawComplete }: Props) {
           </button>
         </div>
 
+        <style>{`
+          @keyframes slotSpin {
+            0%   { transform: translateY(0%); }
+            100% { transform: translateY(-66.6%); }
+          }
+          @keyframes titleGlow {
+            0%,100% { text-shadow: 0 0 20px rgba(0,212,232,0.6), 0 0 40px rgba(0,212,232,0.3); }
+            50%      { text-shadow: 0 0 30px rgba(0,212,232,1),   0 0 60px rgba(0,212,232,0.5); }
+          }
+          @keyframes btnPulse {
+            0%,100% { box-shadow: 0 8px 32px rgba(0,212,232,0.35); }
+            50%      { box-shadow: 0 8px 48px rgba(0,212,232,0.7), 0 0 24px rgba(0,212,232,0.4); }
+          }
+          .draw-title { animation: titleGlow 2.5s ease-in-out infinite; }
+          .btn-pulse  { animation: btnPulse 2s ease-in-out infinite; }
+          .slot-reel  { animation: slotSpin 0.35s steps(1) infinite; }
+        `}</style>
+
         <div className="flex-1 flex flex-col items-center justify-center px-4 py-6">
-          <h1 className="text-white font-black text-center mb-8" style={{ fontSize: 'clamp(22px,4vw,40px)', letterSpacing: '-0.5px' }}>
-            Розыгрыш призов
+          <h1 className="draw-title font-black text-center mb-8" style={{ fontSize: 'clamp(28px,5vw,52px)', letterSpacing: '1px', color: '#fff', textTransform: 'uppercase' }}>
+            🎰 Розыгрыш призов
           </h1>
 
           <div className="relative flex items-center justify-center mb-8">
             <div className="absolute rounded-full" style={{ width: 200, height: 200, border: '1px solid rgba(0,212,232,0.12)' }} />
             <div className="absolute rounded-full" style={{ width: 250, height: 250, border: '1px solid rgba(0,212,232,0.07)' }} />
             <div
-              className="relative flex items-center justify-center rounded-full transition-all duration-500"
+              className="relative flex items-center justify-center rounded-full transition-all duration-500 overflow-hidden"
               style={{
                 width: 160, height: 160,
                 background: drawPhase === 'winner' ? 'linear-gradient(135deg,#00d4e8,#0088aa)' : 'rgba(0,212,232,0.08)',
@@ -139,7 +157,15 @@ export default function AdminDraw({ token, onClose, onDrawComplete }: Props) {
                 boxShadow: drawPhase !== 'idle' ? '0 0 60px rgba(0,212,232,0.5)' : '0 0 20px rgba(0,212,232,0.1)',
               }}
             >
-              {drawPhase === 'idle' && <span style={{ fontSize: 52 }}>🎰</span>}
+              {drawPhase === 'idle' && (
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0, overflow: 'hidden', height: 60 }}>
+                  <div className="slot-reel" style={{ display: 'flex', flexDirection: 'column', lineHeight: '60px', fontSize: 48, fontWeight: 900, color: '#ffd700', fontFamily: 'monospace' }}>
+                    <span>7</span>
+                    <span>7</span>
+                    <span>7</span>
+                  </div>
+                </div>
+              )}
               {drawPhase === 'spinning' && (
                 <span className="font-black tabular-nums" style={{ fontSize: 38, color: '#00d4e8' }}>
                   {String(spinNumber).padStart(4, '0')}
@@ -179,18 +205,18 @@ export default function AdminDraw({ token, onClose, onDrawComplete }: Props) {
                 onChange={e => { setDrawPrize(e.target.value); setDrawError(''); }}
                 placeholder="Название приза..."
                 disabled={drawPhase === 'spinning'}
-                className="w-full rounded-xl px-4 py-4 text-center text-xl font-bold placeholder-white/40 mb-4"
-                style={{ background: 'rgba(255,255,255,0.12)', border: drawError ? '2px solid #ff6b6b' : '2px solid rgba(0,212,232,0.7)', color: 'white', outline: 'none', boxShadow: drawError ? 'none' : '0 0 16px rgba(0,212,232,0.25)', letterSpacing: '0.03em' }}
+                className="w-full rounded-xl px-4 py-4 text-center text-2xl font-black mb-4"
+                style={{ background: 'rgba(0,20,50,0.7)', border: drawError ? '2px solid #ff6b6b' : '2px solid #00d4e8', color: 'white', outline: 'none', boxShadow: drawError ? 'none' : '0 0 20px rgba(0,212,232,0.4)', letterSpacing: '0.05em', caretColor: '#00d4e8' }}
               />
               {drawError && <p className="text-red-400 text-sm text-center mb-3">{drawError}</p>}
               <button
                 onClick={handleRunDraw}
                 disabled={drawLoading}
-                className="w-full font-black py-5 rounded-2xl transition disabled:opacity-50 flex items-center justify-center gap-3"
+                className={`w-full font-black py-5 rounded-2xl transition disabled:opacity-50 flex items-center justify-center gap-3 ${drawPhase !== 'spinning' ? 'btn-pulse' : ''}`}
                 style={{
                   background: drawPhase === 'spinning' ? 'rgba(0,212,232,0.25)' : 'linear-gradient(135deg,#00d4e8,#0077a8)',
-                  color: '#0d1b35', fontSize: 20,
-                  boxShadow: '0 8px 32px rgba(0,212,232,0.3)',
+                  color: '#fff', fontSize: 22, letterSpacing: '0.05em', textTransform: 'uppercase',
+                  boxShadow: '0 8px 32px rgba(0,212,232,0.35)',
                 }}
               >
                 {drawPhase === 'spinning' ? (
