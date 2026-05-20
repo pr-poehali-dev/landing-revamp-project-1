@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { runDraw, getDrawHistory } from '@/lib/api';
 
-const LOGO_HACKNEURO = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/96270021-1841-4b3a-8e16-c14da68ac770.png';
+const LOGO_HACKNEURO = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/3e6191c2-c830-4bdb-b051-0e3d8dae2b2d.png';
 const LOGO_BIZMORE = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/7114106d-a8ac-4739-8ac5-4a9fe853d89f.png';
 
 const TOKEN_KEY = 'raffle_admin_token';
@@ -76,7 +76,7 @@ export default function Draw() {
     >
       {/* Хедер с логотипами */}
       <header className="flex items-center justify-between px-6 py-4" style={{ borderBottom: '1px solid rgba(0,212,232,0.15)' }}>
-        <img src={LOGO_HACKNEURO} alt="Хакни нейросети" className="h-8 object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
+        <img src={LOGO_HACKNEURO} alt="Хакни нейросети" className="h-8 object-contain" />
         <span className="text-xs font-medium px-3 py-1 rounded-full" style={{ background: 'rgba(0,212,232,0.15)', color: '#00d4e8', border: '1px solid rgba(0,212,232,0.3)' }}>
           РОЗЫГРЫШ
         </span>

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 type Screen = 'form' | 'success' | 'duplicate' | 'error';
 
-const LOGO_HACKNEURO = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/96270021-1841-4b3a-8e16-c14da68ac770.png';
+const LOGO_HACKNEURO = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/3e6191c2-c830-4bdb-b051-0e3d8dae2b2d.png';
 const LOGO_BIZMORE = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/7114106d-a8ac-4739-8ac5-4a9fe853d89f.png';
 
 function PageWrapper({ children }: { children: React.ReactNode }) {
@@ -13,7 +13,7 @@ function PageWrapper({ children }: { children: React.ReactNode }) {
       <div className="w-full max-w-sm">
         {/* Логотипы */}
         <div className="flex items-center justify-between mb-6 gap-3">
-          <img src={LOGO_HACKNEURO} alt="Хакни нейросети" className="h-10 object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
+          <img src={LOGO_HACKNEURO} alt="Хакни нейросети" className="h-10 object-contain" />
           <div style={{ width: 1, height: 32, background: 'rgba(0,212,232,0.3)' }} />
           <img src={LOGO_BIZMORE} alt="Бизнес у моря" className="h-10 object-contain" />
         </div>
