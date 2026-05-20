@@ -1,0 +1,28 @@
+{
+  "tests": [
+    {
+      "name": "Get draw history without auth",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 401,
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Get draw history with fake token",
+      "method": "GET",
+      "path": "/",
+      "headers": {"X-Auth-Token": "faketoken"},
+      "expectedStatus": 200,
+      "expectedBody": {"history": []},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Run draw without auth",
+      "method": "POST",
+      "path": "/",
+      "body": {"title": "Тест", "prize_name": "Приз"},
+      "expectedStatus": 401,
+      "bodyMatcher": "partial"
+    }
+  ]
+}

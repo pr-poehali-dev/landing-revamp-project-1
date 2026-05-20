@@ -1,0 +1,20 @@
+{
+  "tests": [
+    {
+      "name": "Get stats without auth",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 401,
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Get stats with fake token",
+      "method": "GET",
+      "path": "/",
+      "headers": {"X-Auth-Token": "faketoken"},
+      "expectedStatus": 200,
+      "expectedBody": {"total_participants": 0},
+      "bodyMatcher": "partial"
+    }
+  ]
+}
