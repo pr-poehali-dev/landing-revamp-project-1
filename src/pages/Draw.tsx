@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { runDraw, getDrawHistory } from '@/lib/api';
 
-const LOGO_HACKNEURO = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/3e6191c2-c830-4bdb-b051-0e3d8dae2b2d.png';
-const LOGO_BIZMORE = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/7114106d-a8ac-4739-8ac5-4a9fe853d89f.png';
+const LOGO_BANNER = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/5dd48417-c7e4-4bcd-813a-59f545288154.png';
 
 const TOKEN_KEY = 'raffle_admin_token';
 
@@ -74,13 +73,12 @@ export default function Draw() {
       className="min-h-screen flex flex-col"
       style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/ee8e85b7-5bc4-488b-81e2-ff6047f87421.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
-      {/* Хедер с логотипами */}
-      <header className="flex items-center justify-between px-6 py-4" style={{ borderBottom: '1px solid rgba(0,212,232,0.15)' }}>
-        <img src={LOGO_HACKNEURO} alt="Хакни нейросети" className="h-8 object-contain" />
-        <span className="text-xs font-medium px-3 py-1 rounded-full" style={{ background: 'rgba(0,212,232,0.15)', color: '#00d4e8', border: '1px solid rgba(0,212,232,0.3)' }}>
+      {/* Хедер с баннером */}
+      <header className="flex items-center justify-between px-6 py-4 gap-4" style={{ borderBottom: '1px solid rgba(0,212,232,0.15)' }}>
+        <img src={LOGO_BANNER} alt="Бизнес у моря × Хакни Нейросети" className="h-12 object-contain" style={{ borderRadius: 10 }} />
+        <span className="shrink-0 text-xs font-medium px-3 py-1 rounded-full" style={{ background: 'rgba(0,212,232,0.15)', color: '#00d4e8', border: '1px solid rgba(0,212,232,0.3)' }}>
           РОЗЫГРЫШ
         </span>
-        <img src={LOGO_BIZMORE} alt="Бизнес у моря" className="h-8 object-contain" />
       </header>
 
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-8">

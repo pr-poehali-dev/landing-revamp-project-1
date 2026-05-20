@@ -3,8 +3,7 @@ import confetti from 'canvas-confetti';
 import { runDraw } from '@/lib/api';
 
 const BG_IMAGE = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/ee8e85b7-5bc4-488b-81e2-ff6047f87421.png';
-const LOGO_HACKNEURO = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/3e6191c2-c830-4bdb-b051-0e3d8dae2b2d.png';
-const LOGO_BIZMORE = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/7114106d-a8ac-4739-8ac5-4a9fe853d89f.png';
+const LOGO_BANNER = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/5dd48417-c7e4-4bcd-813a-59f545288154.png';
 
 interface DrawWinner { ticket_number: number; full_name: string; phone: string; }
 
@@ -110,16 +109,15 @@ export default function AdminDraw({ token, onClose, onDrawComplete }: Props) {
       <div className="absolute inset-0" style={{ background: 'rgba(5,15,35,0.72)' }} />
 
       <div className="relative flex flex-col h-full">
-        <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: '1px solid rgba(0,212,232,0.2)' }}>
-          <img src={LOGO_HACKNEURO} alt="Хакни нейросети" className="h-8 object-contain" />
+        <div className="flex items-center justify-between px-6 py-4 gap-4" style={{ borderBottom: '1px solid rgba(0,212,232,0.2)' }}>
+          <img src={LOGO_BANNER} alt="Бизнес у моря × Хакни Нейросети" className="h-12 object-contain" style={{ borderRadius: 10 }} />
           <button
             onClick={onClose}
-            className="text-xs px-3 py-1.5 rounded-lg transition"
+            className="shrink-0 text-xs px-3 py-1.5 rounded-lg transition"
             style={{ background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)' }}
           >
             ✕ Закрыть
           </button>
-          <img src={LOGO_BIZMORE} alt="Бизнес у моря" className="h-8 object-contain" />
         </div>
 
         <div className="flex-1 flex flex-col items-center justify-center px-4 py-6">
