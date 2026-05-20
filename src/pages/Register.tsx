@@ -216,6 +216,24 @@ export default function Register() {
         <p className="text-center text-xs mt-4" style={{ color: 'rgba(255,255,255,0.3)' }}>Один номер телефона — один номерок участника</p>
       </div>
 
+      {/* Trust-блок о школе */}
+      <div className="w-full max-w-sm mt-4 rounded-2xl px-5 py-4" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}>
+        <p className="text-xs font-semibold mb-1" style={{ color: 'rgba(255,255,255,0.55)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>О разработчике</p>
+        <p className="text-sm font-medium text-white mb-1">Школа ИИ «Хакни Нейросети»</p>
+        <p className="text-xs leading-relaxed mb-3" style={{ color: 'rgba(255,255,255,0.45)' }}>
+          Обучаем практическому применению нейросетей для бизнеса, работы, контента и автоматизации.
+        </p>
+        <a
+          href="https://chernikovgpt.ru"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-80"
+          style={{ color: '#00d4e8' }}
+        >
+          Узнать подробнее →
+        </a>
+      </div>
+
       {/* Незаметная кнопка для администратора */}
       <button
         onClick={() => { setShowAdminModal(true); setAdminError(''); setAdminPassword(''); }}
