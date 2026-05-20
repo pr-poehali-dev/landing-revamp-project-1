@@ -1,4 +1,12 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+
+const PRESET_PRIZES = [
+  '🥇 Главный приз',
+  '🎓 Курс по нейросетям',
+  '📱 Промокод на скидку',
+  '📚 Книга по ИИ',
+  '☕ Кофе с Сергеем',
+];
 import confetti from 'canvas-confetti';
 import { runDraw } from '@/lib/api';
 
@@ -28,6 +36,18 @@ export default function AdminDraw({ token, onClose, onDrawComplete }: Props) {
   const [drawPhase, setDrawPhase] = useState<'idle' | 'spinning' | 'winner'>('idle');
   const [spinNumber, setSpinNumber] = useState(0);
   const spinIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [showPresets, setShowPresets] = useState(false);
+  const presetsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (presetsRef.current && !presetsRef.current.contains(e.target as Node)) {
+        setShowPresets(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
 
   const playFanfare = () => {
     try {
@@ -195,15 +215,33 @@ export default function AdminDraw({ token, onClose, onDrawComplete }: Props) {
 
           {drawPhase !== 'winner' && (
             <div className="w-full max-w-sm">
-              <input
-                type="text"
-                value={drawPrize}
-                onChange={e => { setDrawPrize(e.target.value); setDrawError(''); }}
-                placeholder="Название приза..."
-                disabled={drawPhase === 'spinning'}
-                className="w-full rounded-xl px-4 py-4 text-center text-2xl font-black mb-4"
-                style={{ background: 'rgba(0,20,50,0.7)', border: drawError ? '2px solid #ff6b6b' : '2px solid #00d4e8', color: 'white', outline: 'none', boxShadow: drawError ? 'none' : '0 0 20px rgba(0,212,232,0.4)', letterSpacing: '0.05em', caretColor: '#00d4e8' }}
-              />
+              <div ref={presetsRef} className="relative mb-4">
+                <input
+                  type="text"
+                  value={drawPrize}
+                  onChange={e => { setDrawPrize(e.target.value); setDrawError(''); }}
+                  onFocus={() => setShowPresets(true)}
+                  placeholder="Название приза..."
+                  disabled={drawPhase === 'spinning'}
+                  className="w-full rounded-xl px-4 py-4 text-center text-2xl font-black"
+                  style={{ background: 'rgba(0,20,50,0.7)', border: drawError ? '2px solid #ff6b6b' : '2px solid #00d4e8', color: 'white', outline: 'none', boxShadow: drawError ? 'none' : '0 0 20px rgba(0,212,232,0.4)', letterSpacing: '0.05em', caretColor: '#00d4e8' }}
+                />
+                {showPresets && drawPhase !== 'spinning' && (
+                  <div className="absolute left-0 right-0 top-full mt-1 rounded-xl overflow-hidden z-10" style={{ background: '#0a1a35', border: '1px solid rgba(0,212,232,0.35)', boxShadow: '0 8px 32px rgba(0,0,0,0.5)' }}>
+                    {PRESET_PRIZES.map(prize => (
+                      <button
+                        key={prize}
+                        type="button"
+                        onMouseDown={() => { setDrawPrize(prize); setDrawError(''); setShowPresets(false); }}
+                        className="w-full text-left px-4 py-3 text-sm font-semibold transition-colors hover:bg-white/10"
+                        style={{ color: 'rgba(255,255,255,0.85)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}
+                      >
+                        {prize}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
               {drawError && <p className="text-red-400 text-sm text-center mb-3">{drawError}</p>}
               <button
                 onClick={handleRunDraw}
