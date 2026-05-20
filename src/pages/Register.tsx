@@ -41,6 +41,7 @@ export default function Register() {
   const [adminError, setAdminError] = useState('');
   const [adminLoading, setAdminLoading] = useState(false);
 
+  const [consentChecked, setConsentChecked] = useState(false);
   const [showConsentModal, setShowConsentModal] = useState(false);
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
 
@@ -204,9 +205,9 @@ export default function Register() {
 
           <button
             type="submit"
-            disabled={loading}
-            className="w-full font-bold py-3 rounded-xl transition disabled:opacity-60 flex items-center justify-center gap-2 text-base"
-            style={{ background: 'linear-gradient(135deg, #00d4e8, #0099b8)', color: '#0d1b35', boxShadow: '0 4px 20px rgba(0,212,232,0.35)' }}
+            disabled={loading || !consentChecked}
+            className="w-full font-bold py-3 rounded-xl transition disabled:opacity-40 flex items-center justify-center gap-2 text-base"
+            style={{ background: 'linear-gradient(135deg, #00d4e8, #0099b8)', color: '#0d1b35', boxShadow: consentChecked ? '0 4px 20px rgba(0,212,232,0.35)' : 'none' }}
           >
             {loading ? (
               <>
@@ -220,16 +221,32 @@ export default function Register() {
           </button>
         </form>
 
-        <p className="text-center text-xs mt-3 leading-relaxed px-1" style={{ color: 'rgba(255,255,255,0.35)' }}>
-          Нажимая кнопку, вы даёте{' '}
-          <button onClick={() => setShowConsentModal(true)} className="underline underline-offset-2 transition-opacity hover:opacity-80" style={{ color: '#00d4e8' }}>
-            согласие
-          </button>
-          {' '}на обработку моих персональных данных для целей и на условиях, изложенных в{' '}
-          <button onClick={() => setShowPrivacyModal(true)} className="underline underline-offset-2 transition-opacity hover:opacity-80" style={{ color: '#00d4e8' }}>
-            Политике конфиденциальности
-          </button>.
-        </p>
+        <label className="flex items-start gap-2.5 mt-3 cursor-pointer select-none">
+          <div
+            onClick={() => setConsentChecked(v => !v)}
+            className="shrink-0 mt-0.5 w-4 h-4 rounded flex items-center justify-center transition-all"
+            style={{
+              border: consentChecked ? '2px solid #00d4e8' : '2px solid rgba(255,255,255,0.3)',
+              background: consentChecked ? '#00d4e8' : 'rgba(255,255,255,0.05)',
+            }}
+          >
+            {consentChecked && (
+              <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                <path d="M1 4L3.5 6.5L9 1" stroke="#0d1b35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            )}
+          </div>
+          <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>
+            Даю{' '}
+            <button type="button" onClick={e => { e.stopPropagation(); setShowConsentModal(true); }} className="underline underline-offset-2 transition-opacity hover:opacity-80" style={{ color: '#00d4e8' }}>
+              согласие
+            </button>
+            {' '}на обработку персональных данных на условиях, изложенных в{' '}
+            <button type="button" onClick={e => { e.stopPropagation(); setShowPrivacyModal(true); }} className="underline underline-offset-2 transition-opacity hover:opacity-80" style={{ color: '#00d4e8' }}>
+              Политике конфиденциальности
+            </button>.
+          </p>
+        </label>
 
         <p className="text-center text-xs mt-2" style={{ color: 'rgba(255,255,255,0.25)' }}>Один номер телефона — один номерок участника</p>
       </div>
