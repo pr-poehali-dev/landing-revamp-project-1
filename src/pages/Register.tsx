@@ -12,12 +12,14 @@ function PageWrapper({ children }: { children: React.ReactNode }) {
       <div className="w-full max-w-sm">
         {/* Баннер */}
         <div className="mb-6">
-          <img
-            src={LOGO_BANNER}
-            alt="Бизнес у моря × Хакни Нейросети"
-            className="w-full object-contain"
-            style={{ borderRadius: 16 }}
-          />
+          <a href="https://chernikovgpt.ru" target="_blank" rel="noopener noreferrer">
+            <img
+              src={LOGO_BANNER}
+              alt="Бизнес у моря × Хакни Нейросети"
+              className="w-full object-contain"
+              style={{ borderRadius: 16, cursor: 'pointer' }}
+            />
+          </a>
         </div>
         {children}
       </div>

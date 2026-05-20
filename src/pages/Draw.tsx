@@ -75,7 +75,9 @@ export default function Draw() {
     >
       {/* Хедер с баннером */}
       <header className="flex items-center justify-between px-6 py-4 gap-4" style={{ borderBottom: '1px solid rgba(0,212,232,0.15)' }}>
-        <img src={LOGO_BANNER} alt="Бизнес у моря × Хакни Нейросети" className="h-12 object-contain" style={{ borderRadius: 10 }} />
+        <a href="https://chernikovgpt.ru" target="_blank" rel="noopener noreferrer">
+          <img src={LOGO_BANNER} alt="Бизнес у моря × Хакни Нейросети" className="h-12 object-contain" style={{ borderRadius: 10, cursor: 'pointer' }} />
+        </a>
         <span className="shrink-0 text-xs font-medium px-3 py-1 rounded-full" style={{ background: 'rgba(0,212,232,0.15)', color: '#00d4e8', border: '1px solid rgba(0,212,232,0.3)' }}>
           РОЗЫГРЫШ
         </span>
