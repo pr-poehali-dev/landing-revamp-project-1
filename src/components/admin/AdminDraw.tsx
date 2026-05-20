@@ -123,9 +123,11 @@ export default function AdminDraw({ token, onClose, onDrawComplete }: Props) {
         </div>
 
         <style>{`
-          @keyframes slotSpin {
-            0%   { transform: translateY(0%); }
-            100% { transform: translateY(-66.6%); }
+          @keyframes slotBounce {
+            0%,100% { transform: scale(1) rotate(-3deg); }
+            25%     { transform: scale(1.12) rotate(3deg); }
+            50%     { transform: scale(1.08) rotate(-2deg); }
+            75%     { transform: scale(1.15) rotate(4deg); }
           }
           @keyframes titleGlow {
             0%,100% { text-shadow: 0 0 20px rgba(0,212,232,0.6), 0 0 40px rgba(0,212,232,0.3); }
@@ -137,7 +139,7 @@ export default function AdminDraw({ token, onClose, onDrawComplete }: Props) {
           }
           .draw-title { animation: titleGlow 2.5s ease-in-out infinite; }
           .btn-pulse  { animation: btnPulse 2s ease-in-out infinite; }
-          .slot-reel  { animation: slotSpin 0.35s steps(1) infinite; }
+          .slot-icon  { display: inline-block; animation: slotBounce 1.6s ease-in-out infinite; }
         `}</style>
 
         <div className="flex-1 flex flex-col items-center justify-center px-4 py-6">
@@ -158,13 +160,7 @@ export default function AdminDraw({ token, onClose, onDrawComplete }: Props) {
               }}
             >
               {drawPhase === 'idle' && (
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0, overflow: 'hidden', height: 60 }}>
-                  <div className="slot-reel" style={{ display: 'flex', flexDirection: 'column', lineHeight: '60px', fontSize: 48, fontWeight: 900, color: '#ffd700', fontFamily: 'monospace' }}>
-                    <span>7</span>
-                    <span>7</span>
-                    <span>7</span>
-                  </div>
-                </div>
+                <span className="slot-icon" style={{ fontSize: 56 }}>🎰</span>
               )}
               {drawPhase === 'spinning' && (
                 <span className="font-black tabular-nums" style={{ fontSize: 38, color: '#00d4e8' }}>
