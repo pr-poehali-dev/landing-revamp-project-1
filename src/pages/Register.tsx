@@ -41,6 +41,9 @@ export default function Register() {
   const [adminError, setAdminError] = useState('');
   const [adminLoading, setAdminLoading] = useState(false);
 
+  const [showConsentModal, setShowConsentModal] = useState(false);
+  const [showPrivacyModal, setShowPrivacyModal] = useState(false);
+
   const handleAdminLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setAdminLoading(true);
@@ -217,7 +220,18 @@ export default function Register() {
           </button>
         </form>
 
-        <p className="text-center text-xs mt-3" style={{ color: 'rgba(255,255,255,0.3)' }}>Один номер телефона — один номерок участника</p>
+        <p className="text-center text-xs mt-3 leading-relaxed px-1" style={{ color: 'rgba(255,255,255,0.35)' }}>
+          Нажимая кнопку, вы даёте{' '}
+          <button onClick={() => setShowConsentModal(true)} className="underline underline-offset-2 transition-opacity hover:opacity-80" style={{ color: '#00d4e8' }}>
+            согласие
+          </button>
+          {' '}на обработку моих персональных данных для целей и на условиях, изложенных в{' '}
+          <button onClick={() => setShowPrivacyModal(true)} className="underline underline-offset-2 transition-opacity hover:opacity-80" style={{ color: '#00d4e8' }}>
+            Политике конфиденциальности
+          </button>.
+        </p>
+
+        <p className="text-center text-xs mt-2" style={{ color: 'rgba(255,255,255,0.25)' }}>Один номер телефона — один номерок участника</p>
       </div>
 
       {/* Trust-блок о школе */}
@@ -311,6 +325,44 @@ export default function Register() {
                 Отмена
               </button>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Модалка: Согласие на обработку ПД */}
+      {showConsentModal && (
+        <div className="fixed inset-0 flex items-center justify-center p-4 z-50" style={{ background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(8px)' }}>
+          <div className="rounded-2xl p-6 w-full max-w-sm max-h-[80vh] overflow-y-auto" style={{ background: '#0f1e3a', border: '1px solid rgba(0,212,232,0.3)' }}>
+            <h3 className="font-bold text-white text-lg mb-3">Согласие на обработку персональных данных</h3>
+            <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>
+              Текст согласия будет добавлен позже.
+            </p>
+            <button
+              onClick={() => setShowConsentModal(false)}
+              className="w-full mt-5 font-bold py-2.5 rounded-xl transition"
+              style={{ background: '#00d4e8', color: '#0d1b35' }}
+            >
+              Закрыть
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Модалка: Политика конфиденциальности */}
+      {showPrivacyModal && (
+        <div className="fixed inset-0 flex items-center justify-center p-4 z-50" style={{ background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(8px)' }}>
+          <div className="rounded-2xl p-6 w-full max-w-sm max-h-[80vh] overflow-y-auto" style={{ background: '#0f1e3a', border: '1px solid rgba(0,212,232,0.3)' }}>
+            <h3 className="font-bold text-white text-lg mb-3">Политика конфиденциальности</h3>
+            <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>
+              Текст политики конфиденциальности будет добавлен позже.
+            </p>
+            <button
+              onClick={() => setShowPrivacyModal(false)}
+              className="w-full mt-5 font-bold py-2.5 rounded-xl transition"
+              style={{ background: '#00d4e8', color: '#0d1b35' }}
+            >
+              Закрыть
+            </button>
           </div>
         </div>
       )}
