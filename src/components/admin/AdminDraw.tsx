@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import confetti from 'canvas-confetti';
 import { runDraw } from '@/lib/api';
 
-const BG_IMAGE = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/f56605f3-0e11-4830-8301-2649e0c92d94.png';
+const BG_IMAGE = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/09be47ea-364d-4348-b416-605c0282c254.png';
 const LOGO_BANNER = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/5dd48417-c7e4-4bcd-813a-59f545288154.png';
 
 interface DrawWinner { ticket_number: number; full_name: string; phone: string; }
@@ -179,8 +179,8 @@ export default function AdminDraw({ token, onClose, onDrawComplete }: Props) {
                 onChange={e => { setDrawPrize(e.target.value); setDrawError(''); }}
                 placeholder="Название приза..."
                 disabled={drawPhase === 'spinning'}
-                className="w-full rounded-xl px-4 py-3 text-center text-lg font-medium placeholder-white/30 mb-4"
-                style={{ background: 'rgba(255,255,255,0.07)', border: drawError ? '1px solid #ff6b6b' : '1px solid rgba(0,212,232,0.3)', color: 'white', outline: 'none' }}
+                className="w-full rounded-xl px-4 py-4 text-center text-xl font-bold placeholder-white/40 mb-4"
+                style={{ background: 'rgba(255,255,255,0.12)', border: drawError ? '2px solid #ff6b6b' : '2px solid rgba(0,212,232,0.7)', color: 'white', outline: 'none', boxShadow: drawError ? 'none' : '0 0 16px rgba(0,212,232,0.25)', letterSpacing: '0.03em' }}
               />
               {drawError && <p className="text-red-400 text-sm text-center mb-3">{drawError}</p>}
               <button
