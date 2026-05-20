@@ -32,7 +32,7 @@ export function SuccessScreen({ ticketNumber }: SuccessScreenProps) {
         `}</style>
         <div className="notice-pulse rounded-xl px-4 py-3 mt-2" style={{ background: 'rgba(255,200,0,0.1)', border: '2px solid rgba(255,200,0,0.5)' }}>
           <p className="notice-text text-sm font-bold text-center" style={{ color: '#ffd700' }}>
-            ⚠️ Запомните ваш номерок — он понадобится при розыгрыше
+            📸 СДЕЛАЙ СКРИНШОТ СТРАНИЦЫ, ЧТОБ НЕ ЗАБЫТЬ СВОЙ НОМЕРОК
           </p>
         </div>
       </div>
