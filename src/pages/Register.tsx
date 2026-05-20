@@ -103,7 +103,27 @@ export default function Register() {
           <div className="rounded-2xl p-6 mb-6" style={{ background: 'linear-gradient(135deg, #00d4e8, #0099b8)', boxShadow: '0 0 32px rgba(0,212,232,0.4)' }}>
             <span className="text-6xl font-black text-white">#{ticketNumber}</span>
           </div>
-          <p className="text-sm" style={{ color: 'rgba(255,255,255,0.45)' }}>Запомните ваш номерок — он понадобится при розыгрыше</p>
+          <style>{`
+            @keyframes importantPulse {
+              0%,100% { box-shadow: 0 0 10px rgba(255,200,0,0.3); border-color: rgba(255,200,0,0.5); }
+              50%     { box-shadow: 0 0 22px rgba(255,200,0,0.7), 0 0 40px rgba(255,200,0,0.3); border-color: rgba(255,200,0,0.9); }
+            }
+            @keyframes textBlink {
+              0%,100% { opacity: 1; }
+              50%     { opacity: 0.7; }
+            }
+            .notice-pulse {
+              animation: importantPulse 1.8s ease-in-out infinite;
+            }
+            .notice-text {
+              animation: textBlink 1.8s ease-in-out infinite;
+            }
+          `}</style>
+          <div className="notice-pulse rounded-xl px-4 py-3 mt-2" style={{ background: 'rgba(255,200,0,0.1)', border: '2px solid rgba(255,200,0,0.5)' }}>
+            <p className="notice-text text-sm font-bold text-center" style={{ color: '#ffd700' }}>
+              ⚠️ Запомните ваш номерок — он понадобится при розыгрыше
+            </p>
+          </div>
         </div>
       </PageWrapper>
     );
