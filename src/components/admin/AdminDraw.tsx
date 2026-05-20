@@ -109,14 +109,9 @@ export default function AdminDraw({ token, onClose, onDrawComplete }: Props) {
       <div className="absolute inset-0" style={{ background: 'rgba(5,15,35,0.72)' }} />
 
       <div className="relative flex flex-col h-full">
-        <div className="flex items-center justify-between px-4 py-3 gap-3" style={{ borderBottom: '1px solid rgba(0,212,232,0.2)' }}>
-          <a href="https://chernikovgpt.ru" target="_blank" rel="noopener noreferrer" className="shrink-0">
-            <img
-              src={LOGO_BANNER}
-              alt="Бизнес у моря × Хакни Нейросети"
-              className="h-10 object-contain"
-              style={{ borderRadius: 8, cursor: 'pointer', background: 'rgba(255,255,255,0.92)', padding: '4px 8px' }}
-            />
+        <div className="flex items-center justify-between px-6 py-4 gap-4" style={{ borderBottom: '1px solid rgba(0,212,232,0.2)' }}>
+          <a href="https://chernikovgpt.ru" target="_blank" rel="noopener noreferrer">
+            <img src={LOGO_BANNER} alt="Бизнес у моря × Хакни Нейросети" className="h-12 object-contain" style={{ borderRadius: 10, cursor: 'pointer' }} />
           </a>
           <button
             onClick={onClose}
