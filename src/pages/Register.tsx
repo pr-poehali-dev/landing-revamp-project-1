@@ -151,9 +151,29 @@ export default function Register() {
       <div className="rounded-2xl p-5" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(0,212,232,0.2)', backdropFilter: 'blur(12px)' }}>
 
         <div className="text-center mb-5">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl mb-3" style={{ background: 'rgba(0,212,232,0.15)', border: '1px solid rgba(0,212,232,0.3)' }}>
-            <span className="text-2xl">🎟️</span>
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-3 ticket-gold-badge">
+            <span className="text-3xl ticket-shake">🎟️</span>
           </div>
+          <style>{`
+            @keyframes goldPulse {
+              0%, 100% { box-shadow: 0 0 12px 2px #f5c842, 0 0 28px 6px rgba(245,200,66,0.35); background: linear-gradient(135deg,#7a5200,#e6a817,#fff0a0,#c87d00,#f5c842); }
+              50% { box-shadow: 0 0 22px 6px #f5c842, 0 0 48px 14px rgba(245,200,66,0.55); background: linear-gradient(135deg,#c87d00,#fff0a0,#f5c842,#7a5200,#e6a817); }
+            }
+            @keyframes ticketShake {
+              0%, 100% { transform: rotate(-8deg) scale(1); }
+              25% { transform: rotate(8deg) scale(1.15); }
+              50% { transform: rotate(-4deg) scale(1.05); }
+              75% { transform: rotate(6deg) scale(1.1); }
+            }
+            .ticket-gold-badge {
+              animation: goldPulse 2s ease-in-out infinite;
+              border: 2px solid #f5c842;
+            }
+            .ticket-shake {
+              display: inline-block;
+              animation: ticketShake 2s ease-in-out infinite;
+            }
+          `}</style>
           <h1 className="text-xl font-bold text-white mb-1">Участвуй в розыгрыше</h1>
           <p className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>Зарегистрируйся и получи уникальный номерок</p>
         </div>
