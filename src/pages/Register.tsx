@@ -8,16 +8,16 @@ const LOGO_BANNER = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5a
 
 function PageWrapper({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ minHeight: '100vh', backgroundImage: 'url(https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/ee8e85b7-5bc4-488b-81e2-ff6047f87421.png)', backgroundSize: 'cover', backgroundPosition: 'center' }} className="flex flex-col items-center justify-center p-4">
+    <div style={{ minHeight: '100vh', backgroundImage: 'url(https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/ee8e85b7-5bc4-488b-81e2-ff6047f87421.png)', backgroundSize: 'cover', backgroundPosition: 'center' }} className="flex flex-col items-center py-5 px-4">
       <div className="w-full max-w-sm">
         {/* Баннер */}
-        <div className="mb-6">
+        <div className="mb-4">
           <a href="https://chernikovgpt.ru" target="_blank" rel="noopener noreferrer">
             <img
               src={LOGO_BANNER}
               alt="Бизнес у моря × Хакни Нейросети"
               className="w-full object-contain"
-              style={{ borderRadius: 16, cursor: 'pointer' }}
+              style={{ borderRadius: 14, cursor: 'pointer' }}
             />
           </a>
         </div>
@@ -144,19 +144,19 @@ export default function Register() {
 
   return (
     <PageWrapper>
-      <div className="rounded-3xl p-8" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(0,212,232,0.2)', backdropFilter: 'blur(12px)' }}>
+      <div className="rounded-2xl p-5" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(0,212,232,0.2)', backdropFilter: 'blur(12px)' }}>
 
-        <div className="text-center mb-7">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-4" style={{ background: 'rgba(0,212,232,0.15)', border: '1px solid rgba(0,212,232,0.3)' }}>
-            <span className="text-3xl">🎟️</span>
+        <div className="text-center mb-5">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl mb-3" style={{ background: 'rgba(0,212,232,0.15)', border: '1px solid rgba(0,212,232,0.3)' }}>
+            <span className="text-2xl">🎟️</span>
           </div>
-          <h1 className="text-2xl font-bold text-white mb-1">Участвуй в розыгрыше</h1>
-          <p className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>Зарегистрируйся и получи уникальный номерок</p>
+          <h1 className="text-xl font-bold text-white mb-1">Участвуй в розыгрыше</h1>
+          <p className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>Зарегистрируйся и получи уникальный номерок</p>
         </div>
 
         <form onSubmit={handleSubmit} noValidate>
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-1.5" style={{ color: 'rgba(255,255,255,0.75)' }}>Ваше имя</label>
+          <div className="mb-3">
+            <label className="block text-sm font-medium mb-1" style={{ color: 'rgba(255,255,255,0.75)' }}>Ваше имя</label>
             <input
               type="text"
               value={name}
@@ -168,14 +168,14 @@ export default function Register() {
                 color: 'white',
                 outline: 'none',
               }}
-              className="w-full rounded-xl px-4 py-3 placeholder-white/30 focus:ring-2 transition w-full"
+              className="w-full rounded-xl px-3 py-2.5 placeholder-white/30 transition"
               disabled={loading}
             />
             {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
           </div>
 
-          <div className="mb-6">
-            <label className="block text-sm font-medium mb-1.5" style={{ color: 'rgba(255,255,255,0.75)' }}>Номер телефона</label>
+          <div className="mb-4">
+            <label className="block text-sm font-medium mb-1" style={{ color: 'rgba(255,255,255,0.75)' }}>Номер телефона</label>
             <input
               type="tel"
               value={phone}
@@ -187,7 +187,7 @@ export default function Register() {
                 color: 'white',
                 outline: 'none',
               }}
-              className="w-full rounded-xl px-4 py-3 placeholder-white/30 transition"
+              className="w-full rounded-xl px-3 py-2.5 placeholder-white/30 transition"
               disabled={loading}
             />
             {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
@@ -202,7 +202,7 @@ export default function Register() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full font-bold py-4 rounded-xl transition disabled:opacity-60 flex items-center justify-center gap-2 text-lg"
+            className="w-full font-bold py-3 rounded-xl transition disabled:opacity-60 flex items-center justify-center gap-2 text-base"
             style={{ background: 'linear-gradient(135deg, #00d4e8, #0099b8)', color: '#0d1b35', boxShadow: '0 4px 20px rgba(0,212,232,0.35)' }}
           >
             {loading ? (
@@ -217,22 +217,28 @@ export default function Register() {
           </button>
         </form>
 
-        <p className="text-center text-xs mt-4" style={{ color: 'rgba(255,255,255,0.3)' }}>Один номер телефона — один номерок участника</p>
+        <p className="text-center text-xs mt-3" style={{ color: 'rgba(255,255,255,0.3)' }}>Один номер телефона — один номерок участника</p>
       </div>
 
       {/* Trust-блок о школе */}
+      <style>{`
+        @keyframes botPulse {
+          0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,212,232,0.4); }
+          50% { transform: scale(1.12); box-shadow: 0 0 0 6px rgba(0,212,232,0); }
+        }
+      `}</style>
       <div
-        className="w-full max-w-sm mt-4 rounded-2xl px-5 py-5"
+        className="w-full max-w-sm mt-3 rounded-2xl px-4 py-4"
         style={{
           background: 'linear-gradient(135deg, rgba(0,212,232,0.10) 0%, rgba(0,150,200,0.07) 100%)',
           border: '1px solid rgba(0,212,232,0.3)',
           backdropFilter: 'blur(8px)',
         }}
       >
-        <p className="text-xs font-semibold mb-3" style={{ color: 'rgba(0,212,232,0.7)', letterSpacing: '1px', textTransform: 'uppercase' }}>Приложение разработано:</p>
-        <div className="flex items-start gap-3">
+        <p className="text-xs font-semibold mb-2" style={{ color: 'rgba(0,212,232,0.7)', letterSpacing: '1px', textTransform: 'uppercase' }}>Приложение разработано:</p>
+        <div className="flex items-center gap-3">
           <div
-            className="shrink-0 w-9 h-9 rounded-xl flex items-center justify-center text-lg"
+            className="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-base"
             style={{
               background: 'rgba(0,212,232,0.15)',
               border: '1px solid rgba(0,212,232,0.3)',
@@ -241,28 +247,23 @@ export default function Register() {
           >
             🤖
           </div>
-          <style>{`
-            @keyframes botPulse {
-              0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,212,232,0.4); }
-              50% { transform: scale(1.12); box-shadow: 0 0 0 6px rgba(0,212,232,0); }
-            }
-          `}</style>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-bold text-white mb-0.5">Школа ИИ «Хакни Нейросети»</p>
-            <p className="text-xs leading-relaxed mb-3" style={{ color: 'rgba(255,255,255,0.55)' }}>
-              Единственной живой школой во Владивостоке, которая обучает практическому применению нейросетей для бизнеса, работы, контента и автоматизации.
-            </p>
-            <a
-              href="https://chernikovgpt.ru"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg transition-opacity hover:opacity-80"
-              style={{ background: 'rgba(0,212,232,0.18)', color: '#00d4e8', border: '1px solid rgba(0,212,232,0.35)' }}
-            >
-              Узнать подробнее →
-            </a>
+            <p className="text-sm font-bold text-white leading-tight">Школа ИИ «Хакни Нейросети»</p>
+            <p className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.5)' }}>Единственная живая школа ИИ во Владивостоке</p>
           </div>
         </div>
+        <p className="text-xs leading-relaxed mt-2 mb-3" style={{ color: 'rgba(255,255,255,0.45)' }}>
+          Обучаем применению нейросетей для бизнеса, контента и автоматизации.
+        </p>
+        <a
+          href="https://chernikovgpt.ru"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-1.5 w-full text-xs font-bold py-2 rounded-lg transition-opacity hover:opacity-80"
+          style={{ background: 'rgba(0,212,232,0.18)', color: '#00d4e8', border: '1px solid rgba(0,212,232,0.35)' }}
+        >
+          Узнать подробнее →
+        </a>
       </div>
 
       {/* Незаметная кнопка для администратора */}
