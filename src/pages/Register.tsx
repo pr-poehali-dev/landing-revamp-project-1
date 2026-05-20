@@ -349,18 +349,54 @@ export default function Register() {
       {/* Модалка: Согласие на обработку ПД */}
       {showConsentModal && (
         <div className="fixed inset-0 flex items-center justify-center p-4 z-50" style={{ background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(8px)' }}>
-          <div className="rounded-2xl p-6 w-full max-w-sm max-h-[80vh] overflow-y-auto" style={{ background: '#0f1e3a', border: '1px solid rgba(0,212,232,0.3)' }}>
-            <h3 className="font-bold text-white text-lg mb-3">Согласие на обработку персональных данных</h3>
-            <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>
-              Текст согласия будет добавлен позже.
-            </p>
-            <button
-              onClick={() => setShowConsentModal(false)}
-              className="w-full mt-5 font-bold py-2.5 rounded-xl transition"
-              style={{ background: '#00d4e8', color: '#0d1b35' }}
-            >
-              Закрыть
-            </button>
+          <div className="rounded-2xl w-full max-w-sm flex flex-col" style={{ background: '#0f1e3a', border: '1px solid rgba(0,212,232,0.3)', maxHeight: '85vh' }}>
+            <div className="px-5 pt-5 pb-3" style={{ borderBottom: '1px solid rgba(0,212,232,0.15)' }}>
+              <h3 className="font-bold text-white text-base leading-tight">Согласие на обработку персональных данных</h3>
+            </div>
+            <div className="overflow-y-auto px-5 py-4 flex-1" style={{ color: 'rgba(255,255,255,0.65)', fontSize: 13, lineHeight: 1.65 }}>
+              <p className="mb-3">Я, как субъект персональных данных, оставляя свои данные в форме регистрации в веб-приложении для участия в розыгрыше, свободно, своей волей и в своем интересе даю согласие Индивидуальному предпринимателю Черникову Сергею Николаевичу (далее — Оператор) на обработку моих персональных данных на следующих условиях.</p>
+
+              <p className="font-semibold text-white mb-1">1. Оператор персональных данных:</p>
+              <p className="mb-3">ИП Черников Сергей Николаевич<br/>ИНН: 783801003680<br/>ОГРНИП: 321253600091137<br/>Адрес: 690025, Россия, Приморский край, г. Владивосток, СНТ Вербное, уч-к 16<br/>Email: chernikovru@yandex.ru</p>
+
+              <p className="font-semibold text-white mb-1">2. Перечень персональных данных:</p>
+              <ul className="mb-3 pl-3 space-y-0.5">
+                {['имя', 'номер телефона', 'IP-адрес', 'user-agent', 'дата и время отправки формы', 'иные технические данные, автоматически передаваемые при использовании веб-приложения'].map(i => (
+                  <li key={i}>— {i};</li>
+                ))}
+              </ul>
+
+              <p className="font-semibold text-white mb-1">3. Цели обработки:</p>
+              <ul className="mb-3 pl-3 space-y-0.5">
+                {['регистрация пользователя в веб-приложении', 'присвоение уникального номера участника розыгрыша', 'проверка отсутствия повторной регистрации', 'связь с пользователем по вопросам участия', 'информирование о результатах розыгрыша', 'обработка обращений пользователя', 'обеспечение работоспособности и безопасности', 'ведение внутреннего учёта и журналов событий'].map(i => (
+                  <li key={i}>— {i};</li>
+                ))}
+              </ul>
+
+              <p className="font-semibold text-white mb-1">4. Перечень действий:</p>
+              <p className="mb-3">Сбор, запись, систематизация, накопление, хранение, уточнение, извлечение, использование, передача в случаях, предусмотренных законодательством РФ, блокирование, удаление, уничтожение.</p>
+
+              <p className="font-semibold text-white mb-1">5. Способы обработки:</p>
+              <p className="mb-3">С использованием средств автоматизации, а также без использования таких средств.</p>
+
+              <p className="font-semibold text-white mb-1">6. Срок действия согласия:</p>
+              <p className="mb-3">До достижения целей обработки либо до момента отзыва субъектом персональных данных.</p>
+
+              <p className="font-semibold text-white mb-1">7. Порядок отзыва:</p>
+              <p className="mb-3">Направить обращение на: <span style={{ color: '#00d4e8' }}>chernikovru@yandex.ru</span>, указав имя, номер телефона и суть требования.</p>
+
+              <p className="font-semibold text-white mb-1">8. Подтверждение:</p>
+              <p>Проставляя отметку в чекбоксе и нажимая кнопку отправки, я подтверждаю, что ознакомлен(а) с условиями обработки персональных данных и даю на неё согласие.</p>
+            </div>
+            <div className="px-5 pb-5 pt-3">
+              <button
+                onClick={() => setShowConsentModal(false)}
+                className="w-full font-bold py-2.5 rounded-xl transition"
+                style={{ background: '#00d4e8', color: '#0d1b35' }}
+              >
+                Закрыть
+              </button>
+            </div>
           </div>
         </div>
       )}
