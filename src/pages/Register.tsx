@@ -225,6 +225,7 @@ export default function Register() {
           backdropFilter: 'blur(8px)',
         }}
       >
+        <p className="text-xs font-semibold mb-3" style={{ color: 'rgba(0,212,232,0.7)', letterSpacing: '1px', textTransform: 'uppercase' }}>Приложение разработано:</p>
         <div className="flex items-start gap-3">
           <div className="shrink-0 w-9 h-9 rounded-xl flex items-center justify-center text-lg" style={{ background: 'rgba(0,212,232,0.15)', border: '1px solid rgba(0,212,232,0.3)' }}>
             🤖
@@ -232,7 +233,7 @@ export default function Register() {
           <div className="flex-1 min-w-0">
             <p className="text-sm font-bold text-white mb-0.5">Школа ИИ «Хакни Нейросети»</p>
             <p className="text-xs leading-relaxed mb-3" style={{ color: 'rgba(255,255,255,0.55)' }}>
-              Обучаем практическому применению нейросетей для бизнеса, работы, контента и автоматизации.
+              Единственной живой школой во Владивостоке, которая обучает практическому применению нейросетей для бизнеса, работы, контента и автоматизации.
             </p>
             <a
               href="https://chernikovgpt.ru"
