@@ -96,14 +96,14 @@ export default function Admin() {
   };
 
   const handleRunDraw = async () => {
-    if (!drawTitle.trim() || !drawPrize.trim()) {
-      setDrawError('Заполните название розыгрыша и приза');
+    if (!drawPrize.trim()) {
+      setDrawError('Укажите название приза');
       return;
     }
     setDrawLoading(true);
     setDrawError('');
     setDrawWinner(null);
-    const result = await runDraw(token, { title: drawTitle.trim(), prize_name: drawPrize.trim() });
+    const result = await runDraw(token, { title: drawPrize.trim(), prize_name: drawPrize.trim() });
     setDrawLoading(false);
     if (result.status === 200 && result.data.success) {
       setDrawWinner(result.data.winner);
@@ -279,15 +279,6 @@ export default function Admin() {
           <div className="max-w-lg">
             <h2 className="text-xl font-bold mb-4">Запустить розыгрыш</h2>
             <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6">
-              <div className="mb-4">
-                <label className="block text-sm text-gray-400 mb-1">Название розыгрыша</label>
-                <input
-                  value={drawTitle}
-                  onChange={e => setDrawTitle(e.target.value)}
-                  placeholder="Например: Летний розыгрыш 2025"
-                  className="w-full bg-gray-800 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-violet-500"
-                />
-              </div>
               <div className="mb-6">
                 <label className="block text-sm text-gray-400 mb-1">Название приза</label>
                 <input
