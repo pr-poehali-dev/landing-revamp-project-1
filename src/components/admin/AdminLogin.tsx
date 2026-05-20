@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 interface Props {
   password: string;
   setPassword: (v: string) => void;
@@ -33,6 +35,11 @@ export default function AdminLogin({ password, setPassword, loginError, loginLoa
             {loginLoading ? 'Вхожу...' : 'Войти'}
           </button>
         </form>
+        <div className="text-center mt-4">
+          <Link to="/" className="text-gray-500 hover:text-gray-300 text-sm transition">
+            ← На главную
+          </Link>
+        </div>
       </div>
     </div>
   );
