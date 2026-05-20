@@ -221,10 +221,10 @@ export default function Register() {
           </button>
         </form>
 
-        <label className="flex items-start gap-2.5 mt-3 cursor-pointer select-none">
+        <div className="flex items-start gap-2.5 mt-3 select-none">
           <div
             onClick={() => setConsentChecked(v => !v)}
-            className="shrink-0 mt-0.5 w-4 h-4 rounded flex items-center justify-center transition-all"
+            className="shrink-0 mt-0.5 w-4 h-4 rounded flex items-center justify-center transition-all cursor-pointer"
             style={{
               border: consentChecked ? '2px solid #00d4e8' : '2px solid rgba(255,255,255,0.3)',
               background: consentChecked ? '#00d4e8' : 'rgba(255,255,255,0.05)',
@@ -238,15 +238,15 @@ export default function Register() {
           </div>
           <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>
             Даю{' '}
-            <button type="button" onClick={e => { e.stopPropagation(); setShowConsentModal(true); }} className="underline underline-offset-2 transition-opacity hover:opacity-80" style={{ color: '#00d4e8' }}>
+            <button type="button" onClick={() => setShowConsentModal(true)} className="underline underline-offset-2 transition-opacity hover:opacity-80" style={{ color: '#00d4e8' }}>
               согласие
             </button>
             {' '}на обработку персональных данных на условиях, изложенных в{' '}
-            <button type="button" onClick={e => { e.stopPropagation(); setShowPrivacyModal(true); }} className="underline underline-offset-2 transition-opacity hover:opacity-80" style={{ color: '#00d4e8' }}>
+            <button type="button" onClick={() => setShowPrivacyModal(true)} className="underline underline-offset-2 transition-opacity hover:opacity-80" style={{ color: '#00d4e8' }}>
               Политике конфиденциальности
             </button>.
           </p>
-        </label>
+        </div>
 
         <p className="text-center text-xs mt-2" style={{ color: 'rgba(255,255,255,0.25)' }}>Один номер телефона — один номерок участника</p>
       </div>
