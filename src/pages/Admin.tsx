@@ -102,6 +102,30 @@ export default function Admin() {
     }
   };
 
+  const playFanfare = () => {
+    try {
+      const ctx = new AudioContext();
+      const notes = [523, 659, 784, 1047, 784, 1047, 1047, 1047];
+      const durations = [0.12, 0.12, 0.12, 0.3, 0.12, 0.12, 0.12, 0.5];
+      let time = ctx.currentTime + 0.05;
+      notes.forEach((freq, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, time);
+        gain.gain.setValueAtTime(0.35, time);
+        gain.gain.exponentialRampToValueAtTime(0.001, time + durations[i]);
+        osc.start(time);
+        osc.stop(time + durations[i]);
+        time += durations[i] * 0.9;
+      });
+    } catch (e) {
+      console.log('Audio not available', e);
+    }
+  };
+
   const fireConfetti = () => {
     const duration = 4000;
     const end = Date.now() + duration;
@@ -138,7 +162,7 @@ export default function Admin() {
     if (result.status === 200 && result.data.success) {
       setDrawWinner(result.data.winner);
       setDrawPhase('winner');
-      setTimeout(() => fireConfetti(), 300);
+      setTimeout(() => { playFanfare(); fireConfetti(); }, 300);
       fetchStats();
       fetchHistory();
     } else {
