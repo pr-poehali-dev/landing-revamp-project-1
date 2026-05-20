@@ -9,7 +9,8 @@ const LOGO_BANNER = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5a
 function PageWrapper({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ minHeight: '100vh', backgroundImage: 'url(https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/ee8e85b7-5bc4-488b-81e2-ff6047f87421.png)', backgroundSize: 'cover', backgroundPosition: 'center' }} className="flex flex-col items-center py-5 px-4">
-      <div className="w-full max-w-sm">
+      <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.45)', zIndex: 0, pointerEvents: 'none' }} />
+      <div className="w-full max-w-sm" style={{ position: 'relative', zIndex: 1 }}>
         {/* Баннер */}
         <div className="mb-4">
           <a href="https://chernikovgpt.ru" target="_blank" rel="noopener noreferrer">
