@@ -256,7 +256,7 @@ export default function Admin() {
                       <tr key={p.ticket_number} className={i % 2 === 0 ? 'bg-gray-900/40' : 'bg-gray-900/20'}>
                         <td className="px-4 py-3 font-bold text-violet-400">#{p.ticket_number}</td>
                         <td className="px-4 py-3 text-white">{p.full_name}</td>
-                        <td className="px-4 py-3 text-gray-300">{maskPhone(p.phone_normalized)}</td>
+                        <td className="px-4 py-3 text-gray-300">{p.phone_normalized}</td>
                         <td className="px-4 py-3">
                           <span className={`px-2 py-1 rounded-full text-xs font-medium ${p.status === 'active' ? 'bg-green-900/60 text-green-400' : 'bg-gray-800 text-gray-400'}`}>
                             {p.status === 'active' ? 'активен' : p.status}
