@@ -237,7 +237,7 @@ export default function AdminDraw({ token, onClose, onDrawComplete }: Props) {
                   style={{ background: 'rgba(0,20,50,0.7)', border: drawError ? '2px solid #ff6b6b' : '2px solid #00d4e8', color: 'white', outline: 'none', boxShadow: drawError ? 'none' : '0 0 20px rgba(0,212,232,0.4)', letterSpacing: '0.05em', caretColor: '#00d4e8' }}
                 />
                 {showPresets && drawPhase !== 'spinning' && (
-                  <div className="absolute left-0 right-0 bottom-full mb-1 rounded-xl overflow-hidden z-10" style={{ background: '#0a1a35', border: '1px solid rgba(0,212,232,0.35)', boxShadow: '0 -8px 32px rgba(0,0,0,0.5)' }}>
+                  <div className="absolute left-0 right-0 bottom-full mb-1 rounded-xl z-10" style={{ background: '#0a1a35', border: '1px solid rgba(0,212,232,0.35)', boxShadow: '0 -8px 32px rgba(0,0,0,0.5)', maxHeight: '260px', overflowY: 'auto' }}>
                     {PRESET_PRIZES.map(prize => (
                       <button
                         key={prize}
