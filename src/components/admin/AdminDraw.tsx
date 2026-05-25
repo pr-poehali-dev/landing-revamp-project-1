@@ -172,7 +172,7 @@ export default function AdminDraw({ token, onClose, onDrawComplete }: Props) {
           .slot-icon  { display: inline-block; animation: slotBounce 1.6s ease-in-out infinite; }
         `}</style>
 
-        <div className="flex-1 flex flex-col items-center justify-center px-4 py-6">
+        <div className="flex-1 flex flex-col items-center justify-center px-4 py-6 overflow-y-auto">
           <h1 className="draw-title font-black text-center mb-8" style={{ fontSize: 'clamp(28px,5vw,52px)', letterSpacing: '1px', color: '#fff', textTransform: 'uppercase' }}>
             🎰 Розыгрыш призов
           </h1>
@@ -215,9 +215,9 @@ export default function AdminDraw({ token, onClose, onDrawComplete }: Props) {
               <div className="text-white font-black mb-1" style={{ fontSize: 'clamp(20px,4vw,30px)' }}>{drawWinner.full_name}</div>
               <div className="mb-3 text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>{maskPhone(drawWinner.phone)}</div>
               {drawPrize && (
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl" style={{ background: 'rgba(255,215,0,0.12)', border: '1px solid rgba(255,215,0,0.3)' }}>
-                  <span>🎁</span>
-                  <span className="font-semibold text-sm" style={{ color: '#ffd700' }}>{drawPrize}</span>
+                <div className="flex items-start gap-2 px-4 py-2 rounded-xl" style={{ background: 'rgba(255,215,0,0.12)', border: '1px solid rgba(255,215,0,0.3)' }}>
+                  <span className="shrink-0">🎁</span>
+                  <span className="font-semibold text-sm text-left" style={{ color: '#ffd700', wordBreak: 'break-word' }}>{drawPrize}</span>
                 </div>
               )}
             </div>
