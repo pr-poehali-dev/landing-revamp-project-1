@@ -6,7 +6,7 @@ import wordmark from '@/assets/hackni-wordmark.png';
 import { scrollToEl } from '@/lib/landingScroll';
 
 export default function Footer() {
-  const wordRef = useRef<HTMLDivElement>(null);
+  const wordRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const fw = wordRef.current;
@@ -50,16 +50,16 @@ export default function Footer() {
           <a href="#pricing" onClick={(e) => go(e, '#pricing')}>Тарифы</a>
           <a href="#faq" onClick={(e) => go(e, '#faq')}>FAQ</a>
         </div>
-        <div className="foot-word" id="foot-word" ref={wordRef}>
+        <a className="foot-word" id="foot-word" href="https://chernikovgpt.ru/" target="_blank" rel="noopener" ref={wordRef}>
           <img src={wordmark} alt="Хакни Нейросети" />
-        </div>
+        </a>
         <div className="foot-contacts">
           <div className="fc"><div className="lab">Билеты и команды — Дарья</div><a href="tel:+79811292499">+7 981 129-24-99</a></div>
           <div className="fc"><div className="lab">Telegram</div><a href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">@DashaChernikova8</a></div>
           <div className="fc"><div className="lab">Анонсы даты</div><a href="https://t.me/chernikovgpt" target="_blank" rel="noopener">@chernikovgpt</a></div>
         </div>
         <div className="foot-meta">
-          <img src={logo} alt="Хакни Нейросети" />
+          <a href="https://chernikovgpt.ru/" target="_blank" rel="noopener"><img src={logo} alt="Хакни Нейросети" /></a>
           <div className="fm">ВЛАДИВОСТОК · 43.11°N 131.88°E · ИИ ШОУ БЕЗ ШИРМЫ · v2.0</div>
         </div>
       </div>

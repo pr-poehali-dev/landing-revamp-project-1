@@ -42,7 +42,7 @@ export default function Nav() {
       <div id="progress" ref={progressRef}></div>
       <nav id="nav" ref={navRef}>
         <div className="wrap">
-          <a className="brand" href="#hero" onClick={(e) => go(e, '#hero')}>
+          <a className="brand" href="https://chernikovgpt.ru/" target="_blank" rel="noopener">
             <img src={logo} alt="ХН" /><span>ХАКНИ<br />НЕЙРОСЕТИ</span>
           </a>
           <div className="links">
