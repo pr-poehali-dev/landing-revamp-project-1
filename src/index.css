@@ -302,6 +302,15 @@ section{position:relative}
 .trust{margin-top:44px;padding-top:26px;position:relative;font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--t2)}
 .trust::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease)}
 .trust.on::before{transform:scaleX(1)}
+
+/* event gallery */
+.gallery-strip{margin-top:54px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.gallery-track{display:flex;gap:20px;width:max-content;will-change:transform;animation:gallScroll 38s linear infinite}
+.gallery-strip:hover .gallery-track{animation-play-state:paused}
+.gallery-item{flex-shrink:0;width:clamp(220px,26vw,340px);aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:1px solid var(--line);position:relative}
+.gallery-item img{width:100%;height:100%;object-fit:cover;filter:grayscale(.3) contrast(1.05);transition:filter .4s,transform .4s}
+.gallery-item:hover img{filter:grayscale(0);transform:scale(1.05)}
+@keyframes gallScroll{to{transform:translateX(-50%)}}
 /* mechanics horizontal pin */
 #mech{background:var(--deep)}
 .mech-stage{height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;position:relative}

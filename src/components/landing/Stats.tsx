@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { fmtNum } from '@/lib/landingUtils';
+import EventGallery from './EventGallery';
 
 const stats = [
   { count: 300, fmt: 'int', suffix: '', cap: 'предпринимателей в зале отеля «Экватор»', big: true },
@@ -73,6 +74,9 @@ export default function Stats() {
       <div className="wrap">
         <div className="eyebrow rv">// 03 · ПЕРВОЕ ШОУ УЖЕ БЫЛО</div>
         <h2 className="h2 rv">ПЕРВЫЙ РАЗ — ПОЛНЫЙ ЗАЛ<br />ОТЕЛЯ «ЭКВАТОР»</h2>
+      </div>
+      <EventGallery />
+      <div className="wrap">
         <div className="stats-grid">
           {stats.map((s, i) => (
             <div className={`stat brk${s.big ? ' big' : ''}`} key={i}>
