@@ -1,8 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import portrait from '@/assets/speaker-portrait.jpg';
+import Icon from '@/components/ui/icon';
 import { particleField, makeTimer, flashEl } from '@/lib/landingUtils';
 import { scrollToEl } from '@/lib/landingScroll';
+
+const HERO_VIDEO = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/97f05848-a5a8-4d8e-912a-7849f73d90c6.mp4';
 
 interface Props {
   ready: boolean;
@@ -10,9 +12,18 @@ interface Props {
 
 export default function Hero({ ready }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const digitsRef = useRef<(HTMLElement | null)[]>([]);
   const stateRef = useRef('30:00');
   const startedRef = useRef(false);
+  const [muted, setMuted] = useState(true);
+
+  const toggleSound = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setMuted(v.muted);
+  };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -54,7 +65,7 @@ export default function Hero({ ready }: Props) {
       gsap.to('#hero h1 .row>span', { yPercent: 0, duration: 0.9, ease: 'expo.out', stagger: 0.15, delay: 0.1 });
       gsap.fromTo('#hero-timer .dg b', { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.7, ease: 'expo.out', stagger: 0.06 });
       gsap.fromTo('#hero .rv', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.08, delay: 0.35, overwrite: 'auto' });
-      gsap.fromTo('.hero-portrait .frame', { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1.1, ease: 'expo.out', delay: 0.5 });
+      gsap.fromTo('.hero-video .frame', { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1.1, ease: 'expo.out', delay: 0.5 });
     }
   }, [ready]);
 
@@ -84,23 +95,34 @@ export default function Hero({ ready }: Props) {
           <span className="row"><span className="grad-text">ИИ ШОУ</span></span>
           <span className="row o"><span>БЕЗ ШИРМЫ 2.0</span></span>
         </h1>
-        <div className="hero-grid">
-          <div>
-            <p className="lead rv">Это не конференция и не «вдохновляющие истории». Это шоу, где каждые полчаса из воздуха рождается готовый результат для бизнеса — сайт, ролик, агент, презентация инвестору. Ты смотришь — и понимаешь, что завтра сделаешь так же.</p>
-            <div className="hero-cta rv">
-              <a className="btn magnetic" href="#pricing" onClick={(e) => go(e, '#pricing')}>Забронировать место <span className="arr">→</span></a>
-              <a className="btn btn-ghost magnetic" href="#program" onClick={(e) => go(e, '#program')}>Смотреть программу <span className="arr">↓</span></a>
-            </div>
-            <div className="hero-note rv">Дата и площадка — анонсируем в TG-канале <a href="https://t.me/chernikovgpt" target="_blank" rel="noopener">@chernikovgpt</a></div>
-            <div className="hero-meta rv">БИЛЕТ ОТ <b>5 000 ₽</b> · <b>12 БЛОКОВ</b> ПРАКТИКИ · РОЗЫГРЫШ КУРСА НА <b>150 000 ₽</b></div>
+        <div>
+          <p className="lead rv">Это не конференция и не «вдохновляющие истории». Это шоу, где каждые полчаса из воздуха рождается готовый результат для бизнеса — сайт, ролик, агент, презентация инвестору. Ты смотришь — и понимаешь, что завтра сделаешь так же.</p>
+          <div className="hero-cta rv">
+            <a className="btn magnetic" href="#pricing" onClick={(e) => go(e, '#pricing')}>Забронировать место <span className="arr">→</span></a>
+            <a className="btn btn-ghost magnetic" href="#program" onClick={(e) => go(e, '#program')}>Смотреть программу <span className="arr">↓</span></a>
           </div>
-          <div className="hero-portrait rv" data-cursor="view">
-            <div className="frame"><img src={portrait} alt="Сергей Черников — ведущий ИИ ШОУ" /></div>
-            <div className="brackets"><i></i><i></i><i></i><i></i></div>
-            <div className="float-tag t1">ВЕДУЩИЙ — СЕРГЕЙ ЧЕРНИКОВ</div>
-            <div className="float-tag t2">ЗАЛ · 300 МЕСТ</div>
-            <div className="float-tag t3">v2.0</div>
+          <div className="hero-note rv">Дата и площадка — анонсируем в TG-канале <a href="https://t.me/chernikovgpt" target="_blank" rel="noopener">@chernikovgpt</a></div>
+          <div className="hero-meta rv">БИЛЕТ ОТ <b>5 000 ₽</b> · <b>12 БЛОКОВ</b> ПРАКТИКИ · РОЗЫГРЫШ КУРСА НА <b>150 000 ₽</b></div>
+        </div>
+        <div className="hero-video rv" data-cursor="view">
+          <div className="frame">
+            <video
+              ref={videoRef}
+              src={HERO_VIDEO}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+            />
+            <button className="sound-toggle" onClick={toggleSound} aria-label={muted ? 'Включить звук' : 'Выключить звук'}>
+              <Icon name={muted ? 'VolumeX' : 'Volume2'} size={16} strokeWidth={2} />
+            </button>
           </div>
+          <div className="brackets"><i></i><i></i><i></i><i></i></div>
+          <div className="float-tag t1">ВЕДУЩИЙ — СЕРГЕЙ ЧЕРНИКОВ</div>
+          <div className="float-tag t2">ЗАЛ · 300 МЕСТ</div>
+          <div className="float-tag t3">v2.0</div>
         </div>
       </div>
       <div className="scroll-hint">ЛИСТАЙ ▾</div>
