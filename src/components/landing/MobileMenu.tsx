@@ -1,3 +1,4 @@
+import Icon from '@/components/ui/icon';
 import { scrollToEl } from '@/lib/landingScroll';
 
 interface Props {
@@ -24,6 +25,9 @@ export default function MobileMenu({ open, onClose }: Props) {
 
   return (
     <div className={`mobile-menu${open ? ' open' : ''}`}>
+      <button className="mobile-menu-close" onClick={onClose} aria-label="Закрыть меню">
+        <Icon name="X" size={20} strokeWidth={2} />
+      </button>
       <nav className="mobile-menu-links">
         {LINKS.map((l, i) => (
           <a key={l.href} href={l.href} style={{ animationDelay: open ? `${0.05 + i * 0.05}s` : '0s' }} onClick={(e) => go(e, l.href)}>
