@@ -19,6 +19,20 @@ export default function Footer() {
       fw.appendChild(sp);
     });
 
+    const fitText = () => {
+      fw.style.transform = 'none';
+      const naturalWidth = fw.scrollWidth;
+      const availableWidth = fw.clientWidth;
+      if (naturalWidth > availableWidth && naturalWidth > 0) {
+        const scale = availableWidth / naturalWidth;
+        fw.style.transform = `scaleX(${scale})`;
+        fw.style.transformOrigin = 'left center';
+      }
+    };
+    fitText();
+    window.addEventListener('resize', fitText);
+    if (document.fonts?.ready) document.fonts.ready.then(fitText);
+
     const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let st: ScrollTrigger | null = null;
     let onEnter: (() => void) | null = null;
@@ -38,6 +52,7 @@ export default function Footer() {
 
     return () => {
       st?.kill();
+      window.removeEventListener('resize', fitText);
       if (onEnter) fw.removeEventListener('pointerenter', onEnter);
     };
   }, []);
