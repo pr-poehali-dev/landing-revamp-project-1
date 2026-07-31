@@ -4,8 +4,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { fmtNum } from '@/lib/landingUtils';
 
 const stats = [
-  { count: 500, fmt: 'int', suffix: '', cap: 'предпринимателей в зале отеля «Экватор»', big: true },
-  { count: 40, fmt: 'int', suffix: '', cap: 'инструментов освоено залом за один день' },
+  { count: 300, fmt: 'int', suffix: '', cap: 'предпринимателей в зале отеля «Экватор»', big: true },
+  { count: 8, fmt: 'int', suffix: '', cap: 'инструментов освоено залом за один день' },
   { count: 8, fmt: 'int', suffix: '', cap: 'часов живой практики — ни одного слайда «про тренды»' },
   { count: 4.9, fmt: 'dec', suffix: '/5', cap: 'рейтинг школы-организатора' },
   { count: 10000, fmt: 'int', suffix: '+', cap: 'выпускников школы «Хакни Нейросети»' },
