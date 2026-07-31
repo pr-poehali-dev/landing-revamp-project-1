@@ -79,7 +79,7 @@ export default function Hero({ ready }: Props) {
             <span className="dg" key={i}><b ref={(el) => (digitsRef.current[i] = el)}>{d}</b></span>
           ))}
         </div>
-        <div className="timer-note rv">ровно столько длится каждый блок. За это время на сцене рождается сайт</div>
+        <div className="timer-note rv">ровно столько длится каждый блок. И каждые 30 минут будут рождаться новые проекты</div>
         <h1>
           <span className="row"><span className="grad-text">ИИ ШОУ</span></span>
           <span className="row o"><span>БЕЗ ШИРМЫ 2.0</span></span>
