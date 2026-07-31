@@ -22,7 +22,7 @@ export default function Partners() {
     <section id="partners">
       <div className="wrap">
         <div className="eyebrow rv">// 08 · ПАРТНЁРЫ ПЕРВОГО ШОУ</div>
-        <div className="part-sub rv">Первое шоу поддержали:</div>
+        <div className="part-sub rv">Кто доверился школе Хакни Нейросети:</div>
       </div>
       <div className="part-row r1" id="part-r1" ref={r1Ref}></div>
       <div className="part-row r2" id="part-r2" ref={r2Ref}></div>
