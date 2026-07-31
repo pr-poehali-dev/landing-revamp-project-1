@@ -493,9 +493,14 @@ section{position:relative}
 .spons-num{font-family:var(--mono);font-weight:700;font-size:clamp(32px,3.6vw,48px);color:var(--cyan);line-height:1;text-shadow:0 0 24px var(--cyan-glow);margin-bottom:22px}
 .spons-card h4{font-family:var(--disp);font-weight:600;font-size:19px;letter-spacing:-.005em;text-transform:uppercase;margin-bottom:14px;line-height:1.25}
 .spons-card p{color:var(--t2);font-size:15px;line-height:1.6;margin-bottom:24px}
-.spons-link{margin-top:auto;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);display:inline-flex;align-items:center;gap:8px}
+.spons-link{margin-top:auto;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1.5px solid rgba(0,229,245,.5);box-shadow:0 0 0 1px rgba(0,229,245,.08),0 0 14px rgba(0,229,245,.28);transition:border-color .3s var(--ease),box-shadow .3s var(--ease),background .3s var(--ease);animation:spons-link-glow 3.2s ease-in-out infinite}
 .spons-link .arr{transition:transform .3s var(--ease)}
 .spons-card:hover .spons-link .arr{transform:translateX(4px)}
+.spons-card:hover .spons-link{border-color:var(--cyan);background:rgba(0,229,245,.08);box-shadow:0 0 0 1px rgba(0,229,245,.15),0 0 28px rgba(0,229,245,.5),0 0 60px rgba(0,229,245,.2)}
+@keyframes spons-link-glow{
+  0%,100%{box-shadow:0 0 0 1px rgba(0,229,245,.08),0 0 14px rgba(0,229,245,.28);border-color:rgba(0,229,245,.5)}
+  50%{box-shadow:0 0 0 1px rgba(0,229,245,.14),0 0 22px rgba(0,229,245,.42);border-color:rgba(0,229,245,.75)}
+}
 
 .spons-badge{position:absolute;top:-18px;right:-18px;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,#0d2740,var(--navy2) 70%);border:1.5px solid rgba(0,229,245,.45);color:var(--cyan);box-shadow:0 0 18px rgba(0,229,245,.35),0 4px 18px rgba(0,0,0,.4);z-index:2;animation:sponsPulse 3.2s ease-in-out infinite}
 .spons-badge-ring{position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(0,229,245,.3);animation:sponsRing 3.2s ease-in-out infinite}
