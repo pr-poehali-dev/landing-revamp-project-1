@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Icon from '@/components/ui/icon';
 
 interface Tier {
   key: string;
   n: string;
-  emoji: string;
+  icon: string;
   title: string;
   cardDesc: string;
   subtitle: string;
@@ -19,7 +20,7 @@ const tiers: Tier[] = [
   {
     key: 'general',
     n: '01',
-    emoji: '🏆',
+    icon: 'Crown',
     title: 'ГЕНЕРАЛЬНЫЙ ПАРТНЁР',
     cardDesc: 'Максимум внимания зала и сцены — ваш бренд рядом с главным событием ИИ-рынка Владивостока.',
     subtitle: 'Один бренд. Максимум внимания зала.',
@@ -43,7 +44,7 @@ const tiers: Tier[] = [
   {
     key: 'official',
     n: '02',
-    emoji: '🤝',
+    icon: 'Handshake',
     title: 'ОФИЦИАЛЬНЫЙ ПАРТНЁР',
     cardDesc: 'Присутствие в ключевых точках шоу и прямой контакт с аудиторией предпринимателей.',
     subtitle: 'Узнаваемость бренда там, где смотрит вся аудитория.',
@@ -63,7 +64,7 @@ const tiers: Tier[] = [
   {
     key: 'info',
     n: '03',
-    emoji: '📢',
+    icon: 'Megaphone',
     title: 'ИНФОРМАЦИОННЫЙ ПАРТНЁР',
     cardDesc: 'Обмен охватами и совместное продвижение на всех этапах подготовки к шоу.',
     subtitle: 'Эксклюзивный контент со сцены, где рождаются результаты.',
@@ -121,8 +122,12 @@ export default function Sponsorship() {
           {tiers.map((t) => (
             <button className="spons-card brk" key={t.key} onClick={() => setOpenTier(t)} data-cursor="view">
               <i></i><i></i><i></i><i></i>
+              <span className="spons-badge">
+                <span className="spons-badge-ring"></span>
+                <Icon name={t.icon} size={22} strokeWidth={2} />
+              </span>
               <div className="spons-num">{t.n}</div>
-              <h4>{t.emoji} {t.title}</h4>
+              <h4>{t.title}</h4>
               <p>{t.cardDesc}</p>
               <span className="spons-link">Узнать подробнее <span className="arr">→</span></span>
             </button>
@@ -134,9 +139,9 @@ export default function Sponsorship() {
         {openTier && (
           <div className="spons-modal" onClick={(e) => e.stopPropagation()}>
             <button className="spons-modal-close" onClick={() => setOpenTier(null)} aria-label="Закрыть">×</button>
-            <div className="spons-modal-scroll">
+            <div className="spons-modal-scroll" data-lenis-prevent>
               <div className="eyebrow">// {openTier.n} · ПАРТНЁРСТВО</div>
-              <h3>{openTier.emoji} {openTier.title}</h3>
+              <h3><Icon name={openTier.icon} size={24} strokeWidth={2} className="spons-modal-icon" /> {openTier.title}</h3>
               <div className="spons-modal-subtitle">{openTier.subtitle}</div>
               <p className="spons-modal-intro">{openTier.intro}</p>
               <div className="spons-modal-features-label mono">ЧТО ВХОДИТ В ПАКЕТ</div>
