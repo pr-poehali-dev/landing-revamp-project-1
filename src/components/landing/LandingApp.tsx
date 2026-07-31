@@ -7,6 +7,20 @@ import CustomCursor from './CustomCursor';
 import Preloader from './Preloader';
 import Nav from './Nav';
 import Hero from './Hero';
+import Ticker from './Ticker';
+import Manifest from './Manifest';
+import Stats from './Stats';
+import Mechanics from './Mechanics';
+import Program from './Program';
+import Speaker from './Speaker';
+import Audience from './Audience';
+import Partners from './Partners';
+import Sponsorship from './Sponsorship';
+import Pricing from './Pricing';
+import FAQ from './FAQ';
+import FinalCTA from './FinalCTA';
+import Footer from './Footer';
+import RevealAnimations from './RevealAnimations';
 import { setLenis } from '@/lib/landingScroll';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -43,6 +57,20 @@ export default function LandingApp() {
       <Preloader onDone={() => setHeroReady(true)} />
       <Nav />
       <Hero ready={heroReady} />
+      <Ticker />
+      <Manifest />
+      <Stats />
+      <Mechanics />
+      <Program />
+      <Speaker />
+      <Audience />
+      <Partners />
+      <Sponsorship />
+      <Pricing />
+      <FAQ />
+      <FinalCTA />
+      <Footer />
+      <RevealAnimations />
     </div>
   );
 }

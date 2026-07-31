@@ -1,0 +1,95 @@
+import { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useCounters } from './useCounters';
+
+export default function Pricing() {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const [rootEl, setRootEl] = useState<HTMLDivElement | null>(null);
+
+  useEffect(() => { setRootEl(rootRef.current); }, []);
+  useCounters(rootEl);
+
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let st: ScrollTrigger | null = null;
+    if (!RM) {
+      const anim = gsap.fromTo(root.querySelectorAll('.price'), { opacity: 0, y: 56, z: -90 }, {
+        opacity: 1, y: 0, z: 0, duration: 0.55, ease: 'expo.out', stagger: 0.12,
+        scrollTrigger: {
+          trigger: root.querySelector('.price-grid'), start: 'top 78%', once: true,
+          onEnter: () => {
+            gsap.fromTo('.price.hot', { boxShadow: '0 0 0px rgba(0,229,245,0)' }, { boxShadow: '0 0 40px rgba(0,229,245,.25)', duration: 0.9, delay: 0.6, yoyo: true, repeat: 1 });
+          },
+        },
+      });
+      st = anim.scrollTrigger as ScrollTrigger;
+    }
+    return () => { st?.kill(); };
+  }, []);
+
+  return (
+    <section id="pricing" ref={rootRef}>
+      <div className="wrap">
+        <div className="eyebrow rv">// 10 · ТАРИФЫ</div>
+        <h2 className="h2 rv">ЗАЛ — 300 МЕСТ. ЭТО ВСЁ.</h2>
+        <p className="lead rv" style={{ maxWidth: 720 }}>Каждый билет включает все 12 блоков и участие в розыгрыше курса на 150 000 ₽.</p>
+        <div className="deficit rv">
+          <span className="chip o"><span className="warn">⚠</span> МЕСТ СТРОГО ОГРАНИЧЕНО</span>
+          <span className="txt">Когда зал заполнится — продажи закроются.</span>
+        </div>
+        <div className="price-grid">
+          <div className="price brk">
+            <i></i><i></i><i></i><i></i>
+            <h4>БАЗА</h4>
+            <div className="amount"><span data-count="5000" data-fmt="rub">0</span> ₽</div>
+            <div className="p-note">ВСЯ ПРАКТИКА ДНЯ</div>
+            <ul>
+              <li>Все 12 блоков шоу</li>
+              <li>Раздатка с промпт-цепочками по каждому блоку</li>
+              <li>Промпт-гайд «50 промптов»</li>
+              <li>Участие в розыгрыше курса на 150 000 ₽</li>
+              <li>Чат участников</li>
+            </ul>
+            <a className="btn btn-ghost magnetic" href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">Взять БАЗУ <span className="arr">→</span></a>
+          </div>
+          <div className="price hot brk">
+            <i></i><i></i><i></i><i></i>
+            <span className="chip fill">ВЫБОР БОЛЬШИНСТВА</span>
+            <h4>УЛЬТРА</h4>
+            <div className="amount"><span data-count="7500" data-fmt="rub">0</span> ₽</div>
+            <div className="p-note">ПРАКТИКА + ЗАПИСИ + ПЕРВЫЕ РЯДЫ</div>
+            <ul>
+              <li>Всё из тарифа БАЗА</li>
+              <li>Видеозапись всех блоков</li>
+              <li>Расширенные материалы</li>
+              <li>Первые ряды в зале</li>
+              <li>Закрытый чат с ведущими на месяц</li>
+              <li>Твоё имя в розыгрыше курса — дважды</li>
+            </ul>
+            <a className="btn magnetic" href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">Взять УЛЬТРУ <span className="arr">→</span></a>
+          </div>
+          <div className="price brk">
+            <i></i><i></i><i></i><i></i>
+            <span className="chip o">МЕСТ СТРОГО ОГРАНИЧЕНО</span>
+            <h4>ПРЕМИУМ</h4>
+            <div className="amount"><span data-count="17000" data-fmt="rub">0</span> ₽</div>
+            <div className="p-note">ПРОЖАРКА ТВОЕГО БИЗНЕСА НА СЦЕНЕ</div>
+            <ul>
+              <li>Всё из тарифа УЛЬТРА</li>
+              <li>Бизнес Прожарка твоего бизнеса на сцене</li>
+              <li>Личная консультация Сергея — 30 минут</li>
+              <li>VIP-зона</li>
+              <li>Мерч школы</li>
+              <li>Сертификат участника</li>
+            </ul>
+            <a className="btn btn-orange magnetic" href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">Взять ПРЕМИУМ <span className="arr">→</span></a>
+          </div>
+        </div>
+        <div className="price-foot rv">Оплата от юрлиц — по счёту. Вопросы по билетам и командам: Дарья · <a href="tel:+79811292499">+7 981 129-24-99</a> · TG <a href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">@DashaChernikova8</a></div>
+      </div>
+    </section>
+  );
+}
