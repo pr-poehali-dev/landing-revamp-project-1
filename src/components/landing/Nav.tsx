@@ -52,6 +52,7 @@ export default function Nav() {
             <a href="#sponsorship" onClick={(e) => go(e, '#sponsorship')}>Партнёрство</a>
             <a href="#pricing" onClick={(e) => go(e, '#pricing')}>Тарифы</a>
             <a href="#faq" onClick={(e) => go(e, '#faq')}>FAQ</a>
+            <a href="https://chernikovgpt.ru/" target="_blank" rel="noopener">Сайт школы</a>
           </div>
           <div className="geo">ВЛАДИВОСТОК · 43.11°N 131.88°E</div>
           <ThemeToggle />

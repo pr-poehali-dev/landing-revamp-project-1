@@ -13,6 +13,7 @@ const LINKS = [
   { href: '#sponsorship', label: 'Партнёрство' },
   { href: '#pricing', label: 'Тарифы' },
   { href: '#faq', label: 'FAQ' },
+  { href: 'https://chernikovgpt.ru/', label: 'Сайт школы', external: true },
 ];
 
 export default function MobileMenu({ open, onClose }: Props) {
@@ -29,11 +30,17 @@ export default function MobileMenu({ open, onClose }: Props) {
         <Icon name="X" size={20} strokeWidth={2} />
       </button>
       <nav className="mobile-menu-links">
-        {LINKS.map((l, i) => (
-          <a key={l.href} href={l.href} style={{ animationDelay: open ? `${0.05 + i * 0.05}s` : '0s' }} onClick={(e) => go(e, l.href)}>
-            {l.label}
-          </a>
-        ))}
+        {LINKS.map((l, i) =>
+          l.external ? (
+            <a key={l.href} href={l.href} target="_blank" rel="noopener" style={{ animationDelay: open ? `${0.05 + i * 0.05}s` : '0s' }} onClick={onClose}>
+              {l.label}
+            </a>
+          ) : (
+            <a key={l.href} href={l.href} style={{ animationDelay: open ? `${0.05 + i * 0.05}s` : '0s' }} onClick={(e) => go(e, l.href)}>
+              {l.label}
+            </a>
+          )
+        )}
       </nav>
       <div className="mobile-menu-foot">
         <div className="mobile-menu-geo">ВЛАДИВОСТОК · 43.11°N 131.88°E</div>
