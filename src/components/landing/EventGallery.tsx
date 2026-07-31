@@ -1,13 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-const photos = [
-  '/gallery/gallery-1.jpg',
-  '/gallery/gallery-2.jpg',
-  '/gallery/gallery-3.jpg',
-  '/gallery/gallery-4.jpg',
-  '/gallery/gallery-5.jpg',
-  '/gallery/gallery-6.jpg',
-];
+const photos = Array.from({ length: 25 }, (_, i) => `/gallery/photo-${String(i + 1).padStart(2, '0')}.jpg`);
 
 export default function EventGallery() {
   const trackRef = useRef<HTMLDivElement>(null);
