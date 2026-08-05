@@ -102,7 +102,11 @@ export default function Hero({ ready }: Props) {
               <a className="btn magnetic" href="#pricing" onClick={(e) => go(e, '#pricing')}>Забронировать место <span className="arr">→</span></a>
               <a className="btn btn-ghost magnetic" href="#program" onClick={(e) => go(e, '#program')}>Смотреть программу <span className="arr">↓</span></a>
             </div>
-            <div className="hero-note rv">17 октября, 10:00–18:00 · Владивосток, отель «Экватор» (ул. Набережная, 20)</div>
+            <div className="hero-datebar rv">
+              <span className="hdb-item"><Icon name="CalendarDays" size={16} strokeWidth={2} />17 октября · 10:00–18:00</span>
+              <span className="hdb-sep">·</span>
+              <span className="hdb-item"><Icon name="MapPin" size={16} strokeWidth={2} />Владивосток, отель «Экватор» (ул. Набережная, 20)</span>
+            </div>
             <div className="hero-meta rv">БИЛЕТ ОТ <b>5 000 ₽</b> · <b>12 БЛОКОВ</b> ПРАКТИКИ · РОЗЫГРЫШ КУРСА НА <b>150 000 ₽</b></div>
           </div>
 
