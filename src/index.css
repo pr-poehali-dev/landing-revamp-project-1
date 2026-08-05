@@ -1433,6 +1433,7 @@ section {
   border-radius: 16px;
   overflow: hidden;
   position: relative;
+  cursor: pointer;
   border: 1.5px solid rgba(0, 229, 245, 0.4);
   box-shadow:
     0 0 0 1px rgba(0, 229, 245, 0.08),
@@ -1490,6 +1491,127 @@ section {
     margin-top: 38px;
   }
 }
+
+/* gallery lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(3, 8, 16, 0.92);
+  backdrop-filter: blur(10px);
+  animation: lbFade 0.25s var(--ease);
+  cursor: zoom-out;
+}
+@keyframes lbFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.lb-img {
+  max-width: min(88vw, 1100px);
+  max-height: 84vh;
+  border-radius: 16px;
+  border: 1.5px solid rgba(0, 229, 245, 0.4);
+  box-shadow:
+    0 0 0 1px rgba(0, 229, 245, 0.1),
+    0 0 60px rgba(0, 229, 245, 0.25),
+    0 20px 60px rgba(0, 0, 0, 0.55);
+  object-fit: contain;
+  cursor: default;
+  animation: lbPop 0.3s var(--ease);
+}
+@keyframes lbPop {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.lb-close,
+.lb-nav {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 229, 245, 0.35);
+  background: rgba(10, 26, 48, 0.6);
+  color: #f2f6fa;
+  cursor: pointer;
+  transition:
+    border-color 0.25s var(--ease),
+    background 0.25s var(--ease),
+    color 0.25s var(--ease),
+    transform 0.25s var(--ease);
+}
+.lb-close:hover,
+.lb-nav:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(0, 229, 245, 0.1);
+}
+.lb-close {
+  top: 24px;
+  right: 24px;
+}
+.lb-nav {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.lb-nav:hover {
+  transform: translateY(-50%) scale(1.06);
+}
+.lb-prev {
+  left: 24px;
+}
+.lb-next {
+  right: 24px;
+}
+.lb-count {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--t2);
+  text-transform: uppercase;
+}
+@media (max-width: 640px) {
+  .lb-close {
+    top: 14px;
+    right: 14px;
+    width: 40px;
+    height: 40px;
+  }
+  .lb-nav {
+    width: 40px;
+    height: 40px;
+  }
+  .lb-prev {
+    left: 10px;
+  }
+  .lb-next {
+    right: 10px;
+  }
+  .lb-img {
+    max-width: 94vw;
+    max-height: 76vh;
+  }
+}
+
 /* mechanics horizontal pin */
 #mech {
   background: var(--deep);
