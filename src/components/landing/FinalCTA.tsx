@@ -38,8 +38,8 @@ export default function FinalCTA() {
         <div className="final-timer-label">КАЖДЫЙ БЛОК НАЧИНАЕТСЯ С ЭТИХ ЦИФР</div>
         <h2>
           <span className="row2 rv" style={{ display: 'block' }}>ПОКА ТЫ ДУМАЕШЬ —</span>
-          <span className="row2 rv cy" style={{ display: 'block' }}>ТВОЙ КОНКУРЕНТ УЖЕ ЗАПИСАЛСЯ</span>
-          <span className="row2 rv" style={{ display: 'block' }}>НА ПОТОК 17 ОКТЯБРЯ.</span>
+          <span className="row2 rv cy" style={{ display: 'block' }}>ТВОЙ КОНКУРЕНТ УЖЕ ЗАБРОНИРОВАЛ</span>
+          <span className="row2 rv" style={{ display: 'block' }}>МЕСТО В ЗАЛЕ.</span>
         </h2>
         <p className="lead rv">Один день. 12 результатов, созданных у тебя на глазах. Билет стоит как ужин на двоих — навыки останутся навсегда.</p>
         <div className="final-cta rv">
