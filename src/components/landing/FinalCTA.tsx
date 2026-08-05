@@ -39,14 +39,14 @@ export default function FinalCTA() {
         <h2>
           <span className="row2 rv" style={{ display: 'block' }}>ПОКА ТЫ ДУМАЕШЬ —</span>
           <span className="row2 rv cy" style={{ display: 'block' }}>ТВОЙ КОНКУРЕНТ УЖЕ ЗАПИСАЛСЯ</span>
-          <span className="row2 rv" style={{ display: 'block' }}>НА СЕНТЯБРЬСКИЙ ПОТОК.</span>
+          <span className="row2 rv" style={{ display: 'block' }}>НА ПОТОК 17 ОКТЯБРЯ.</span>
         </h2>
         <p className="lead rv">Один день. 12 результатов, созданных у тебя на глазах. Билет стоит как ужин на двоих — навыки останутся навсегда.</p>
         <div className="final-cta rv">
           <a className="btn btn-primary-big magnetic" href="https://t.me/DashaChernikova8" target="_blank" rel="noopener" style={{ fontSize: 17, padding: '20px 40px' }}>Забронировать место — от 5 000 ₽ <span className="arr">→</span></a>
           <a className="btn btn-ghost magnetic" href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">Задать вопрос Дарье <span className="arr">→</span></a>
         </div>
-        <div className="final-meta rv">ВЛАДИВОСТОК · ЗАЛ 300 МЕСТ · ДАТА И ПЛОЩАДКА — В TG-КАНАЛЕ <a href="https://t.me/chernikovgpt" target="_blank" rel="noopener">@chernikovgpt</a></div>
+        <div className="final-meta rv">17 ОКТЯБРЯ · 10:00–18:00 · ВЛАДИВОСТОК, ОТЕЛЬ «ЭКВАТОР» (УЛ. НАБЕРЕЖНАЯ, 20)</div>
       </div>
     </section>
   );

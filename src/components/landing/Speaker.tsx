@@ -7,7 +7,7 @@ export default function Speaker() {
         <div className="spk-photo rv" data-cursor="view">
           <div className="frame"><img src={portrait} alt="Сергей Черников" /></div>
           <div className="tag a">ВЕДУЩИЙ · ОСНОВАТЕЛЬ ШКОЛЫ</div>
-          <div className="tag b">43.11°N 131.88°E · ВЛАДИВОСТОК</div>
+          <div className="tag b">17 ОКТЯБРЯ · ВЛАДИВОСТОК</div>
         </div>
         <div>
           <div className="eyebrow rv">// 06 · ВЕДУЩИЙ</div>

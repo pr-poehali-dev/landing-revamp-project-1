@@ -86,7 +86,7 @@ export default function Hero({ ready }: Props) {
       <div className="wrap hero-inner">
         <div className="hero-cols">
           <div className="hero-col-text">
-            <div className="eyebrow rv">// 01 · ЖИВОЕ ИИ-ШОУ · ВЛАДИВОСТОК</div>
+            <div className="eyebrow rv">// 01 · 17 ОКТЯБРЯ · ВЛАДИВОСТОК</div>
             <div className="showtimer" id="hero-timer" aria-label="Таймер блока: 30 минут">
               {['3', '0', ':', '0', '0'].map((d, i) => (
                 <span className="dg" key={i}><b ref={(el) => (digitsRef.current[i] = el)}>{d}</b></span>
@@ -102,7 +102,7 @@ export default function Hero({ ready }: Props) {
               <a className="btn magnetic" href="#pricing" onClick={(e) => go(e, '#pricing')}>Забронировать место <span className="arr">→</span></a>
               <a className="btn btn-ghost magnetic" href="#program" onClick={(e) => go(e, '#program')}>Смотреть программу <span className="arr">↓</span></a>
             </div>
-            <div className="hero-note rv">Дата и площадка — анонсируем в TG-канале <a href="https://t.me/chernikovgpt" target="_blank" rel="noopener">@chernikovgpt</a></div>
+            <div className="hero-note rv">17 октября, 10:00–18:00 · Владивосток, отель «Экватор» (ул. Набережная, 20)</div>
             <div className="hero-meta rv">БИЛЕТ ОТ <b>5 000 ₽</b> · <b>12 БЛОКОВ</b> ПРАКТИКИ · РОЗЫГРЫШ КУРСА НА <b>150 000 ₽</b></div>
           </div>
 

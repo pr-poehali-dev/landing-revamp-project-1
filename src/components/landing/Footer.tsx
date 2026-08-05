@@ -56,11 +56,11 @@ export default function Footer() {
         <div className="foot-contacts">
           <div className="fc"><div className="lab">Билеты и команды — Дарья</div><a href="tel:+79811292499">+7 981 129-24-99</a></div>
           <div className="fc"><div className="lab">Telegram</div><a href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">@DashaChernikova8</a></div>
-          <div className="fc"><div className="lab">Анонсы даты</div><a href="https://t.me/chernikovgpt" target="_blank" rel="noopener">@chernikovgpt</a></div>
+          <div className="fc"><div className="lab">Дата и место</div><span>17 октября, 10:00–18:00 · отель «Экватор»</span></div>
         </div>
         <div className="foot-meta">
           <a href="https://chernikovgpt.ru/" target="_blank" rel="noopener"><img src={logo} alt="Хакни Нейросети" /></a>
-          <div className="fm">ВЛАДИВОСТОК · 43.11°N 131.88°E · ИИ ШОУ БЕЗ ШИРМЫ · v2.0</div>
+          <div className="fm">ВЛАДИВОСТОК, УЛ. НАБЕРЕЖНАЯ, 20 · 43.11°N 131.88°E · ИИ ШОУ БЕЗ ШИРМЫ · v2.0</div>
         </div>
       </div>
       <div className="foot-copy">© Школа «Хакни Нейросети» · ИИ ШОУ БЕЗ ШИРМЫ 2.0</div>

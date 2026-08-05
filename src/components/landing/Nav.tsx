@@ -54,7 +54,7 @@ export default function Nav() {
             <a href="#faq" onClick={(e) => go(e, '#faq')}>FAQ</a>
             <a href="https://chernikovgpt.ru/" target="_blank" rel="noopener">Сайт школы</a>
           </div>
-          <div className="geo">ВЛАДИВОСТОК · 43.11°N 131.88°E</div>
+          <div className="geo">17 ОКТЯБРЯ · ВЛАДИВОСТОК</div>
           <ThemeToggle />
           <a className="btn btn-sm magnetic" href="#pricing" onClick={(e) => go(e, '#pricing')}>Купить билет <span className="arr">→</span></a>
           <button

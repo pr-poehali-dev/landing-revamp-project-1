@@ -43,7 +43,7 @@ export default function MobileMenu({ open, onClose }: Props) {
         )}
       </nav>
       <div className="mobile-menu-foot">
-        <div className="mobile-menu-geo">ВЛАДИВОСТОК · 43.11°N 131.88°E</div>
+        <div className="mobile-menu-geo">17 ОКТЯБРЯ · ВЛАДИВОСТОК, ОТЕЛЬ «ЭКВАТОР»</div>
         <a className="btn mobile-menu-cta" href="#pricing" onClick={(e) => go(e, '#pricing')}>Купить билет <span className="arr">→</span></a>
       </div>
     </div>

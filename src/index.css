@@ -2937,7 +2937,8 @@ footer {
   opacity: 0.7;
   margin-bottom: 6px;
 }
-.foot-contacts .fc a {
+.foot-contacts .fc a,
+.foot-contacts .fc span {
   font-weight: 800;
   font-size: 15px;
   position: relative;
