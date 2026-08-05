@@ -84,45 +84,50 @@ export default function Hero({ ready }: Props) {
       <canvas id="particles" ref={canvasRef}></canvas>
       <div className="spot l"></div><div className="spot r"></div>
       <div className="wrap hero-inner">
-        <div className="eyebrow rv">// 01 · ЖИВОЕ ИИ-ШОУ · ВЛАДИВОСТОК</div>
-        <div className="showtimer" id="hero-timer" aria-label="Таймер блока: 30 минут">
-          {['3', '0', ':', '0', '0'].map((d, i) => (
-            <span className="dg" key={i}><b ref={(el) => (digitsRef.current[i] = el)}>{d}</b></span>
-          ))}
-        </div>
-        <div className="timer-note rv">ровно столько длится каждый блок. И каждые 30 минут будут рождаться новые проекты</div>
-        <h1>
-          <span className="row"><span className="grad-text">ИИ ШОУ</span></span>
-          <span className="row o"><span>БЕЗ ШИРМЫ 2.0</span></span>
-        </h1>
-        <div>
-          <p className="lead rv">Это не конференция и не «вдохновляющие истории». Это шоу, где каждые полчаса из воздуха рождается готовый результат для бизнеса — сайт, ролик, агент, презентация инвестору. Ты смотришь — и понимаешь, что завтра сделаешь так же.</p>
-          <div className="hero-cta rv">
-            <a className="btn magnetic" href="#pricing" onClick={(e) => go(e, '#pricing')}>Забронировать место <span className="arr">→</span></a>
-            <a className="btn btn-ghost magnetic" href="#program" onClick={(e) => go(e, '#program')}>Смотреть программу <span className="arr">↓</span></a>
+        <div className="hero-cols">
+          <div className="hero-col-text">
+            <div className="eyebrow rv">// 01 · ЖИВОЕ ИИ-ШОУ · ВЛАДИВОСТОК</div>
+            <div className="showtimer" id="hero-timer" aria-label="Таймер блока: 30 минут">
+              {['3', '0', ':', '0', '0'].map((d, i) => (
+                <span className="dg" key={i}><b ref={(el) => (digitsRef.current[i] = el)}>{d}</b></span>
+              ))}
+            </div>
+            <div className="timer-note rv">ровно столько длится каждый блок. И каждые 30 минут будут рождаться новые проекты</div>
+            <h1>
+              <span className="row"><span className="grad-text">ИИ ШОУ</span></span>
+              <span className="row o"><span>БЕЗ ШИРМЫ 2.0</span></span>
+            </h1>
+            <p className="lead rv">Это не конференция и не «вдохновляющие истории». Это шоу, где каждые полчаса из воздуха рождается готовый результат для бизнеса — сайт, ролик, агент, презентация инвестору.</p>
+            <div className="hero-cta rv">
+              <a className="btn magnetic" href="#pricing" onClick={(e) => go(e, '#pricing')}>Забронировать место <span className="arr">→</span></a>
+              <a className="btn btn-ghost magnetic" href="#program" onClick={(e) => go(e, '#program')}>Смотреть программу <span className="arr">↓</span></a>
+            </div>
+            <div className="hero-note rv">Дата и площадка — анонсируем в TG-канале <a href="https://t.me/chernikovgpt" target="_blank" rel="noopener">@chernikovgpt</a></div>
+            <div className="hero-meta rv">БИЛЕТ ОТ <b>5 000 ₽</b> · <b>12 БЛОКОВ</b> ПРАКТИКИ · РОЗЫГРЫШ КУРСА НА <b>150 000 ₽</b></div>
           </div>
-          <div className="hero-note rv">Дата и площадка — анонсируем в TG-канале <a href="https://t.me/chernikovgpt" target="_blank" rel="noopener">@chernikovgpt</a></div>
-          <div className="hero-meta rv">БИЛЕТ ОТ <b>5 000 ₽</b> · <b>12 БЛОКОВ</b> ПРАКТИКИ · РОЗЫГРЫШ КУРСА НА <b>150 000 ₽</b></div>
-        </div>
-        <div className="hero-video rv" data-cursor="view">
-          <div className="frame">
-            <video
-              ref={videoRef}
-              src={HERO_VIDEO}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-            />
-            <button className="sound-toggle" onClick={toggleSound} aria-label={muted ? 'Включить звук' : 'Выключить звук'}>
-              <Icon name={muted ? 'VolumeX' : 'Volume2'} size={16} strokeWidth={2} />
-            </button>
+
+          <div className="hero-col-media">
+            <div className="hero-video rv" data-cursor="view">
+              <div className="frame">
+                <video
+                  ref={videoRef}
+                  src={HERO_VIDEO}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                />
+                <button className="sound-toggle" onClick={toggleSound} aria-label={muted ? 'Включить звук' : 'Выключить звук'}>
+                  <Icon name={muted ? 'VolumeX' : 'Volume2'} size={16} strokeWidth={2} />
+                </button>
+              </div>
+              <div className="brackets"><i></i><i></i><i></i><i></i></div>
+              <div className="float-tag t1">ВЕДУЩИЙ — СЕРГЕЙ ЧЕРНИКОВ</div>
+              <div className="float-tag t2">ЗАЛ · 300 МЕСТ</div>
+              <div className="float-tag t3">v2.0</div>
+            </div>
           </div>
-          <div className="brackets"><i></i><i></i><i></i><i></i></div>
-          <div className="float-tag t1">ВЕДУЩИЙ — СЕРГЕЙ ЧЕРНИКОВ</div>
-          <div className="float-tag t2">ЗАЛ · 300 МЕСТ</div>
-          <div className="float-tag t3">v2.0</div>
         </div>
       </div>
       <div className="scroll-hint">ЛИСТАЙ ▾</div>

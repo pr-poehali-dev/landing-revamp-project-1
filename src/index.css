@@ -213,6 +213,9 @@ section {
   gap: 12px;
   margin-bottom: 26px;
 }
+#hero .eyebrow {
+  margin-bottom: clamp(10px, 1.8vh, 18px);
+}
 .eyebrow::before {
   content: "";
   width: 34px;
@@ -763,7 +766,23 @@ section {
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 120px 0 90px;
+  padding: clamp(84px, 11vh, 118px) 0 clamp(52px, 8vh, 84px);
+}
+.hero-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(28px, 4vw, 60px);
+  align-items: center;
+  width: 100%;
+}
+.hero-col-media {
+  min-width: 0;
+}
+@media (max-width: 1080px) {
+  .hero-cols {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
 }
 #particles {
   position: absolute;
@@ -815,7 +834,7 @@ section {
 #hero .showtimer {
   font-family: var(--mono);
   font-weight: 700;
-  font-size: clamp(72px, 11vw, 160px);
+  font-size: clamp(46px, min(6.2vw, 11vh), 96px);
   line-height: 1;
   color: var(--cyan);
   text-shadow: 0 0 60px rgba(0, 229, 245, 0.35);
@@ -825,7 +844,8 @@ section {
 #hero .showtimer .dg {
   display: inline-block;
   overflow: hidden;
-  height: 1em;
+  height: 1.16em;
+  line-height: 1.16em;
 }
 #hero .showtimer .dg b {
   display: inline-block;
@@ -845,7 +865,7 @@ section {
   text-shadow:
     0 0 10px var(--cyan-glow),
     0 0 22px var(--cyan-glow);
-  margin: 14px 0 34px;
+  margin: clamp(8px, 1.4vh, 14px) 0 clamp(14px, 2.4vh, 26px);
   max-width: 560px;
   animation: neonFlicker 4s ease-in-out infinite;
 }
@@ -908,11 +928,11 @@ section {
 #hero h1 {
   font-family: var(--disp);
   font-weight: 600;
-  font-size: clamp(44px, 8.2vw, 116px);
-  line-height: 0.95;
+  font-size: clamp(34px, min(4.4vw, 7.4vh), 68px);
+  line-height: 0.96;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  margin-bottom: 26px;
+  margin-bottom: clamp(12px, 1.8vh, 20px);
 }
 #hero h1 .row {
   display: block;
@@ -928,14 +948,20 @@ section {
 }
 #hero .lead {
   max-width: 640px;
-  margin-bottom: 38px;
+  font-size: clamp(14.5px, 1.25vw, 17px);
+  line-height: 1.5;
+  margin-bottom: clamp(16px, 2.6vh, 26px);
 }
 .hero-cta {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: clamp(10px, 1.6vh, 16px);
+}
+#hero .hero-cta .btn {
+  padding: clamp(11px, 1.6vh, 15px) clamp(20px, 2vw, 28px);
+  font-size: clamp(12.5px, 0.95vw, 14px);
 }
 .hero-note {
   font-size: 13px;
@@ -950,9 +976,9 @@ section {
   border-color: var(--cyan);
 }
 .hero-meta {
-  margin-top: 30px;
+  margin-top: clamp(12px, 2vh, 20px);
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: clamp(10.5px, 0.85vw, 12px);
   letter-spacing: 0.08em;
   color: var(--t2);
   text-transform: uppercase;
@@ -964,7 +990,12 @@ section {
 .hero-video {
   position: relative;
   width: 100%;
-  margin-top: 44px;
+  margin-top: 0;
+}
+@media (max-width: 1080px) {
+  .hero-video {
+    margin-top: 8px;
+  }
 }
 .hero-video .frame {
   position: relative;
