@@ -1993,22 +1993,63 @@ section {
   width: 100%;
   display: block;
 }
-.spk-photo-main .gl-alt {
+.spk-photo-main .gl-base {
+  position: relative;
+  z-index: 1;
+}
+.gl-slice {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background-image: var(--alt-img);
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  z-index: 3;
+}
+.gl-slice-1 {
+  top: 8%;
+  height: 22%;
+}
+.gl-slice-2 {
+  top: 42%;
+  height: 16%;
+}
+.gl-slice-3 {
+  top: 68%;
+  height: 26%;
+}
+.gl-scan {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  z-index: 4;
+  pointer-events: none;
   opacity: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.08) 0px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
 }
 .spk-photo-main.is-glitch .gl-base {
-  opacity: 0;
+  animation: gl-base-flicker 0.3s steps(1, end);
 }
-.spk-photo-main.is-glitch .gl-alt {
-  opacity: 1;
+.spk-photo-main.is-glitch .gl-slice-1 {
+  animation: gl-slice-1-flash 0.3s steps(1, end);
+}
+.spk-photo-main.is-glitch .gl-slice-2 {
+  animation: gl-slice-2-flash 0.3s steps(1, end);
+}
+.spk-photo-main.is-glitch .gl-slice-3 {
+  animation: gl-slice-3-flash 0.3s steps(1, end);
+}
+.spk-photo-main.is-glitch .gl-scan {
+  animation: gl-scan-flash 0.3s steps(1, end);
 }
 .spk-photo-main.is-glitch .frame {
-  animation: spk-glitch-shift 0.3s steps(2, end);
+  animation: spk-glitch-shift 0.3s steps(1, end);
 }
 .spk-photo-main.is-glitch .frame::after {
   content: "";
@@ -2022,26 +2063,188 @@ section {
   );
   mix-blend-mode: screen;
   pointer-events: none;
-  z-index: 2;
+  z-index: 5;
+  animation: gl-noise-flash 0.3s steps(1, end);
 }
 @keyframes spk-glitch-shift {
   0% {
     transform: translate(0, 0);
   }
-  20% {
-    transform: translate(-4px, 2px);
+  8% {
+    transform: translate(-6px, 1px);
   }
-  40% {
-    transform: translate(4px, -2px);
+  16% {
+    transform: translate(5px, -2px) skewX(1deg);
   }
-  60% {
-    transform: translate(-3px, 0);
+  24% {
+    transform: translate(-3px, 2px);
   }
-  80% {
-    transform: translate(3px, 1px);
+  33% {
+    transform: translate(0, 0);
+  }
+  46% {
+    transform: translate(6px, -1px) skewX(-1.5deg);
+  }
+  54% {
+    transform: translate(-5px, 0);
+  }
+  62% {
+    transform: translate(0, 0);
+  }
+  78% {
+    transform: translate(4px, 1px) skewX(1deg);
+  }
+  86% {
+    transform: translate(-4px, -1px);
   }
   100% {
     transform: translate(0, 0);
+  }
+}
+@keyframes gl-base-flicker {
+  0% {
+    opacity: 1;
+    filter: none;
+  }
+  6% {
+    opacity: 0.15;
+    filter: brightness(2) saturate(0);
+  }
+  14% {
+    opacity: 1;
+  }
+  22% {
+    opacity: 0.2;
+    filter: brightness(1.6) hue-rotate(20deg);
+  }
+  33% {
+    opacity: 1;
+    filter: none;
+  }
+  46% {
+    opacity: 0.1;
+    filter: brightness(2.2) saturate(0);
+  }
+  56% {
+    opacity: 1;
+    filter: none;
+  }
+  78% {
+    opacity: 0.25;
+    filter: brightness(1.8);
+  }
+  86% {
+    opacity: 1;
+    filter: none;
+  }
+  100% {
+    opacity: 1;
+    filter: none;
+  }
+}
+@keyframes gl-slice-1-flash {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  9% {
+    opacity: 1;
+    transform: translateX(-3.5%);
+  }
+  18% {
+    opacity: 0;
+  }
+  47% {
+    opacity: 0.9;
+    transform: translateX(3%);
+  }
+  55% {
+    opacity: 0;
+  }
+}
+@keyframes gl-slice-2-flash {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  16% {
+    opacity: 0;
+  }
+  24% {
+    opacity: 1;
+    transform: translateX(4%);
+  }
+  32% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0.85;
+    transform: translateX(-3%);
+  }
+  88% {
+    opacity: 0;
+  }
+}
+@keyframes gl-slice-3-flash {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  30% {
+    opacity: 0;
+  }
+  38% {
+    opacity: 1;
+    transform: translateX(-4%);
+  }
+  47% {
+    opacity: 0;
+  }
+  64% {
+    opacity: 0.9;
+    transform: translateX(3.5%);
+  }
+  72% {
+    opacity: 0;
+  }
+}
+@keyframes gl-scan-flash {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  6%,
+  22%,
+  46%,
+  78% {
+    opacity: 0.9;
+  }
+  14%,
+  33%,
+  56%,
+  86% {
+    opacity: 0;
+  }
+}
+@keyframes gl-noise-flash {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  6%,
+  22%,
+  46%,
+  78% {
+    opacity: 1;
+  }
+  14%,
+  33%,
+  56%,
+  86% {
+    opacity: 0;
   }
 }
 .spk-photo .tag {
