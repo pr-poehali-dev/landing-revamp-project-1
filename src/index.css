@@ -1984,12 +1984,65 @@ section {
   position: relative;
 }
 .spk-photo .frame {
+  position: relative;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid var(--line);
 }
 .spk-photo-main .frame img {
   width: 100%;
+  display: block;
+}
+.spk-photo-main .gl-alt {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+.spk-photo-main.is-glitch .gl-base {
+  opacity: 0;
+}
+.spk-photo-main.is-glitch .gl-alt {
+  opacity: 1;
+}
+.spk-photo-main.is-glitch .frame {
+  animation: spk-glitch-shift 0.3s steps(2, end);
+}
+.spk-photo-main.is-glitch .frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 229, 245, 0.15) 0px,
+    rgba(255, 0, 128, 0.12) 2px,
+    transparent 4px
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 2;
+}
+@keyframes spk-glitch-shift {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-4px, 2px);
+  }
+  40% {
+    transform: translate(4px, -2px);
+  }
+  60% {
+    transform: translate(-3px, 0);
+  }
+  80% {
+    transform: translate(3px, 1px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
 .spk-photo .tag {
   position: absolute;
