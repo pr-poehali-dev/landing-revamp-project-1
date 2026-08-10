@@ -58,7 +58,7 @@ export default function Pricing() {
           <div className="price hot brk">
             <i></i><i></i><i></i><i></i>
             <span className="chip fill">ВЫБОР БОЛЬШИНСТВА</span>
-            <h4>УЛЬТРА</h4>
+            <h4>ПРЕМИУМ</h4>
             <div className="amount"><span data-count="7500" data-fmt="rub">0</span> ₽</div>
             <div className="p-note">ПРАКТИКА + ЗАПИСИ + ПЕРВЫЕ РЯДЫ</div>
             <ul>
@@ -69,23 +69,23 @@ export default function Pricing() {
               <li>Закрытый чат с ведущими на месяц</li>
               <li>Твоё имя в розыгрыше курса — дважды</li>
             </ul>
-            <a className="btn magnetic" href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">Взять УЛЬТРУ <span className="arr">→</span></a>
+            <a className="btn magnetic" href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">Взять ПРЕМИУМ <span className="arr">→</span></a>
           </div>
           <div className="price brk">
             <i></i><i></i><i></i><i></i>
             <span className="chip o">МЕСТ СТРОГО ОГРАНИЧЕНО</span>
-            <h4>ПРЕМИУМ</h4>
+            <h4>VIP</h4>
             <div className="amount"><span data-count="17000" data-fmt="rub">0</span> ₽</div>
             <div className="p-note">ПРОЖАРКА ТВОЕГО БИЗНЕСА НА СЦЕНЕ</div>
             <ul>
-              <li>Всё из тарифа УЛЬТРА</li>
+              <li>Всё из тарифа ПРЕМИУМ</li>
               <li>Бизнес Прожарка твоего бизнеса на сцене</li>
               <li>Личная консультация Сергея — 30 минут</li>
               <li>VIP-зона</li>
               <li>Мерч школы</li>
               <li>Сертификат участника</li>
             </ul>
-            <a className="btn btn-orange magnetic" href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">Взять ПРЕМИУМ <span className="arr">→</span></a>
+            <a className="btn btn-orange magnetic" href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">Взять VIP <span className="arr">→</span></a>
           </div>
         </div>
         <div className="price-foot rv">Оплата от юрлиц — по счёту. Вопросы по билетам и командам: Дарья · <a href="tel:+79811292499">+7 981 129-24-99</a> · TG <a href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">@DashaChernikova8</a></div>
