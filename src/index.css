@@ -2024,6 +2024,35 @@ section {
   pointer-events: none;
   z-index: 2;
 }
+.spk-photo-main.is-glitch .frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.28;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 3;
+  animation: spk-glitch-noise 0.3s steps(4, end);
+}
+@keyframes spk-glitch-noise {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    opacity: 0.32;
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    opacity: 0.1;
+  }
+}
 @keyframes spk-glitch-shift {
   0% {
     transform: translate(0, 0);
