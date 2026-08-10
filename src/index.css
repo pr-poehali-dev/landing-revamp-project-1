@@ -1988,13 +1988,8 @@ section {
   overflow: hidden;
   border: 1px solid var(--line);
 }
-.spk-photo img {
+.spk-photo-main .frame img {
   width: 100%;
-  filter: grayscale(1) contrast(1.05);
-  transition: filter 0.5s;
-}
-.spk-photo:hover img {
-  filter: grayscale(0);
 }
 .spk-photo .tag {
   position: absolute;
@@ -2016,6 +2011,67 @@ section {
   bottom: -14px;
   right: 20px;
   color: var(--t2);
+}
+.spk-photo-second {
+  position: relative;
+  margin-top: 24px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  aspect-ratio: 3 / 4;
+  background: var(--navy2);
+}
+.gl-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gl-robot {
+  opacity: 0;
+}
+.spk-photo-second.is-glitch .gl-human {
+  opacity: 0;
+}
+.spk-photo-second.is-glitch .gl-robot {
+  opacity: 1;
+}
+.spk-photo-second.is-glitch {
+  animation: spk-glitch-shift 0.2s steps(2, end);
+}
+.spk-photo-second.is-glitch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 229, 245, 0.15) 0px,
+    rgba(255, 0, 128, 0.12) 2px,
+    transparent 4px
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+@keyframes spk-glitch-shift {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-4px, 2px);
+  }
+  40% {
+    transform: translate(4px, -2px);
+  }
+  60% {
+    transform: translate(-3px, 0);
+  }
+  80% {
+    transform: translate(3px, 1px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
 .spk-sub {
   font-family: var(--mono);

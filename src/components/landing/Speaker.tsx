@@ -1,13 +1,32 @@
+import { useEffect, useState } from 'react';
 import portrait from '@/assets/speaker-portrait.jpg';
+import secondHuman from '@/assets/speaker-second-human.jpg';
+import secondRobot from '@/assets/speaker-second-robot.jpg';
 
 export default function Speaker() {
+  const [glitch, setGlitch] = useState(false);
+
+  useEffect(() => {
+    const iv = setInterval(() => {
+      setGlitch(true);
+      setTimeout(() => setGlitch(false), 200);
+    }, 1000);
+    return () => clearInterval(iv);
+  }, []);
+
   return (
     <section id="speaker">
       <div className="wrap spk-grid">
         <div className="spk-photo rv" data-cursor="view">
-          <div className="frame"><img src={portrait} alt="Сергей Черников" /></div>
-          <div className="tag a">ВЕДУЩИЙ · ОСНОВАТЕЛЬ ШКОЛЫ</div>
-          <div className="tag b">17 ОКТЯБРЯ · ВЛАДИВОСТОК</div>
+          <div className="spk-photo-main">
+            <div className="frame"><img src={portrait} alt="Сергей Черников" /></div>
+            <div className="tag a">ВЕДУЩИЙ · ОСНОВАТЕЛЬ ШКОЛЫ</div>
+            <div className="tag b">17 ОКТЯБРЯ · ВЛАДИВОСТОК</div>
+          </div>
+          <div className={`spk-photo-second${glitch ? ' is-glitch' : ''}`}>
+            <img className="gl-img gl-human" src={secondHuman} alt="Сергей Черников на сцене" />
+            <img className="gl-img gl-robot" src={secondRobot} alt="" aria-hidden="true" />
+          </div>
         </div>
         <div>
           <div className="eyebrow rv">// 06 · ВЕДУЩИЙ</div>
