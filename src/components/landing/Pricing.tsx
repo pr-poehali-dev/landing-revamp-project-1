@@ -63,11 +63,11 @@ export default function Pricing() {
             <div className="p-note">ПРАКТИКА + ЗАПИСИ + ПЕРВЫЕ РЯДЫ</div>
             <ul>
               <li>Всё из тарифа БАЗА</li>
-              <li>Видеозапись всех блоков</li>
               <li>Расширенные материалы</li>
               <li>Первые ряды в зале</li>
               <li>Закрытый чат с ведущими на месяц</li>
-              <li>Твоё имя в розыгрыше курса — дважды</li>
+              <li>2 билета на розыгрыш курса</li>
+              <li>Билет на единоразовое бесплатное посещение мастер-класса</li>
             </ul>
             <a className="btn magnetic" href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">Взять ПРЕМИУМ <span className="arr">→</span></a>
           </div>
