@@ -35,7 +35,7 @@ export default function Pricing() {
       <div className="wrap">
         <div className="eyebrow rv">// 10 · ТАРИФЫ</div>
         <h2 className="h2 rv">ЗАЛ — 300 МЕСТ. ЭТО ВСЁ.</h2>
-        <p className="lead rv" style={{ maxWidth: 720 }}>Каждый билет включает все 12 блоков и участие в розыгрыше курса на 150 000 ₽.</p>
+        <p className="lead rv" style={{ maxWidth: 720 }}>Каждый билет включает все 11 блоков и участие в розыгрыше курса на 150 000 ₽.</p>
         <div className="deficit rv">
           <span className="chip o"><span className="warn">⚠</span> МЕСТ СТРОГО ОГРАНИЧЕНО</span>
           <span className="txt">Когда зал заполнится — продажи закроются.</span>
@@ -47,7 +47,7 @@ export default function Pricing() {
             <div className="amount"><span data-count="5000" data-fmt="rub">0</span> ₽</div>
             <div className="p-note">ВСЯ ПРАКТИКА ДНЯ</div>
             <ul>
-              <li>Все 12 блоков шоу</li>
+              <li>Все 11 блоков шоу</li>
               <li>Раздатка с промпт-цепочками по каждому блоку</li>
               <li>Промпт-гайд «50 промптов»</li>
               <li>Участие в розыгрыше курса на 150 000 ₽</li>
