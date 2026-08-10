@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import Icon from '@/components/ui/icon';
 
 const photos = Array.from({ length: 25 }, (_, i) => `/gallery/photo-${String(i + 1).padStart(2, '0')}.jpg`)
-  .filter((src) => src !== '/gallery/photo-06.jpg' && src !== '/gallery/photo-07.jpg');
+  .filter((src) => src !== '/gallery/photo-06.jpg' && src !== '/gallery/photo-07.jpg' && src !== '/gallery/photo-16.jpg');
 
 export default function EventGallery() {
   const trackRef = useRef<HTMLDivElement>(null);
