@@ -75,15 +75,13 @@ export default function Pricing() {
             <i></i><i></i><i></i><i></i>
             <span className="chip o">МЕСТ СТРОГО ОГРАНИЧЕНО</span>
             <h4>VIP</h4>
-            <div className="amount"><span data-count="17000" data-fmt="rub">0</span> ₽</div>
-            <div className="p-note">ПРОЖАРКА ТВОЕГО БИЗНЕСА НА СЦЕНЕ</div>
+            <div className="amount"><span data-count="15000" data-fmt="rub">0</span> ₽</div>
             <ul>
               <li>Всё из тарифа ПРЕМИУМ</li>
-              <li>Бизнес Прожарка твоего бизнеса на сцене</li>
-              <li>Личная консультация Сергея — 30 минут</li>
+              <li>Личная консультация Сергея и команды — 60 минут</li>
               <li>VIP-зона</li>
-              <li>Мерч школы</li>
               <li>Сертификат участника</li>
+              <li>3 билета на бесплатное посещение мастер-класса</li>
             </ul>
             <a className="btn btn-orange magnetic" href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">Взять VIP <span className="arr">→</span></a>
           </div>
