@@ -70,7 +70,7 @@ export default function Pricing() {
               <li>2 билета на розыгрыш курса</li>
               <li>Билет на единоразовое бесплатное посещение мастер-класса</li>
             </ul>
-            <a className="btn magnetic" href="https://t.me/chernikova_dary" target="_blank" rel="noopener">Взять ПРЕМИУМ <span className="arr">→</span></a>
+            <a className="btn magnetic" href="https://torguykriptoy.getcourse.ru/baza2.0_premium" target="_blank" rel="noopener">Взять ПРЕМИУМ <span className="arr">→</span></a>
           </div>
           <div className="price brk">
             <i></i><i></i><i></i><i></i>
