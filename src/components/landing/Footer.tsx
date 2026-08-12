@@ -55,7 +55,7 @@ export default function Footer() {
         </a>
         <div className="foot-contacts">
           <div className="fc"><div className="lab">Билеты и команды — Дарья</div><a href="tel:+79811292499">+7 981 129-24-99</a></div>
-          <div className="fc"><div className="lab">Telegram</div><a href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">@DashaChernikova8</a></div>
+          <div className="fc"><div className="lab">Telegram</div><a href="https://t.me/chernikova_dary" target="_blank" rel="noopener">@chernikova_dary</a></div>
           <div className="fc"><div className="lab">Дата и место</div><span>17 октября, 10:00–18:00 · отель «Экватор»</span></div>
         </div>
         <div className="foot-meta">

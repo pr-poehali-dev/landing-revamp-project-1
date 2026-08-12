@@ -53,7 +53,7 @@ export default function Pricing() {
               <li>Участие в розыгрыше курса на 150 000 ₽</li>
               <li>Чат участников</li>
             </ul>
-            <a className="btn btn-ghost magnetic" href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">Взять БАЗУ <span className="arr">→</span></a>
+            <a className="btn btn-ghost magnetic" href="https://t.me/chernikova_dary" target="_blank" rel="noopener">Взять БАЗУ <span className="arr">→</span></a>
           </div>
           <div className="price hot brk">
             <i></i><i></i><i></i><i></i>
@@ -69,7 +69,7 @@ export default function Pricing() {
               <li>2 билета на розыгрыш курса</li>
               <li>Билет на единоразовое бесплатное посещение мастер-класса</li>
             </ul>
-            <a className="btn magnetic" href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">Взять ПРЕМИУМ <span className="arr">→</span></a>
+            <a className="btn magnetic" href="https://t.me/chernikova_dary" target="_blank" rel="noopener">Взять ПРЕМИУМ <span className="arr">→</span></a>
           </div>
           <div className="price brk">
             <i></i><i></i><i></i><i></i>
@@ -83,10 +83,10 @@ export default function Pricing() {
               <li>Сертификат участника</li>
               <li>3 билета на бесплатное посещение мастер-класса</li>
             </ul>
-            <a className="btn btn-orange magnetic" href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">Взять VIP <span className="arr">→</span></a>
+            <a className="btn btn-orange magnetic" href="https://t.me/chernikova_dary" target="_blank" rel="noopener">Взять VIP <span className="arr">→</span></a>
           </div>
         </div>
-        <div className="price-foot rv">Оплата от юрлиц — по счёту. Вопросы по билетам и командам: Дарья · <a href="tel:+79811292499">+7 981 129-24-99</a> · TG <a href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">@DashaChernikova8</a></div>
+        <div className="price-foot rv">Оплата от юрлиц — по счёту. Вопросы по билетам и командам: Дарья · <a href="tel:+79811292499">+7 981 129-24-99</a> · TG <a href="https://t.me/chernikova_dary" target="_blank" rel="noopener">@chernikova_dary</a></div>
       </div>
     </section>
   );

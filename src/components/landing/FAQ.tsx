@@ -6,7 +6,7 @@ const faqs = [
   { q: 'Будет ли впаривание курса?', a: 'Нет. Один раз в конце честно расскажем про школу — и всё. Остальные 8 часов — только практика.' },
   { q: 'Чем ПРЕМИУМ отличается от БАЗЫ?', a: 'Расширенные материалы, первые ряды, закрытый чат с ведущими на месяц, 2 билета на розыгрыш курса на 150 000 ₽ и билет на бесплатное посещение мастер-класса.' },
   { q: 'Чем VIP отличается от ПРЕМИУМ?', a: 'Личная консультация Сергея и команды — 60 минут, VIP-зона, сертификат участника и 3 билета на бесплатное посещение мастер-класса. Мест строго ограничено.' },
-  { q: 'Стоит ли брать команду?', a: <>Да — так вы разложите блоки между собой и внедрите быстрее. От 3 человек пишите Дарье: <a href="tel:+79811292499">+7 981 129-24-99</a>, TG <a href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">@DashaChernikova8</a>.</> },
+  { q: 'Стоит ли брать команду?', a: <>Да — так вы разложите блоки между собой и внедрите быстрее. От 3 человек пишите Дарье: <a href="tel:+79811292499">+7 981 129-24-99</a>, TG <a href="https://t.me/chernikova_dary" target="_blank" rel="noopener">@chernikova_dary</a>.</> },
   { q: 'А что, если на сцене что-то не получится?', a: 'Вы увидите, как это чинят вживую. В том и шоу без ширмы.' },
 ];
 
@@ -51,7 +51,7 @@ export default function FAQ() {
         <div className="faq-left">
           <div className="eyebrow rv">// 11 · FAQ</div>
           <h2 className="h2 rv">ОТВЕЧАЕМ<br />ЧЕСТНО</h2>
-          <div className="help rv">Остался вопрос — напиши Дарье:<br />TG <a href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">@DashaChernikova8</a><br /><a href="tel:+79811292499">+7 981 129-24-99</a></div>
+          <div className="help rv">Остался вопрос — напиши Дарье:<br />TG <a href="https://t.me/chernikova_dary" target="_blank" rel="noopener">@chernikova_dary</a><br /><a href="tel:+79811292499">+7 981 129-24-99</a></div>
         </div>
         <div className="faq-list" ref={listRef}>
           {faqs.map((f, i) => (

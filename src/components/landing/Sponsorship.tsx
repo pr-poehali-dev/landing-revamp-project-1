@@ -157,7 +157,7 @@ export default function Sponsorship() {
                 </div>
                 <div className="spons-modal-note">{openTier.note}</div>
               </div>
-              <a className="btn magnetic" href="https://t.me/DashaChernikova8" target="_blank" rel="noopener">Обсудить с Дарьей <span className="arr">→</span></a>
+              <a className="btn magnetic" href="https://t.me/chernikova_dary" target="_blank" rel="noopener">Обсудить с Дарьей <span className="arr">→</span></a>
             </div>
           </div>
         )}
