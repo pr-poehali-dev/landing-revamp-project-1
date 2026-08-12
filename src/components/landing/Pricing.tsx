@@ -54,7 +54,7 @@ export default function Pricing() {
               <li>Участие в розыгрыше курса на 150 000 ₽</li>
               <li>Чат участников</li>
             </ul>
-            <a className="btn btn-ghost magnetic" href="https://t.me/chernikova_dary" target="_blank" rel="noopener">Взять БАЗУ <span className="arr">→</span></a>
+            <a className="btn btn-ghost magnetic" href="https://torguykriptoy.getcourse.ru/baza2.0" target="_blank" rel="noopener">Взять БАЗУ <span className="arr">→</span></a>
           </div>
           <div className="price hot brk">
             <i></i><i></i><i></i><i></i>
