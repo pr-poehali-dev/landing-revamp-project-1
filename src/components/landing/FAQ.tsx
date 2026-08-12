@@ -49,7 +49,7 @@ export default function FAQ() {
     <section id="faq">
       <div className="wrap faq-grid">
         <div className="faq-left">
-          <div className="eyebrow rv">// 11 · FAQ</div>
+          <div className="eyebrow rv">// 12 · FAQ</div>
           <h2 className="h2 rv">ОТВЕЧАЕМ<br />ЧЕСТНО</h2>
           <div className="help rv">Остался вопрос — напиши Дарье:<br />TG <a href="https://t.me/chernikova_dary" target="_blank" rel="noopener">@chernikova_dary</a><br /><a href="tel:+79811292499">+7 981 129-24-99</a></div>
         </div>

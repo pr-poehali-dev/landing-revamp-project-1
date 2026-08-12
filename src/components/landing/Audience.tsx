@@ -23,7 +23,7 @@ export default function Audience() {
   return (
     <section id="audience" ref={rootRef}>
       <div className="wrap">
-        <div className="eyebrow rv">// 07 · ДЛЯ КОГО</div>
+        <div className="eyebrow rv">// 08 · ДЛЯ КОГО</div>
         <h2 className="h2 rv">ПРИХОДИ, ЕСЛИ ТЫ —</h2>
         <div className="aud-grid">
           <div className="aud brk">

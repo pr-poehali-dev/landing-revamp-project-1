@@ -34,7 +34,7 @@ export default function Pricing() {
   return (
     <section id="pricing" ref={rootRef}>
       <div className="wrap">
-        <div className="eyebrow rv">// 10 · ТАРИФЫ</div>
+        <div className="eyebrow rv">// 11 · ТАРИФЫ</div>
         <h2 className="h2 rv">ЗАЛ — 300 МЕСТ. ЭТО ВСЁ.</h2>
         <p className="lead rv" style={{ maxWidth: 720 }}>Каждый билет включает все 11 блоков и участие в розыгрыше курса на 150 000 ₽.</p>
         <div className="deficit rv">

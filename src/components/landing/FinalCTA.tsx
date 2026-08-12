@@ -29,7 +29,7 @@ export default function FinalCTA() {
       <canvas id="particles2" ref={canvasRef}></canvas>
       <div className="spot l"></div><div className="spot r"></div><div className="spot c"></div>
       <div id="final-flash"></div>
-      <div className="final-corner c1">// 12 · РЕШЕНИЕ</div>
+      <div className="final-corner c1">// 13 · РЕШЕНИЕ</div>
       <div className="final-corner c2">ЗАЛ · 300 МЕСТ</div>
       <div className="final-corner c3">ОТ 5 000 ₽</div>
       <div className="final-corner c4">РОЗЫГРЫШ 150 000 ₽</div>

@@ -115,7 +115,7 @@ export default function Sponsorship() {
   return (
     <section id="sponsorship" ref={rootRef}>
       <div className="wrap">
-        <div className="eyebrow rv">// 09 · ПАРТНЁРСТВО</div>
+        <div className="eyebrow rv">// 10 · ПАРТНЁРСТВО</div>
         <h2 className="h2 rv">СТАНЬТЕ ЧАСТЬЮ<br />ШОУ БЕЗ ШИРМЫ</h2>
         <p className="lead rv" style={{ maxWidth: 680 }}>300 предпринимателей в одном зале, аудитория без воды и живой контакт с рынком ИИ. Выберите формат — расскажем, что внутри.</p>
         <div className="spons-grid">

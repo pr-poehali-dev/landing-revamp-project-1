@@ -2150,7 +2150,74 @@ section {
   line-height: 1;
 }
 
-/* audience */
+/* school */
+#school {
+  padding: clamp(96px, 14vh, 180px) 0;
+  background: var(--deep);
+}
+.mani-lines {
+  margin: 22px 0 28px;
+}
+.mani-lines .mani-line {
+  font-family: var(--disp);
+  font-weight: 600;
+  font-size: clamp(18px, 2vw, 26px);
+  text-transform: uppercase;
+  color: var(--t1);
+  line-height: 1.4;
+}
+.school-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 44px;
+}
+.school-stat {
+  background: var(--navy2);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px 24px;
+  transition:
+    transform 0.3s var(--ease),
+    border-color 0.3s;
+}
+.school-stat:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 229, 245, 0.4);
+}
+.school-stat .stat-num {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: clamp(32px, 3.4vw, 44px);
+  color: var(--cyan);
+  line-height: 1;
+  text-shadow: 0 0 30px var(--cyan-glow);
+}
+.school-stat .stat-num .dim {
+  color: var(--t3);
+  font-size: 0.5em;
+}
+.school-stat .stat-cap {
+  margin-top: 12px;
+  color: var(--t2);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.trust-line {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  color: var(--t2);
+  line-height: 1.8;
+}
+.trust-line .trust-cap {
+  display: block;
+  color: var(--t3);
+  margin-bottom: 6px;
+}
 #audience {
   padding: clamp(96px, 14vh, 180px) 0;
 }
@@ -3161,6 +3228,9 @@ footer {
   .aud-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .school-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media (max-width: 960px) {
   #nav .links {
@@ -3251,6 +3321,9 @@ footer {
     grid-column: span 6;
   }
   .aud-grid {
+    grid-template-columns: 1fr;
+  }
+  .school-stats-grid {
     grid-template-columns: 1fr;
   }
   .pcard {

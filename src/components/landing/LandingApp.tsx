@@ -13,6 +13,7 @@ import Stats from './Stats';
 import Mechanics from './Mechanics';
 import Program from './Program';
 import Speaker from './Speaker';
+import School from './School';
 import Audience from './Audience';
 import Partners from './Partners';
 import Sponsorship from './Sponsorship';
@@ -63,6 +64,7 @@ export default function LandingApp() {
       <Mechanics />
       <Program />
       <Speaker />
+      <School />
       <Audience />
       <Partners />
       <Sponsorship />
