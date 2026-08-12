@@ -2417,6 +2417,46 @@ section {
   justify-content: center;
   width: 100%;
 }
+.chat-notify {
+  margin-top: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 18px 28px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--navy2);
+}
+.chat-notify .cn-txt {
+  color: var(--t2);
+  font-size: 15px;
+  text-align: center;
+}
+.chat-notify .cn-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.chat-notify .cn-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 229, 245, 0.08);
+  color: var(--cyan);
+  border: 1px solid rgba(0, 229, 245, 0.3);
+  transition: all 0.25s var(--ease);
+}
+.chat-notify .cn-link:hover {
+  background: var(--cyan);
+  color: var(--deep);
+  transform: translateY(-3px);
+}
 .price-foot {
   margin-top: 34px;
   font-family: var(--mono);

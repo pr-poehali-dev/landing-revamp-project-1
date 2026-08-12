@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Icon from '@/components/ui/icon';
 import { useCounters } from './useCounters';
 
 export default function Pricing() {
@@ -84,6 +85,17 @@ export default function Pricing() {
               <li>3 билета на бесплатное посещение мастер-класса</li>
             </ul>
             <a className="btn btn-orange magnetic" href="https://t.me/chernikova_dary" target="_blank" rel="noopener">Взять VIP <span className="arr">→</span></a>
+          </div>
+        </div>
+        <div className="chat-notify rv">
+          <span className="cn-txt">Чтобы не пропустить информацию, присоединяйтесь в чат в Telegram или в MAX</span>
+          <div className="cn-links">
+            <a className="cn-link" href="https://t.me/chernikova_dary" target="_blank" rel="noopener" aria-label="Чат в Telegram">
+              <Icon name="Send" size={20} strokeWidth={2} />
+            </a>
+            <a className="cn-link" href="https://max.ru/" target="_blank" rel="noopener" aria-label="Чат в MAX">
+              <Icon name="MessageCircle" size={20} strokeWidth={2} />
+            </a>
           </div>
         </div>
         <div className="price-foot rv">Оплата от юрлиц — по счёту. Вопросы по билетам и командам: Дарья · <a href="tel:+79811292499">+7 981 129-24-99</a> · TG <a href="https://t.me/chernikova_dary" target="_blank" rel="noopener">@chernikova_dary</a></div>
