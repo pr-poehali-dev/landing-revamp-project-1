@@ -71,7 +71,7 @@ export default function School() {
         </div>
 
         <a
-          className="btn btn-ghost magnetic rv"
+          className="btn magnetic rv"
           href="https://chernikovgpt.ru/"
           target="_blank"
           rel="noopener"
