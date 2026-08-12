@@ -48,6 +48,7 @@ export default function Nav() {
           <div className="links">
             <a href="#program" onClick={(e) => go(e, '#program')}>Программа</a>
             <a href="#speaker" onClick={(e) => go(e, '#speaker')}>Ведущий</a>
+            <a href="#school" onClick={(e) => go(e, '#school')}>Школа</a>
             <a href="#audience" onClick={(e) => go(e, '#audience')}>Для кого</a>
             <a href="#sponsorship" onClick={(e) => go(e, '#sponsorship')}>Партнёрство</a>
             <a href="#pricing" onClick={(e) => go(e, '#pricing')}>Тарифы</a>

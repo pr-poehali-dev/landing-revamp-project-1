@@ -9,6 +9,7 @@ interface Props {
 const LINKS = [
   { href: '#program', label: 'Программа' },
   { href: '#speaker', label: 'Ведущий' },
+  { href: '#school', label: 'Школа' },
   { href: '#audience', label: 'Для кого' },
   { href: '#sponsorship', label: 'Партнёрство' },
   { href: '#pricing', label: 'Тарифы' },
