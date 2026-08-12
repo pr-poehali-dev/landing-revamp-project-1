@@ -73,12 +73,12 @@ export default function Pricing() {
           </div>
           <div className="price brk">
             <i></i><i></i><i></i><i></i>
-            <span className="chip o">МЕСТ СТРОГО ОГРАНИЧЕНО</span>
+            <span className="chip o">ВСЕГО 30 МЕСТ</span>
             <h4>VIP</h4>
             <div className="amount"><span data-count="15000" data-fmt="rub">0</span> ₽</div>
             <ul>
               <li>Всё из тарифа ПРЕМИУМ</li>
-              <li>Личная консультация Сергея и команды — 60 минут</li>
+              <li>Личная консультация Сергея и команды — 60 минут (стоимостью 10 000 руб.)</li>
               <li>VIP-зона</li>
               <li>Сертификат участника</li>
               <li>3 билета на бесплатное посещение мастер-класса</li>
