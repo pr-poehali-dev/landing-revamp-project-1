@@ -84,7 +84,7 @@ export default function Pricing() {
               <li>Сертификат участника</li>
               <li>3 билета на бесплатное посещение мастер-класса</li>
             </ul>
-            <a className="btn btn-orange magnetic" href="https://t.me/chernikova_dary" target="_blank" rel="noopener">Взять VIP <span className="arr">→</span></a>
+            <a className="btn btn-orange magnetic" href="https://torguykriptoy.getcourse.ru/baza2.0_vip" target="_blank" rel="noopener">Взять VIP <span className="arr">→</span></a>
           </div>
         </div>
         <div className="chat-notify rv">
