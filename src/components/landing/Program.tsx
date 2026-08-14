@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Icon from '@/components/ui/icon';
 
 const cards = [
   { n: '01', title: 'Сайт за 30 минут', desc: 'Лендинг: структура, тексты, дизайн, публикация.', take: 'свой сайт-шаблон и промпт-цепочку' },
@@ -20,6 +21,8 @@ export default function Program() {
   const galRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const fillRef = useRef<HTMLDivElement>(null);
+  const targetRef = useRef(0);
+  const stepRef = useRef((_dir: number) => {});
 
   useEffect(() => {
     const gal = galRef.current;
@@ -27,12 +30,14 @@ export default function Program() {
     const progFill = fillRef.current;
     if (!gal || !track || !progFill) return;
 
-    let pos = 0, target = 0, vel = 0, dragging = false, startX = 0, startPos = 0, moved = false;
+    const MOB = window.matchMedia('(max-width: 960px)').matches;
+
+    let pos = 0, vel = 0, dragging = false, startX = 0, startPos = 0, moved = false;
     const maxDrag = () => Math.max(0, track.scrollWidth - gal.clientWidth + 40);
 
     let raf = 0;
     const render = () => {
-      pos += (target - pos) * 0.12;
+      pos += (targetRef.current - pos) * 0.12;
       track.style.transform = `translateX(${-pos}px)`;
       const m = maxDrag();
       progFill.style.transform = `scaleX(${m > 0 ? pos / m : 0})`;
@@ -40,8 +45,17 @@ export default function Program() {
     };
     raf = requestAnimationFrame(render);
 
+    const step = (dir: number) => {
+      const cardEl = track.querySelector<HTMLElement>('.pcard');
+      const cardW = (cardEl?.offsetWidth || 340) + 20;
+      const m = maxDrag();
+      targetRef.current = gsap.utils.clamp(0, m, targetRef.current + dir * cardW);
+    };
+    stepRef.current = step;
+
     const onDown = (e: PointerEvent) => {
-      dragging = true; moved = false; startX = e.clientX; startPos = target; vel = 0;
+      if (MOB) return;
+      dragging = true; moved = false; startX = e.clientX; startPos = targetRef.current; vel = 0;
       gal.setPointerCapture(e.pointerId);
     };
     const onMoveP = (e: PointerEvent) => {
@@ -52,36 +66,35 @@ export default function Program() {
       const m = maxDrag();
       if (nt < 0) nt = nt * 0.3;
       if (nt > m) nt = m + (nt - m) * 0.3;
-      vel = nt - target;
-      target = nt;
+      vel = nt - targetRef.current;
+      targetRef.current = nt;
     };
     const endDrag = () => {
       if (!dragging) return;
       dragging = false;
       const m = maxDrag();
-      target = target + vel * 14;
+      let t = targetRef.current + vel * 14;
       const cardEl = track.querySelector<HTMLElement>('.pcard');
       const cardW = (cardEl?.offsetWidth || 340) + 20;
-      const snapped = Math.round(target / cardW) * cardW;
-      if (Math.abs(target - snapped) / (m || 1) < 0.025) target = snapped;
-      target = gsap.utils.clamp(0, m, target);
+      const snapped = Math.round(t / cardW) * cardW;
+      if (Math.abs(t - snapped) / (m || 1) < 0.025) t = snapped;
+      targetRef.current = gsap.utils.clamp(0, m, t);
     };
     const onClickCapture = (e: MouseEvent) => { if (moved) e.preventDefault(); };
     const onKeyDown = (e: KeyboardEvent) => {
       const r = gal.getBoundingClientRect();
       if (r.top > innerHeight || r.bottom < 0) return;
-      const cardEl = track.querySelector<HTMLElement>('.pcard');
-      const cardW = (cardEl?.offsetWidth || 340) + 20;
-      const m = maxDrag();
-      if (e.key === 'ArrowRight') target = gsap.utils.clamp(0, m, target + cardW);
-      if (e.key === 'ArrowLeft') target = gsap.utils.clamp(0, m, target - cardW);
+      if (e.key === 'ArrowRight') step(1);
+      if (e.key === 'ArrowLeft') step(-1);
     };
 
-    gal.addEventListener('pointerdown', onDown);
-    gal.addEventListener('pointermove', onMoveP);
-    gal.addEventListener('pointerup', endDrag);
-    gal.addEventListener('pointercancel', endDrag);
-    gal.addEventListener('click', onClickCapture, true);
+    if (!MOB) {
+      gal.addEventListener('pointerdown', onDown);
+      gal.addEventListener('pointermove', onMoveP);
+      gal.addEventListener('pointerup', endDrag);
+      gal.addEventListener('pointercancel', endDrag);
+      gal.addEventListener('click', onClickCapture, true);
+    }
     window.addEventListener('keydown', onKeyDown);
 
     const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -114,6 +127,14 @@ export default function Program() {
             <div className="eyebrow rv">// 05 · ПРОГРАММА</div>
             <h2 className="h2 rv">11 БЛОКОВ. КАЖДЫЙ —<br />ГОТОВЫЙ РЕЗУЛЬТАТ.</h2>
           </div>
+          <div className="prog-arrows rv">
+            <button className="prog-arrow-btn" aria-label="Предыдущий блок" onClick={() => stepRef.current(-1)}>
+              <Icon name="ChevronLeft" size={20} strokeWidth={2} />
+            </button>
+            <button className="prog-arrow-btn" aria-label="Следующий блок" onClick={() => stepRef.current(1)}>
+              <Icon name="ChevronRight" size={20} strokeWidth={2} />
+            </button>
+          </div>
           <div className="drag-hint rv">ТЯНИ <span className="arr">→</span></div>
         </div>
       </div>
@@ -133,7 +154,7 @@ export default function Program() {
       </div>
       <div className="wrap">
         <div className="prog-nav">
-          <div className="keys">← ТЯНИ / СТРЕЛКИ</div>
+          <div className="keys">ТЯНИ / СТРЕЛКИ</div>
           <div className="tr"><i id="prog-fill" ref={fillRef}></i></div>
         </div>
         <div className="prog-cta rv">Всё это — в каждом билете. <a href="#pricing">Выбрать тариф →</a></div>

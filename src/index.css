@@ -1819,6 +1819,32 @@ section {
   color: var(--cyan);
   animation: arrslide 1.4s var(--ease) infinite;
 }
+.prog-arrows {
+  display: none;
+  gap: 10px;
+}
+.prog-arrow-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--navy2);
+  color: var(--t1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color 0.3s,
+    background 0.3s,
+    transform 0.15s;
+}
+.prog-arrow-btn:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+.prog-arrow-btn:active {
+  transform: scale(0.94);
+}
 @keyframes arrslide {
   0%,
   100% {
@@ -3235,6 +3261,19 @@ footer {
 @media (max-width: 960px) {
   #nav .links {
     display: none;
+  }
+  .drag-hint {
+    display: none;
+  }
+  .prog-arrows {
+    display: flex;
+  }
+  .prog-gal {
+    cursor: default;
+    touch-action: pan-y;
+  }
+  .prog-track {
+    touch-action: pan-y;
   }
   .burger {
     display: flex;
