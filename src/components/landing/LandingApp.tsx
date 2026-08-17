@@ -22,6 +22,7 @@ import FAQ from './FAQ';
 import FinalCTA from './FinalCTA';
 import Footer from './Footer';
 import RevealAnimations from './RevealAnimations';
+import GiftPopup from './GiftPopup';
 import { setLenis } from '@/lib/landingScroll';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -73,6 +74,7 @@ export default function LandingApp() {
       <FinalCTA />
       <Footer />
       <RevealAnimations />
+      <GiftPopup />
     </div>
   );
 }
