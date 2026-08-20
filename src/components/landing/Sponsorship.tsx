@@ -16,6 +16,29 @@ interface Tier {
   note: string;
 }
 
+interface CompareRow {
+  label: string;
+  official: string;
+  general: string;
+}
+
+const compareRows: CompareRow[] = [
+  { label: 'Эксклюзивность в нише', official: '—', general: '✓' },
+  { label: 'Логотип на сайте и в программе', official: '✓', general: '✓' },
+  { label: 'Логотип на бейджах/браслетах гостей', official: '—', general: '✓' },
+  { label: 'Стенд / промо-зона', official: 'Малый, раздаточные материалы', general: 'Отдельный, лучшее место в зале' },
+  { label: 'Выступление на сцене', official: 'Интерактивный формат', general: 'Интерактивный формат и Персональный, 5–10 минут' },
+  { label: 'Публикации в соцсетях', official: '2 поста', general: '2–3 поста + рассылка' },
+  { label: 'Билеты для команды', official: '5 (База, 25 000 ₽)', general: '10 (Премиум, 75 000 ₽)' },
+  { label: 'Личный нетворкинг с гостями', official: 'Общий обед', general: 'VIP-зона, обед, знакомства' },
+  { label: 'Пост-ивент отчёт', official: 'Базовая статистика', general: 'Полный отчёт + база контактов' },
+  { label: 'Скидка на обучение в школе', official: '15%', general: '30%' },
+  { label: 'Консультация от экспертов компании «Хакни Нейросети»', official: '1 час с сотрудником компании «Хакни Нейросети»', general: '1 час лично с Сергеем Черниковым' },
+  { label: 'Рекламный ролик о бренде', official: '—', general: '✓' },
+  { label: 'Розыгрыш подарков со сцены', official: '✓', general: '✓' },
+  { label: 'After Party', official: '✓', general: '✓' },
+];
+
 const tiers: Tier[] = [
   {
     key: 'general',
@@ -94,6 +117,7 @@ const tiers: Tier[] = [
 export default function Sponsorship() {
   const rootRef = useRef<HTMLDivElement>(null);
   const [openTier, setOpenTier] = useState<Tier | null>(null);
+  const [compareOpen, setCompareOpen] = useState(false);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -111,15 +135,17 @@ export default function Sponsorship() {
   }, []);
 
   useEffect(() => {
-    if (!openTier) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpenTier(null); };
+    if (!openTier && !compareOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') { setOpenTier(null); setCompareOpen(false); }
+    };
     window.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
     return () => {
       window.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
     };
-  }, [openTier]);
+  }, [openTier, compareOpen]);
 
   return (
     <section id="sponsorship" ref={rootRef}>
@@ -142,6 +168,10 @@ export default function Sponsorship() {
             </button>
           ))}
         </div>
+        <button className="spons-compare-btn rv" onClick={() => setCompareOpen(true)}>
+          <Icon name="Rows3" size={18} strokeWidth={2} />
+          Сравнить пакеты
+        </button>
       </div>
 
       <div className={`spons-modal-overlay${openTier ? ' open' : ''}`} onClick={() => setOpenTier(null)}>
@@ -166,6 +196,56 @@ export default function Sponsorship() {
                 </div>
                 <div className="spons-modal-note">{openTier.note}</div>
               </div>
+              <a className="btn magnetic" href="https://t.me/chernikova_dary" target="_blank" rel="noopener">Обсудить с Дарьей <span className="arr">→</span></a>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className={`spons-modal-overlay${compareOpen ? ' open' : ''}`} onClick={() => setCompareOpen(false)}>
+        {compareOpen && (
+          <div className="spons-modal spons-compare-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="spons-modal-close" onClick={() => setCompareOpen(false)} aria-label="Закрыть">×</button>
+            <div className="spons-modal-scroll" data-lenis-prevent>
+              <div className="eyebrow">// СРАВНЕНИЕ ПАКЕТОВ</div>
+              <h3>Сравнение пакетов</h3>
+
+              <div className="spons-compare-table-wrap">
+                <table className="spons-compare-table">
+                  <thead>
+                    <tr>
+                      <th>Что входит</th>
+                      <th>Партнёр<br /><span className="spons-compare-price">100 000 ₽</span></th>
+                      <th>Генеральный спонсор<br /><span className="spons-compare-price">500 000 ₽</span></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {compareRows.map((r, i) => (
+                      <tr key={i}>
+                        <td>{r.label}</td>
+                        <td>{r.official}</td>
+                        <td>{r.general}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <h4 className="spons-compare-h4">Почему это выгодное вложение</h4>
+              <p className="spons-modal-intro">Похожие события на 250–300 гостей в мире продают партнёрство в диапазоне от 45 000 до 270 000 ₽ на входном уровне и от 450 000 до 1 350 000 ₽ на топ-уровне. Наши тарифы находятся в консервативной части этого диапазона — это значит, что вы получаете доступ к качественной аудитории по цене ниже рыночной, а с ростом узнаваемости конференции ценность вашего партнёрства будет расти.</p>
+
+              <h4 className="spons-compare-h4">Готовы к партнёрству без оплаты деньгами?</h4>
+              <p className="spons-modal-intro">Если вашему бренду удобнее участвовать услугами или продуктом, мы открыты к бартеру:</p>
+              <ul className="spons-modal-features spons-compare-bullets">
+                <li>кофе-брейк, еда, напитки — статус «партнёр кофе-брейка» с логотипом и упоминанием</li>
+                <li>площадка, техника, транспорт — статус технического партнёра</li>
+                <li>подарки и сертификаты для гостей — брендинг и раздача на входе</li>
+              </ul>
+
+              <h4 className="spons-compare-h4">Как начать сотрудничество</h4>
+              <p className="spons-modal-intro">Мы готовы обсудить индивидуальные условия и адаптировать пакет под задачи именно вашего бизнеса. Свяжитесь с нами, чтобы забронировать место в числе партнёров конференции — количество спонсорских мест ограничено.</p>
+              <p className="spons-compare-org">Организатор: Сергей Черников, школа «Хакни Нейросети», Владивосток<br />Телефон <a href="tel:+79811292499">+7 981 129-24-99</a>, Дарья</p>
+
               <a className="btn magnetic" href="https://t.me/chernikova_dary" target="_blank" rel="noopener">Обсудить с Дарьей <span className="arr">→</span></a>
             </div>
           </div>

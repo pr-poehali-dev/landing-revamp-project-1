@@ -2976,6 +2976,106 @@ section {
   filter: drop-shadow(0 0 8px rgba(0, 229, 245, 0.5));
 }
 
+.spons-compare-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 36px;
+  padding: 14px 26px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--t1);
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition:
+    border-color 0.3s,
+    background 0.3s,
+    color 0.3s;
+}
+.spons-compare-btn:hover {
+  border-color: var(--cyan);
+  background: var(--cyan-dim);
+  color: var(--cyan);
+}
+.spons-compare-modal {
+  width: min(880px, 100%);
+  max-height: min(88vh, 820px);
+}
+.spons-compare-table-wrap {
+  overflow-x: auto;
+  margin: 24px 0 32px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+.spons-compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  min-width: 620px;
+}
+.spons-compare-table th,
+.spons-compare-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  line-height: 1.4;
+}
+.spons-compare-table th {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--t2);
+  background: var(--navy);
+  white-space: nowrap;
+}
+.spons-compare-table th:first-child,
+.spons-compare-table td:first-child {
+  color: var(--t1);
+  font-weight: 700;
+  min-width: 220px;
+}
+.spons-compare-table th:not(:first-child),
+.spons-compare-table td:not(:first-child) {
+  color: var(--t2);
+  min-width: 200px;
+}
+.spons-compare-price {
+  display: inline-block;
+  margin-top: 4px;
+  color: var(--cyan);
+  font-weight: 700;
+}
+.spons-compare-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.spons-compare-h4 {
+  font-family: var(--disp);
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin: 28px 0 12px;
+}
+.spons-compare-bullets {
+  margin-bottom: 24px;
+}
+.spons-compare-bullets li {
+  color: var(--t2);
+}
+.spons-compare-org {
+  color: var(--t2);
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 24px 0 28px;
+}
+.spons-compare-org a {
+  color: var(--cyan);
+}
+
 .spons-modal-overlay {
   position: fixed;
   inset: 0;
