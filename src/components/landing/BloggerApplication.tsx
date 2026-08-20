@@ -45,7 +45,11 @@ export default function BloggerApplication() {
       const res = await fetch(FUNC_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          page: window.location.href,
+          ref: new URLSearchParams(window.location.search).get('ref') || localStorage.getItem('ref_code') || '',
+        }),
       });
       if (!res.ok) throw new Error('Request failed');
       toast.success('Заявка отправлена! Мы свяжемся с вами.');

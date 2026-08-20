@@ -32,6 +32,11 @@ export default function LandingApp() {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    const refFromUrl = new URLSearchParams(window.location.search).get('ref');
+    if (refFromUrl) localStorage.setItem('ref_code', refFromUrl);
+  }, []);
+
+  useEffect(() => {
     const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!RM) {
       const lenis = new Lenis({ lerp: 0.09, smoothWheel: true });

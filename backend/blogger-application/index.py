@@ -1,8 +1,12 @@
 import json
 import os
 import re
+import urllib.error
+import urllib.request
 
 import psycopg2
+
+LEADS_API_URL = 'https://functions.poehali.dev/c39f9717-5033-4220-9c2d-6bd98967430c'
 
 
 def handler(event: dict, context) -> dict:
@@ -51,6 +55,8 @@ def handler(event: dict, context) -> dict:
     followers_count = (body.get('followersCount') or '').strip()
     reach = (body.get('reach') or '').strip()
     phone = (body.get('phone') or '').strip()
+    page = (body.get('page') or '').strip()
+    ref = (body.get('ref') or '').strip()
 
     if not name or not social_network or not social_link or not followers_count or not reach or not phone:
         return {
@@ -100,6 +106,34 @@ def handler(event: dict, context) -> dict:
         cur.close()
     finally:
         conn.close()
+
+    message = (
+        f"Соцсеть: {social_network}\n"
+        f"Ссылка: {social_link}\n"
+        f"Подписчики: {followers_count}\n"
+        f"Охваты: {reach}"
+    )
+    leads_api_key = os.environ.get('LEADS_API_KEY', '')
+    if leads_api_key:
+        leads_payload = {
+            'api_key': leads_api_key,
+            'name': name,
+            'contact': phone,
+            'form': 'Заявка блогера',
+            'message': message,
+            'page': page,
+            'ref': ref,
+        }
+        try:
+            req = urllib.request.Request(
+                LEADS_API_URL,
+                data=json.dumps(leads_payload).encode('utf-8'),
+                headers={'Content-Type': 'application/json'},
+                method='POST',
+            )
+            urllib.request.urlopen(req, timeout=5)
+        except (urllib.error.URLError, urllib.error.HTTPError):
+            pass
 
     return {
         'statusCode': 200,
