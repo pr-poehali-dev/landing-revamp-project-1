@@ -223,8 +223,8 @@ export default function Sponsorship() {
                     {compareRows.map((r, i) => (
                       <tr key={i}>
                         <td>{r.label}</td>
-                        <td>{r.official}</td>
-                        <td>{r.general}</td>
+                        <td data-label="Партнёр — 100 000 ₽">{r.official}</td>
+                        <td data-label="Генеральный — 500 000 ₽">{r.general}</td>
                       </tr>
                     ))}
                   </tbody>
