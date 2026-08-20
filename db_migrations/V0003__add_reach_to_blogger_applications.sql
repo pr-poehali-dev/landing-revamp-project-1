@@ -1,0 +1,1 @@
+ALTER TABLE blogger_applications ADD COLUMN reach VARCHAR(255);

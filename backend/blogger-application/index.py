@@ -7,7 +7,7 @@ import psycopg2
 
 def handler(event: dict, context) -> dict:
     """Принимает заявки от блогеров на участие в мероприятии и сохраняет их в базу данных.
-    Args: event с httpMethod, body (name, socialNetwork, socialLink, followersCount, phone); context с request_id
+    Args: event с httpMethod, body (name, socialNetwork, socialLink, followersCount, reach, phone); context с request_id
     Returns: HTTP response с результатом сохранения заявки
     """
     method = event.get('httpMethod', 'GET')
@@ -49,9 +49,10 @@ def handler(event: dict, context) -> dict:
     social_network = (body.get('socialNetwork') or '').strip()
     social_link = (body.get('socialLink') or '').strip()
     followers_count = (body.get('followersCount') or '').strip()
+    reach = (body.get('reach') or '').strip()
     phone = (body.get('phone') or '').strip()
 
-    if not name or not social_network or not social_link or not followers_count or not phone:
+    if not name or not social_network or not social_link or not followers_count or not reach or not phone:
         return {
             'statusCode': 400,
             'headers': headers,
@@ -86,11 +87,12 @@ def handler(event: dict, context) -> dict:
         social_network_esc = social_network.replace("'", "''")
         social_link_esc = social_link.replace("'", "''")
         followers_count_esc = followers_count.replace("'", "''")
+        reach_esc = reach.replace("'", "''")
         phone_esc = phone.replace("'", "''")
         ip_esc = ip_address.replace("'", "''")
         cur.execute(
-            f"INSERT INTO blogger_applications (name, social_network, social_link, followers_count, phone, ip_address) "
-            f"VALUES ('{name_esc}', '{social_network_esc}', '{social_link_esc}', '{followers_count_esc}', '{phone_esc}', '{ip_esc}') "
+            f"INSERT INTO blogger_applications (name, social_network, social_link, followers_count, reach, phone, ip_address) "
+            f"VALUES ('{name_esc}', '{social_network_esc}', '{social_link_esc}', '{followers_count_esc}', '{reach_esc}', '{phone_esc}', '{ip_esc}') "
             f"RETURNING id"
         )
         new_id = cur.fetchone()[0]

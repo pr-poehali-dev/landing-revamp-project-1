@@ -14,6 +14,7 @@ export default function BloggerApplication() {
     socialNetwork: 'Instagram',
     socialLink: '',
     followersCount: '',
+    reach: '',
     phone: '',
   });
 
@@ -35,7 +36,7 @@ export default function BloggerApplication() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.socialLink || !form.followersCount || !form.phone) {
+    if (!form.name || !form.socialLink || !form.followersCount || !form.reach || !form.phone) {
       toast.error('Заполните все поля формы');
       return;
     }
@@ -48,7 +49,7 @@ export default function BloggerApplication() {
       });
       if (!res.ok) throw new Error('Request failed');
       toast.success('Заявка отправлена! Мы свяжемся с вами.');
-      setForm({ name: '', socialNetwork: 'Instagram', socialLink: '', followersCount: '', phone: '' });
+      setForm({ name: '', socialNetwork: 'Instagram', socialLink: '', followersCount: '', reach: '', phone: '' });
       setOpen(false);
     } catch {
       toast.error('Не удалось отправить заявку. Попробуйте ещё раз.');
@@ -109,6 +110,11 @@ export default function BloggerApplication() {
                 <label className="blogger-field">
                   <span>Количество подписчиков</span>
                   <input type="text" required value={form.followersCount} onChange={update('followersCount')} placeholder="Например, 15 000" />
+                </label>
+
+                <label className="blogger-field">
+                  <span>Охваты по блогу</span>
+                  <input type="text" required value={form.reach} onChange={update('reach')} placeholder="Например, 5 000 просмотров в сторис" />
                 </label>
 
                 <label className="blogger-field">

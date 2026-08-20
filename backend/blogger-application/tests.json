@@ -22,6 +22,7 @@
         "socialNetwork": "Instagram",
         "socialLink": "https://instagram.com/test",
         "followersCount": "10000",
+        "reach": "5000 просмотров в сторис",
         "phone": "+79991234567"
       },
       "expectedStatus": 200,
