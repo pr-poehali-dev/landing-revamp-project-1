@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Icon from '@/components/ui/icon';
 import { useCounters } from './useCounters';
+import BloggerApplication from './BloggerApplication';
 
 export default function Pricing() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -87,6 +88,7 @@ export default function Pricing() {
             <a className="btn btn-orange magnetic" href="https://torguykriptoy.getcourse.ru/baza2.0_vip" target="_blank" rel="noopener">Взять VIP <span className="arr">→</span></a>
           </div>
         </div>
+        <BloggerApplication />
         <div className="chat-notify rv">
           <span className="cn-txt">Чтобы не пропустить информацию, присоединяйтесь в чат в Telegram или в MAX</span>
           <div className="cn-links">

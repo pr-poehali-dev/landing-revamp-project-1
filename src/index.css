@@ -2553,6 +2553,177 @@ section {
   color: var(--deep);
   transform: translateY(-3px);
 }
+.blogger-cta {
+  margin-top: 34px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 28px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 92, 57, 0.35);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 92, 57, 0.1),
+    rgba(255, 92, 57, 0.02)
+  );
+  text-align: left;
+  transition:
+    border-color 0.3s,
+    background 0.3s,
+    transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.blogger-cta:hover {
+  border-color: var(--orange);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 92, 57, 0.18),
+    rgba(255, 92, 57, 0.04)
+  );
+  transform: translateY(-2px);
+}
+.blogger-cta-icon {
+  flex-shrink: 0;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--orange);
+  color: #fff;
+  box-shadow: 0 0 24px rgba(255, 92, 57, 0.5);
+  animation: blogger-cam-bounce 1.8s ease-in-out infinite;
+}
+@keyframes blogger-cam-bounce {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-8deg) scale(1.05);
+  }
+  50% {
+    transform: rotate(0deg) scale(1.1);
+  }
+  75% {
+    transform: rotate(8deg) scale(1.05);
+  }
+}
+.blogger-cta-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+.blogger-cta-title {
+  font-family: var(--disp);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  color: var(--t1);
+}
+.blogger-cta-sub {
+  font-size: 13.5px;
+  color: var(--t2);
+}
+.blogger-cta .arr {
+  flex-shrink: 0;
+  color: var(--orange);
+  font-size: 20px;
+  transition: transform 0.3s var(--ease);
+}
+.blogger-cta:hover .arr {
+  transform: translateX(6px);
+}
+.blogger-modal {
+  width: min(560px, 100%);
+}
+.blogger-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 24px;
+}
+.blogger-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.blogger-field span {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--t3);
+}
+.blogger-field input {
+  padding: 13px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--navy);
+  color: var(--t1);
+  font-family: var(--body);
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.blogger-field input:focus {
+  outline: none;
+  border-color: var(--cyan);
+}
+.blogger-field input::placeholder {
+  color: var(--t3);
+}
+.blogger-net-select {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.blogger-net-opt {
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--navy);
+  color: var(--t2);
+  font-size: 13px;
+  font-weight: 600;
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    background 0.2s;
+}
+.blogger-net-opt.active {
+  border-color: var(--cyan);
+  background: var(--cyan-dim);
+  color: var(--cyan);
+}
+.blogger-form .btn {
+  margin-top: 8px;
+  justify-content: center;
+}
+.blogger-form .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+@media (max-width: 560px) {
+  .blogger-cta {
+    padding: 16px 18px;
+    gap: 14px;
+  }
+  .blogger-cta-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .blogger-cta-title {
+    font-size: 16px;
+  }
+  .blogger-cta-sub {
+    font-size: 12.5px;
+  }
+}
+
 .price-foot {
   margin-top: 34px;
   font-family: var(--mono);
