@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import Icon from '@/components/ui/icon';
+import { hasSubmittedLead, LEAD_SUBMITTED_EVENT } from '@/lib/leadTracking';
 
 type Phase = 'idle' | 'open' | 'min-pulse' | 'min-static';
 
 const OPEN_DELAY = 30000;
-const REOPEN_DELAY = 45000;
+const REOPEN_DELAY = 120000;
 
 const messengers = [
   { key: 'tg', label: 'Telegram', href: 'https://t.me/HackNeuro_bot?start=s=3803564', icon: 'Send' },
@@ -14,6 +15,7 @@ const messengers = [
 
 export default function GiftPopup() {
   const [phase, setPhase] = useState<Phase>('idle');
+  const [suppressed, setSuppressed] = useState(() => hasSubmittedLead());
   const reopenTimerRef = useRef<number | null>(null);
   const clickedRef = useRef(false);
 
@@ -25,9 +27,20 @@ export default function GiftPopup() {
   };
 
   useEffect(() => {
+    const onLeadSubmitted = () => {
+      setSuppressed(true);
+      clearReopenTimer();
+      setPhase('idle');
+    };
+    window.addEventListener(LEAD_SUBMITTED_EVENT, onLeadSubmitted);
+    return () => window.removeEventListener(LEAD_SUBMITTED_EVENT, onLeadSubmitted);
+  }, []);
+
+  useEffect(() => {
+    if (suppressed) return;
     const t = window.setTimeout(() => setPhase('open'), OPEN_DELAY);
     return () => window.clearTimeout(t);
-  }, []);
+  }, [suppressed]);
 
   useEffect(() => () => clearReopenTimer(), []);
 
@@ -45,12 +58,14 @@ export default function GiftPopup() {
 
   const closePopup = () => {
     clearReopenTimer();
-    if (clickedRef.current) {
+    if (clickedRef.current || suppressed) {
       setPhase('min-static');
       return;
     }
     setPhase('min-pulse');
-    reopenTimerRef.current = window.setTimeout(() => setPhase('open'), REOPEN_DELAY);
+    reopenTimerRef.current = window.setTimeout(() => {
+      if (!hasSubmittedLead()) setPhase('open');
+    }, REOPEN_DELAY);
   };
 
   const openPopup = () => {

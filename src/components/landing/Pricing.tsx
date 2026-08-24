@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Icon from '@/components/ui/icon';
 import { useCounters } from './useCounters';
 import BloggerApplication from './BloggerApplication';
+import { markLeadSubmitted } from '@/lib/leadTracking';
 
 export default function Pricing() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -55,7 +56,7 @@ export default function Pricing() {
               <li>Участие в розыгрыше курса на 150 000 ₽</li>
               <li>Чат участников</li>
             </ul>
-            <a className="btn btn-ghost magnetic" href="https://torguykriptoy.getcourse.ru/baza2.0" target="_blank" rel="noopener">Взять БАЗУ <span className="arr">→</span></a>
+            <a className="btn btn-ghost magnetic" href="https://torguykriptoy.getcourse.ru/baza2.0" target="_blank" rel="noopener" onClick={markLeadSubmitted}>Взять БАЗУ <span className="arr">→</span></a>
           </div>
           <div className="price hot brk">
             <i></i><i></i><i></i><i></i>
@@ -71,7 +72,7 @@ export default function Pricing() {
               <li>2 билета на розыгрыш курса</li>
               <li>Билет на единоразовое бесплатное посещение мастер-класса</li>
             </ul>
-            <a className="btn magnetic" href="https://torguykriptoy.getcourse.ru/baza2.0_premium" target="_blank" rel="noopener">Взять ПРЕМИУМ <span className="arr">→</span></a>
+            <a className="btn magnetic" href="https://torguykriptoy.getcourse.ru/baza2.0_premium" target="_blank" rel="noopener" onClick={markLeadSubmitted}>Взять ПРЕМИУМ <span className="arr">→</span></a>
           </div>
           <div className="price brk">
             <i></i><i></i><i></i><i></i>
@@ -85,7 +86,7 @@ export default function Pricing() {
               <li>Сертификат участника</li>
               <li>3 билета на бесплатное посещение мастер-класса</li>
             </ul>
-            <a className="btn btn-orange magnetic" href="https://torguykriptoy.getcourse.ru/baza2.0_vip" target="_blank" rel="noopener">Взять VIP <span className="arr">→</span></a>
+            <a className="btn btn-orange magnetic" href="https://torguykriptoy.getcourse.ru/baza2.0_vip" target="_blank" rel="noopener" onClick={markLeadSubmitted}>Взять VIP <span className="arr">→</span></a>
           </div>
         </div>
         <BloggerApplication />

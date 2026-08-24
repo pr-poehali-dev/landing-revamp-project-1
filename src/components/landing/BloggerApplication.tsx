@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { toast } from 'sonner';
+import { markLeadSubmitted } from '@/lib/leadTracking';
 
 const FUNC_URL = 'https://functions.poehali.dev/d08a4e85-a466-4556-bf5e-34024cc94682';
 
@@ -53,6 +54,7 @@ export default function BloggerApplication() {
       });
       if (!res.ok) throw new Error('Request failed');
       toast.success('Заявка отправлена! Мы свяжемся с вами.');
+      markLeadSubmitted();
       setForm({ name: '', socialNetwork: 'Instagram', socialLink: '', followersCount: '', reach: '', phone: '' });
       setOpen(false);
     } catch {
