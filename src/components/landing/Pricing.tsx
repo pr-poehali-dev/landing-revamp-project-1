@@ -93,10 +93,10 @@ export default function Pricing() {
         <div className="chat-notify rv">
           <span className="cn-txt">Чтобы не пропустить информацию, присоединяйтесь в чат в Telegram или в MAX</span>
           <div className="cn-links">
-            <a className="cn-link" href="https://t.me/chernikova_dary" target="_blank" rel="noopener" aria-label="Чат в Telegram">
+            <a className="cn-link" href="https://t.me/aishowgpt" target="_blank" rel="noopener" aria-label="Чат в Telegram">
               <Icon name="Send" size={20} strokeWidth={2} />
             </a>
-            <a className="cn-link" href="https://max.ru/" target="_blank" rel="noopener" aria-label="Чат в MAX">
+            <a className="cn-link" href="https://max.ru/join/lQb92euN2wMC4OXbOJK_7m6k9xr2P-JGp7pDx6RZHos" target="_blank" rel="noopener" aria-label="Чат в MAX">
               <Icon name="MessageCircle" size={20} strokeWidth={2} />
             </a>
           </div>
