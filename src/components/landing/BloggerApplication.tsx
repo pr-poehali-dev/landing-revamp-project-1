@@ -68,7 +68,7 @@ export default function BloggerApplication() {
     <>
       <button className="blogger-cta rv" onClick={() => setOpen(true)}>
         <span className="blogger-cta-icon">
-          <Icon name="Camera" size={22} strokeWidth={2} />
+          <img src="https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/99a93fd7-2933-413e-bda7-07ed2ae792d8.png" alt="" width={22} height={22} />
         </span>
         <span className="blogger-cta-text">
           <span className="blogger-cta-title">Я БЛОГЕР</span>
@@ -83,7 +83,7 @@ export default function BloggerApplication() {
             <button className="spons-modal-close" onClick={() => setOpen(false)} aria-label="Закрыть">×</button>
             <div className="spons-modal-scroll" data-lenis-prevent>
               <div className="eyebrow">// АККРЕДИТАЦИЯ БЛОГЕРА</div>
-              <h3><Icon name="Camera" size={24} strokeWidth={2} className="spons-modal-icon" /> Заявка блогера</h3>
+              <h3><img src="https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/99a93fd7-2933-413e-bda7-07ed2ae792d8.png" alt="" width={24} height={24} className="spons-modal-icon" /> Заявка блогера</h3>
               <p className="spons-modal-intro">Оставьте контакты — мы свяжемся и расскажем об условиях сотрудничества.</p>
 
               <form className="blogger-form" onSubmit={submit}>
