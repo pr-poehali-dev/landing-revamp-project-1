@@ -101,7 +101,7 @@ export default function Pricing() {
             </a>
           </div>
         </div>
-        <div className="price-foot rv">Оплата от юрлиц — по счёту. Вопросы по билетам и командам: Дарья · <a href="tel:+79811292499">+7 981 129-24-99</a> · TG <a href="https://t.me/chernikova_dary" target="_blank" rel="noopener">@chernikova_dary</a></div>
+        <div className="price-foot rv">Оплата от юрлиц — по счёту. Вопросы по билетам и командам: Дарья · <a href="tel:+79811292499">+7 981 129-24-99</a> · TG <a href="https://t.me/chernikova_dary" target="_blank" rel="noopener">@chernikova_dary</a> · <a href="https://max.ru/u/f9LHodD0cOKBLVDjyIazOQYrynC-NgyWbNi2E6gOfAgMljaJllQCdC9fb4g" target="_blank" rel="noopener">Написать в МАХ</a></div>
       </div>
     </section>
   );
