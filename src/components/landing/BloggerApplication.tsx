@@ -5,17 +5,12 @@ import { markLeadSubmitted } from '@/lib/leadTracking';
 
 const FUNC_URL = 'https://functions.poehali.dev/d08a4e85-a466-4556-bf5e-34024cc94682';
 
-const networks = ['Instagram', 'VK', 'Telegram', 'MAX'];
-
 export default function BloggerApplication() {
   const [open, setOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
     name: '',
-    socialNetwork: 'Instagram',
     socialLink: '',
-    followersCount: '',
-    reach: '',
     phone: '',
   });
 
@@ -37,7 +32,7 @@ export default function BloggerApplication() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.socialLink || !form.followersCount || !form.reach || !form.phone) {
+    if (!form.name || !form.socialLink || !form.phone) {
       toast.error('Заполните все поля формы');
       return;
     }
@@ -55,7 +50,7 @@ export default function BloggerApplication() {
       if (!res.ok) throw new Error('Request failed');
       toast.success('Заявка отправлена! Мы свяжемся с вами.');
       markLeadSubmitted();
-      setForm({ name: '', socialNetwork: 'Instagram', socialLink: '', followersCount: '', reach: '', phone: '' });
+      setForm({ name: '', socialLink: '', phone: '' });
       setOpen(false);
     } catch {
       toast.error('Не удалось отправить заявку. Попробуйте ещё раз.');
@@ -93,34 +88,8 @@ export default function BloggerApplication() {
                 </label>
 
                 <label className="blogger-field">
-                  <span>Соцсеть</span>
-                  <div className="blogger-net-select">
-                    {networks.map((n) => (
-                      <button
-                        key={n}
-                        type="button"
-                        className={`blogger-net-opt${form.socialNetwork === n ? ' active' : ''}`}
-                        onClick={() => setForm((f) => ({ ...f, socialNetwork: n }))}
-                      >
-                        {n}
-                      </button>
-                    ))}
-                  </div>
-                </label>
-
-                <label className="blogger-field">
                   <span>Ссылка на соцсеть</span>
                   <input type="text" required value={form.socialLink} onChange={update('socialLink')} placeholder="https://..." />
-                </label>
-
-                <label className="blogger-field">
-                  <span>Количество подписчиков</span>
-                  <input type="text" required value={form.followersCount} onChange={update('followersCount')} placeholder="Например, 15 000" />
-                </label>
-
-                <label className="blogger-field">
-                  <span>Охваты по блогу</span>
-                  <input type="text" required value={form.reach} onChange={update('reach')} placeholder="Например, 5 000 просмотров в сторис" />
                 </label>
 
                 <label className="blogger-field">
