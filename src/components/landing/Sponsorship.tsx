@@ -196,7 +196,20 @@ export default function Sponsorship() {
                 </div>
                 <div className="spons-modal-note">{openTier.note}</div>
               </div>
-              <a className="btn magnetic" href="https://t.me/chernikova_dary" target="_blank" rel="noopener">Обсудить с Дарьей <span className="arr">→</span></a>
+              <div className="chat-notify">
+                <span className="cn-txt">Связаться с Дарьей</span>
+                <div className="cn-links">
+                  <a className="cn-link" href="https://t.me/chernikova_dary" target="_blank" rel="noopener" aria-label="Написать в Telegram">
+                    <Icon name="Send" size={18} strokeWidth={2} />
+                  </a>
+                  <a className="cn-link" href="https://max.ru/u/f9LHodD0cOKBLVDjyIazOQYrynC-NgyWbNi2E6gOfAgMljaJllQCdC9fb4g" target="_blank" rel="noopener" aria-label="Написать в МАХ">
+                    <Icon name="MessageCircle" size={18} strokeWidth={2} />
+                  </a>
+                  <a className="cn-link" href="tel:+79811292499" aria-label="Позвонить">
+                    <Icon name="Phone" size={18} strokeWidth={2} />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         )}
@@ -246,7 +259,20 @@ export default function Sponsorship() {
               <p className="spons-modal-intro">Мы готовы обсудить индивидуальные условия и адаптировать пакет под задачи именно вашего бизнеса. Свяжитесь с нами, чтобы забронировать место в числе партнёров конференции — количество спонсорских мест ограничено.</p>
               <p className="spons-compare-org">Организатор: Сергей Черников, школа «Хакни Нейросети», Владивосток<br />Телефон <a href="tel:+79811292499">+7 981 129-24-99</a>, Дарья</p>
 
-              <a className="btn magnetic" href="https://t.me/chernikova_dary" target="_blank" rel="noopener">Обсудить с Дарьей <span className="arr">→</span></a>
+              <div className="chat-notify">
+                <span className="cn-txt">Связаться с Дарьей</span>
+                <div className="cn-links">
+                  <a className="cn-link" href="https://t.me/chernikova_dary" target="_blank" rel="noopener" aria-label="Написать в Telegram">
+                    <Icon name="Send" size={18} strokeWidth={2} />
+                  </a>
+                  <a className="cn-link" href="https://max.ru/u/f9LHodD0cOKBLVDjyIazOQYrynC-NgyWbNi2E6gOfAgMljaJllQCdC9fb4g" target="_blank" rel="noopener" aria-label="Написать в МАХ">
+                    <Icon name="MessageCircle" size={18} strokeWidth={2} />
+                  </a>
+                  <a className="cn-link" href="tel:+79811292499" aria-label="Позвонить">
+                    <Icon name="Phone" size={18} strokeWidth={2} />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         )}
