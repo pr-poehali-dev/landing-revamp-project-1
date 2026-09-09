@@ -4,8 +4,8 @@ import { hasSubmittedLead, LEAD_SUBMITTED_EVENT } from '@/lib/leadTracking';
 
 type Phase = 'idle' | 'open' | 'min-pulse' | 'min-static';
 
-const OPEN_DELAY = 30000;
-const REOPEN_DELAY = 120000;
+const MIN_DELAY = 15000;
+const SCROLL_DEPTH_RATIO = 0.45;
 
 const messengers = [
   { key: 'tg', label: 'Telegram', href: 'https://t.me/HackNeuro_bot?start=s=3803564', icon: 'Send' },
@@ -16,20 +16,13 @@ const messengers = [
 export default function GiftPopup() {
   const [phase, setPhase] = useState<Phase>('idle');
   const [suppressed, setSuppressed] = useState(() => hasSubmittedLead());
-  const reopenTimerRef = useRef<number | null>(null);
   const clickedRef = useRef(false);
-
-  const clearReopenTimer = () => {
-    if (reopenTimerRef.current) {
-      window.clearTimeout(reopenTimerRef.current);
-      reopenTimerRef.current = null;
-    }
-  };
+  const shownRef = useRef(false);
+  const readyRef = useRef(false);
 
   useEffect(() => {
     const onLeadSubmitted = () => {
       setSuppressed(true);
-      clearReopenTimer();
       setPhase('idle');
     };
     window.addEventListener(LEAD_SUBMITTED_EVENT, onLeadSubmitted);
@@ -38,11 +31,36 @@ export default function GiftPopup() {
 
   useEffect(() => {
     if (suppressed) return;
-    const t = window.setTimeout(() => setPhase('open'), OPEN_DELAY);
-    return () => window.clearTimeout(t);
-  }, [suppressed]);
 
-  useEffect(() => () => clearReopenTimer(), []);
+    const triggerOpen = () => {
+      if (shownRef.current || !readyRef.current) return;
+      shownRef.current = true;
+      setPhase('open');
+    };
+
+    const readyTimer = window.setTimeout(() => { readyRef.current = true; }, MIN_DELAY);
+
+    const onScroll = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      const ratio = window.scrollY / scrollable;
+      if (ratio >= SCROLL_DEPTH_RATIO) triggerOpen();
+    };
+
+    const isDesktop = window.matchMedia('(pointer: fine)').matches;
+    const onMouseLeave = (e: MouseEvent) => {
+      if (e.clientY <= 0) triggerOpen();
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    if (isDesktop) document.addEventListener('mouseleave', onMouseLeave);
+
+    return () => {
+      window.clearTimeout(readyTimer);
+      window.removeEventListener('scroll', onScroll);
+      if (isDesktop) document.removeEventListener('mouseleave', onMouseLeave);
+    };
+  }, [suppressed]);
 
   useEffect(() => {
     document.body.style.overflow = phase === 'open' ? 'hidden' : '';
@@ -57,25 +75,15 @@ export default function GiftPopup() {
   }, [phase]);
 
   const closePopup = () => {
-    clearReopenTimer();
-    if (clickedRef.current || suppressed) {
-      setPhase('min-static');
-      return;
-    }
-    setPhase('min-pulse');
-    reopenTimerRef.current = window.setTimeout(() => {
-      if (!hasSubmittedLead()) setPhase('open');
-    }, REOPEN_DELAY);
+    setPhase(clickedRef.current || suppressed ? 'min-static' : 'min-pulse');
   };
 
   const openPopup = () => {
-    clearReopenTimer();
     setPhase('open');
   };
 
   const onMessengerClick = () => {
     clickedRef.current = true;
-    clearReopenTimer();
     setPhase('min-static');
   };
 
