@@ -2,8 +2,9 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Icon from '@/components/ui/icon';
+import hlebImolokoLogo from '@/assets/sponsors/hleb-i-moloko-white.png';
 
-const slots = Array.from({ length: 8 }, (_, i) => i + 1);
+const sponsorLogos: (string | null)[] = [hlebImolokoLogo, null, null, null, null, null, null, null];
 
 export default function EventSponsors() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -30,11 +31,17 @@ export default function EventSponsors() {
         <h2 className="h2 rv">БРЕНДЫ, КОТОРЫЕ С НАМИ</h2>
         <p className="lead rv" style={{ maxWidth: 640 }}>Компании, которые поддерживают шоу «Без Ширмы» и стоят рядом с 300 предпринимателями в зале.</p>
         <div className="sponsors-logo-grid">
-          {slots.map((n) => (
-            <div className="sponsor-logo-slot brk" key={n}>
+          {sponsorLogos.map((logo, i) => (
+            <div className="sponsor-logo-slot brk" key={i}>
               <i></i><i></i><i></i><i></i>
-              <Icon name="ImagePlus" size={28} strokeWidth={1.5} />
-              <span>Логотип спонсора</span>
+              {logo ? (
+                <img src={logo} alt="Логотип спонсора" />
+              ) : (
+                <>
+                  <Icon name="ImagePlus" size={28} strokeWidth={1.5} />
+                  <span>Логотип спонсора</span>
+                </>
+              )}
             </div>
           ))}
         </div>
