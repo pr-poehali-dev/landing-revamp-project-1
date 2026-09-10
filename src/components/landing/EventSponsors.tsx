@@ -5,8 +5,9 @@ import Icon from '@/components/ui/icon';
 import hlebImolokoLogo from '@/assets/sponsors/hleb-i-moloko-white.png';
 import tbilissimoLogo from '@/assets/sponsors/tbilissimo.png';
 import oporaRossiiLogo from '@/assets/sponsors/opora-rossii.png';
+import tatevLogo from '@/assets/sponsors/tatev.png';
 
-const sponsorLogos: (string | null)[] = [hlebImolokoLogo, tbilissimoLogo, oporaRossiiLogo, null, null, null, null, null];
+const sponsorLogos: (string | null)[] = [hlebImolokoLogo, tbilissimoLogo, oporaRossiiLogo, tatevLogo, null, null, null, null];
 
 export default function EventSponsors() {
   const rootRef = useRef<HTMLDivElement>(null);
