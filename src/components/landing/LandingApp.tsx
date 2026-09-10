@@ -7,6 +7,7 @@ import CustomCursor from './CustomCursor';
 import Preloader from './Preloader';
 import Nav from './Nav';
 import Hero from './Hero';
+import EventSponsors from './EventSponsors';
 import Ticker from './Ticker';
 import Manifest from './Manifest';
 import Stats from './Stats';
@@ -16,7 +17,6 @@ import Speaker from './Speaker';
 import School from './School';
 import Audience from './Audience';
 import Partners from './Partners';
-import EventSponsors from './EventSponsors';
 import Sponsorship from './Sponsorship';
 import Pricing from './Pricing';
 import FAQ from './FAQ';
@@ -65,6 +65,7 @@ export default function LandingApp() {
       <Preloader onDone={() => setHeroReady(true)} />
       <Nav />
       <Hero ready={heroReady} />
+      <EventSponsors />
       <Ticker />
       <Manifest />
       <Stats />
@@ -74,7 +75,6 @@ export default function LandingApp() {
       <School />
       <Audience />
       <Partners />
-      <EventSponsors />
       <Sponsorship />
       <Pricing />
       <FAQ />

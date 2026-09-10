@@ -27,7 +27,7 @@ export default function Speaker() {
           </div>
         </div>
         <div>
-          <div className="eyebrow rv">// 06 · ВЕДУЩИЙ</div>
+          <div className="eyebrow rv">// 07 · ВЕДУЩИЙ</div>
           <h2 className="h2 rv">СЕРГЕЙ ЧЕРНИКОВ</h2>
           <div className="spk-sub rv">ОСНОВАТЕЛЬ ШКОЛЫ «ХАКНИ НЕЙРОСЕТИ»</div>
           <p className="spk-bio rv">Сооснователь и CEO IT-компании Super-SMM. 6+ лет внедрения ИИ в бизнес. Путь — от грузчика и директора сахарного производства до собственных ИИ-продуктов GPT-BOSS и MultiChat.</p>

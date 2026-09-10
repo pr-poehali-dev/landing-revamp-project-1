@@ -68,7 +68,7 @@ export default function Manifest() {
   return (
     <section id="manifest" ref={rootRef}>
       <div className="mani-stage">
-        <div className="wrap mani-eb"><div className="eyebrow">// 02 · МАНИФЕСТ</div></div>
+        <div className="wrap mani-eb"><div className="eyebrow">// 03 · МАНИФЕСТ</div></div>
         <div className="mani-scene" data-scene="0">
           <h3>ЭТО <span className="strike">НЕ КОНФЕРЕНЦИЯ</span>.</h3>
         </div>

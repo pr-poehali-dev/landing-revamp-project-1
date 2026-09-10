@@ -124,7 +124,7 @@ export default function Program() {
       <div className="wrap">
         <div className="prog-head">
           <div>
-            <div className="eyebrow rv">// 05 · ПРОГРАММА</div>
+            <div className="eyebrow rv">// 06 · ПРОГРАММА</div>
             <h2 className="h2 rv">11 БЛОКОВ. КАЖДЫЙ —<br />ГОТОВЫЙ РЕЗУЛЬТАТ.</h2>
           </div>
           <div className="prog-arrows rv">

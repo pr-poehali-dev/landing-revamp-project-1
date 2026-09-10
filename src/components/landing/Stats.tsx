@@ -72,7 +72,7 @@ export default function Stats() {
   return (
     <section id="stats" ref={rootRef}>
       <div className="wrap">
-        <div className="eyebrow rv">// 03 · ПЕРВОЕ ШОУ УЖЕ БЫЛО</div>
+        <div className="eyebrow rv">// 04 · ПЕРВОЕ ШОУ УЖЕ БЫЛО</div>
         <h2 className="h2 rv">ПЕРВЫЙ РАЗ — ПОЛНЫЙ ЗАЛ<br />ОТЕЛЯ «ЭКВАТОР»</h2>
       </div>
       <EventGallery />
