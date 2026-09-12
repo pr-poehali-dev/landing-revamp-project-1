@@ -85,21 +85,11 @@ export default function Pricing() {
               <li>VIP-зона</li>
               <li>Сертификат участника</li>
               <li>3 билета на бесплатное посещение мастер-класса</li>
-              <li>Закрытое VIP Afterparty в TATEV</li>
             </ul>
             <a className="btn btn-orange magnetic" href="https://torguykriptoy.getcourse.ru/baza2.0_vip" target="_blank" rel="noopener" onClick={markLeadSubmitted}>Взять VIP <span className="arr">→</span></a>
           </div>
         </div>
         <BloggerApplication />
-        <div className="afterparty-block rv">
-          <span className="afterparty-icon">
-            <Icon name="PartyPopper" size={28} strokeWidth={2} />
-          </span>
-          <div className="afterparty-text">
-            <span className="afterparty-tag">Только для VIP, партнёров и спонсоров</span>
-            <p className="afterparty-desc">Выбирайте VIP, если хотите не только увидеть новые инструменты, но и войти в круг людей, с которыми можно создавать новые проекты, партнёрства и возможности</p>
-          </div>
-        </div>
         <div className="chat-notify rv">
           <span className="cn-txt">Чтобы не пропустить информацию, присоединяйтесь в чат в Telegram или в MAX</span>
           <div className="cn-links">
