@@ -85,20 +85,36 @@ export default function Pricing() {
               <li>VIP-зона</li>
               <li>Сертификат участника</li>
               <li>3 билета на бесплатное посещение мастер-класса</li>
-              <li>Закрытое VIP Afterparty в TATEV</li>
+              <li className="li-hot">Закрытое VIP Afterparty в TATEV</li>
             </ul>
             <a className="btn btn-orange magnetic" href="https://torguykriptoy.getcourse.ru/baza2.0_vip" target="_blank" rel="noopener" onClick={markLeadSubmitted}>Взять VIP <span className="arr">→</span></a>
           </div>
         </div>
         <BloggerApplication />
         <div className="afterparty-block rv">
-          <span className="afterparty-icon">
-            <Icon name="PartyPopper" size={28} strokeWidth={2} />
-          </span>
-          <div className="afterparty-text">
-            <span className="afterparty-tag">Только для VIP, партнёров и спонсоров</span>
-            <p className="afterparty-desc">Выбирайте VIP, если хотите не только увидеть новые инструменты, но и войти в круг людей, с которыми можно создавать новые проекты, партнёрства и возможности</p>
+          <div className="afterparty-head">
+            <span className="afterparty-icon">
+              <Icon name="PartyPopper" size={28} strokeWidth={2} />
+            </span>
+            <div className="afterparty-head-text">
+              <span className="afterparty-tag">Только для VIP, партнёров и спонсоров</span>
+              <span className="afterparty-title">Закрытое VIP Afterparty в TATEV</span>
+            </div>
           </div>
+          <div className="afterparty-gallery">
+            <img src="https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/112f805f-40fd-438a-8ac9-2a47a74598ee.jpg" alt="Зал ресторана TATEV с панорамными окнами" loading="lazy" />
+            <img src="https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/4429fbd8-d23d-4b79-a70e-e21e0f89343c.png" alt="Вечер в TATEV" loading="lazy" />
+            <img src="https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/8eb65ac9-50f7-452f-b4de-f9f276b477db.jpg" alt="Лаундж-зона TATEV с живым огнём" loading="lazy" />
+          </div>
+          <p className="afterparty-desc">Выбирайте VIP, если хотите не только увидеть новые инструменты, но и войти в круг людей, с которыми можно создавать новые проекты, партнёрства и возможности</p>
+          <ul className="afterparty-list">
+            <li><Icon name="Mic" size={18} strokeWidth={2} /> Развлекательная программа с ведущим</li>
+            <li><Icon name="Martini" size={18} strokeWidth={2} /> Велком-дринк и фуршет</li>
+            <li><Icon name="Camera" size={18} strokeWidth={2} /> Фотограф</li>
+            <li><Icon name="Users" size={18} strokeWidth={2} /> Нетворкинг, близкое общение и личные знакомства, обмен ресурсами</li>
+          </ul>
+          <p className="afterparty-note">Именно такие вечера заканчиваются партнёрством и заключением договоров 💰</p>
+          <a className="btn btn-orange magnetic afterparty-btn" href="https://torguykriptoy.getcourse.ru/baza2.0_vip" target="_blank" rel="noopener" onClick={markLeadSubmitted}>Взять VIP и попасть на Afterparty <span className="arr">→</span></a>
         </div>
         <div className="chat-notify rv">
           <span className="cn-txt">Чтобы не пропустить информацию, присоединяйтесь в чат в Telegram или в MAX</span>
