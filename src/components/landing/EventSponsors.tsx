@@ -9,8 +9,9 @@ import tatevLogo from '@/assets/sponsors/tatev.png';
 import bushkovskyLogo from '@/assets/sponsors/bushkovsky.png';
 import kofeMashinaLogo from '@/assets/sponsors/kofe-mashina.png';
 import ecoCentrLogo from '@/assets/sponsors/eco-centr.png';
+import mariaShugaiLogo from '@/assets/sponsors/maria-shugai.png';
 
-const sponsorLogos: (string | null)[] = [hlebImolokoLogo, tbilissimoLogo, oporaRossiiLogo, tatevLogo, bushkovskyLogo, kofeMashinaLogo, ecoCentrLogo, null];
+const sponsorLogos: (string | null)[] = [hlebImolokoLogo, tbilissimoLogo, oporaRossiiLogo, tatevLogo, bushkovskyLogo, kofeMashinaLogo, ecoCentrLogo, mariaShugaiLogo];
 
 export default function EventSponsors() {
   const rootRef = useRef<HTMLDivElement>(null);
