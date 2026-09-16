@@ -2418,6 +2418,10 @@ section {
   max-height: 56px;
   object-fit: contain;
 }
+.sponsor-logo-slot img[data-tall="1"] {
+  max-width: 90%;
+  max-height: 104px;
+}
 @media (max-width: 960px) {
   .sponsors-logo-grid {
     grid-template-columns: repeat(3, 1fr);

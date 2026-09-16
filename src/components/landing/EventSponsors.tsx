@@ -42,7 +42,7 @@ export default function EventSponsors() {
             <div className="sponsor-logo-slot brk" key={i}>
               <i></i><i></i><i></i><i></i>
               {logo ? (
-                <img src={logo} alt="Логотип спонсора" />
+                <img src={logo} alt="Логотип спонсора" data-tall={logo === mariaShugaiLogo ? '1' : undefined} />
               ) : (
                 <>
                   <Icon name="ImagePlus" size={28} strokeWidth={1.5} />
