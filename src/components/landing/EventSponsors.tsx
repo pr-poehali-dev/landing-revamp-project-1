@@ -7,10 +7,10 @@ import kofeMashinaLogo from '@/assets/sponsors/kofe-mashina.png';
 import ecoCentrLogo from '@/assets/sponsors/eco-centr.png';
 import mariaShugaiLogo from '@/assets/sponsors/maria-shugai.png';
 import perviyVzrosliyLogo from '@/assets/sponsors/perviy-vzrosliy.png';
-import pacificMediaLogo from '@/assets/sponsors/pacific-media.png';
+import pacificProtekLogo from '@/assets/sponsors/pacific-protek.png';
 
 const rowTop = [hlebImolokoLogo, tbilissimoLogo, oporaRossiiLogo, tatevLogo, bushkovskyLogo];
-const rowBottom = [kofeMashinaLogo, ecoCentrLogo, mariaShugaiLogo, perviyVzrosliyLogo, pacificMediaLogo];
+const rowBottom = [kofeMashinaLogo, ecoCentrLogo, mariaShugaiLogo, perviyVzrosliyLogo, pacificProtekLogo];
 
 const tallLogos = new Set([mariaShugaiLogo]);
 
