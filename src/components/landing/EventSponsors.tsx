@@ -8,8 +8,9 @@ import ecoCentrLogo from '@/assets/sponsors/eco-centr.png';
 import mariaShugaiLogo from '@/assets/sponsors/maria-shugai.png';
 import perviyVzrosliyLogo from '@/assets/sponsors/perviy-vzrosliy.png';
 import pacificProtekLogo from '@/assets/sponsors/pacific-protek.png';
+import superSmmLogo from '@/assets/sponsors/super-smm.png';
 
-const rowTop = [hlebImolokoLogo, tbilissimoLogo, oporaRossiiLogo, tatevLogo, bushkovskyLogo];
+const rowTop = [hlebImolokoLogo, tbilissimoLogo, oporaRossiiLogo, tatevLogo, bushkovskyLogo, superSmmLogo];
 const rowBottom = [kofeMashinaLogo, ecoCentrLogo, mariaShugaiLogo, perviyVzrosliyLogo, pacificProtekLogo];
 
 const tallLogos = new Set([mariaShugaiLogo]);
