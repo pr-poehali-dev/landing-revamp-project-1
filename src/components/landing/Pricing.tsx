@@ -56,7 +56,7 @@ export default function Pricing() {
               <li>Участие в розыгрыше курса на 150 000 ₽</li>
               <li>Чат участников</li>
             </ul>
-            <a className="btn btn-ghost magnetic" href="https://torguykriptoy.getcourse.ru/baza2.0" target="_blank" rel="noopener" onClick={markLeadSubmitted}>Взять БАЗУ <span className="arr">→</span></a>
+            <a className="btn btn-ghost magnetic" href="https://torguykriptoy.getcourse.ru/baza2.0" data-gc-link target="_blank" rel="noopener" onClick={markLeadSubmitted}>Взять БАЗУ <span className="arr">→</span></a>
           </div>
           <div className="price hot brk">
             <i></i><i></i><i></i><i></i>
@@ -72,7 +72,7 @@ export default function Pricing() {
               <li>2 билета на розыгрыш курса</li>
               <li>Билет на единоразовое бесплатное посещение мастер-класса</li>
             </ul>
-            <a className="btn magnetic" href="https://torguykriptoy.getcourse.ru/baza2.0_premium" target="_blank" rel="noopener" onClick={markLeadSubmitted}>Взять ПРЕМИУМ <span className="arr">→</span></a>
+            <a className="btn magnetic" href="https://torguykriptoy.getcourse.ru/baza2.0_premium" data-gc-link target="_blank" rel="noopener" onClick={markLeadSubmitted}>Взять ПРЕМИУМ <span className="arr">→</span></a>
           </div>
           <div className="price brk">
             <i></i><i></i><i></i><i></i>
@@ -87,7 +87,7 @@ export default function Pricing() {
               <li>3 билета на бесплатное посещение мастер-класса</li>
               <li className="li-hot">Закрытое VIP Afterparty в TATEV</li>
             </ul>
-            <a className="btn btn-orange magnetic" href="https://torguykriptoy.getcourse.ru/baza2.0_vip" target="_blank" rel="noopener" onClick={markLeadSubmitted}>Взять VIP <span className="arr">→</span></a>
+            <a className="btn btn-orange magnetic" href="https://torguykriptoy.getcourse.ru/baza2.0_vip" data-gc-link target="_blank" rel="noopener" onClick={markLeadSubmitted}>Взять VIP <span className="arr">→</span></a>
           </div>
         </div>
         <BloggerApplication />
@@ -114,7 +114,7 @@ export default function Pricing() {
             <li><Icon name="Users" size={18} strokeWidth={2} /> Нетворкинг, близкое общение и личные знакомства, обмен ресурсами</li>
           </ul>
           <p className="afterparty-note">Именно такие вечера заканчиваются партнёрством и заключением договоров 💰</p>
-          <a className="btn btn-orange magnetic afterparty-btn" href="https://torguykriptoy.getcourse.ru/baza2.0_vip" target="_blank" rel="noopener" onClick={markLeadSubmitted}>Взять VIP и попасть на Afterparty <span className="arr">→</span></a>
+          <a className="btn btn-orange magnetic afterparty-btn" href="https://torguykriptoy.getcourse.ru/baza2.0_vip" data-gc-link target="_blank" rel="noopener" onClick={markLeadSubmitted}>Взять VIP и попасть на Afterparty <span className="arr">→</span></a>
         </div>
         <div className="chat-notify rv">
           <span className="cn-txt">Чтобы не пропустить информацию, присоединяйтесь в чат в Telegram или в MAX</span>
