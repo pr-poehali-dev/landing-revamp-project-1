@@ -4,7 +4,8 @@ import Icon from '@/components/ui/icon';
 import { particleField, makeTimer, flashEl } from '@/lib/landingUtils';
 import { scrollToEl } from '@/lib/landingScroll';
 
-const HERO_VIDEO = 'https://cdn.poehali.dev/projects/d47b551f-c654-4b4a-9304-5aab4ecf9265/bucket/97f05848-a5a8-4d8e-912a-7849f73d90c6.mp4';
+const HERO_VIDEO = '/hero.mp4';
+const HERO_POSTER = '/hero-poster.jpg';
 
 interface Props {
   ready: boolean;
@@ -118,11 +119,13 @@ export default function Hero({ ready }: Props) {
                 <video
                   ref={videoRef}
                   src={HERO_VIDEO}
+                  poster={HERO_POSTER}
                   autoPlay
                   loop
                   muted
                   playsInline
-                  preload="auto"
+                  preload="metadata"
+                  aria-label="Видеоролик ИИ ШОУ БЕЗ ШИРМЫ 2.0 — конференция по искусственному интеллекту во Владивостоке"
                 />
                 <button className="sound-toggle" onClick={toggleSound} aria-label={muted ? 'Включить звук' : 'Выключить звук'}>
                   <Icon name={muted ? 'VolumeX' : 'Volume2'} size={16} strokeWidth={2} />

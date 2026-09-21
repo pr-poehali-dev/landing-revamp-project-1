@@ -19,7 +19,7 @@ export default function Preloader({ onDone }: Props) {
     if (!pl || !plNum) return;
 
     gsap.to(load, {
-      s: 0, duration: RM ? 0.1 : 2.2, ease: 'power2.inOut',
+      s: 0, duration: RM ? 0.1 : 1.25, ease: 'power2.inOut',
       onUpdate: () => {
         const m = Math.floor(load.s / 60), ss = Math.floor(load.s % 60);
         plNum.textContent = (m < 10 ? '0' : '') + m + ':' + (ss < 10 ? '0' : '') + ss;
@@ -31,7 +31,7 @@ export default function Preloader({ onDone }: Props) {
         plNum.textContent = 'СТАРТ';
         gsap.fromTo(plNum, { letterSpacing: '.2em' }, { letterSpacing: '.04em', duration: 0.3 });
         gsap.to(pl, {
-          yPercent: -100, duration: RM ? 0.1 : 0.7, ease: 'power4.inOut', delay: 0.35,
+          yPercent: -100, duration: RM ? 0.1 : 0.55, ease: 'power4.inOut', delay: 0.2,
           onComplete: () => {
             pl.style.display = 'none';
             onDone();
