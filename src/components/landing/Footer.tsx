@@ -51,7 +51,7 @@ export default function Footer() {
           <a href="#faq" onClick={(e) => go(e, '#faq')}>FAQ</a>
         </div>
         <a className="foot-word" id="foot-word" href="https://chernikovgpt.ru/" target="_blank" rel="noopener" ref={wordRef}>
-          <img src={wordmark} alt="Хакни Нейросети" />
+          <img src={wordmark} alt="Школа «Хакни Нейросети» — организатор ИИ ШОУ БЕЗ ШИРМЫ" loading="lazy" />
         </a>
         <div className="foot-contacts">
           <div className="fc"><div className="lab">Билеты и команды — Дарья</div><a href="tel:+79811292499">+7 981 129-24-99</a></div>
@@ -59,7 +59,7 @@ export default function Footer() {
           <div className="fc"><div className="lab">Дата и место</div><span>17 октября, 10:00–18:00 · отель «Экватор»</span></div>
         </div>
         <div className="foot-meta">
-          <a href="https://chernikovgpt.ru/" target="_blank" rel="noopener"><img src={logo} alt="Хакни Нейросети" /></a>
+          <a href="https://chernikovgpt.ru/" target="_blank" rel="noopener"><img src={logo} alt="Логотип школы «Хакни Нейросети», Владивосток" loading="lazy" /></a>
           <div className="fm">ВЛАДИВОСТОК, УЛ. НАБЕРЕЖНАЯ, 20 · 43.11°N 131.88°E · ИИ ШОУ БЕЗ ШИРМЫ · v2.0</div>
         </div>
       </div>

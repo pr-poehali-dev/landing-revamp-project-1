@@ -50,7 +50,7 @@ export default function Preloader({ onDone }: Props) {
             <circle className="bg" cx="60" cy="60" r="56"></circle>
             <circle className="fg" cx="60" cy="60" r="56"></circle>
           </svg>
-          <img src={logo} alt="Хакни Нейросети" />
+          <img src={logo} alt="Школа «Хакни Нейросети»" />
         </div>
         <div id="pl-label">ХАКНИ НЕЙРОСЕТИ · ПРЕДСТАВЛЯЕТ</div>
         <div id="pl-num" ref={numRef}>30:00</div>

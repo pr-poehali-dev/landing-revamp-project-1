@@ -19,7 +19,7 @@ export default function Speaker() {
         <div className="spk-photo rv" data-cursor="view">
           <div className={`spk-photo-main${glitch ? ' is-glitch' : ''}`}>
             <div className="frame">
-              <img className="gl-img gl-base" src={portrait} alt="Сергей Черников" />
+              <img className="gl-img gl-base" src={portrait} alt="Сергей Черников — организатор и ведущий конференции ИИ ШОУ БЕЗ ШИРМЫ во Владивостоке" width={900} height={1200} />
               <img className="gl-img gl-alt" src={portraitAlt} alt="" aria-hidden="true" />
             </div>
             <div className="tag a">ВЕДУЩИЙ · ОСНОВАТЕЛЬ ШКОЛЫ</div>

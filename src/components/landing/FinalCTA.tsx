@@ -29,7 +29,7 @@ export default function FinalCTA() {
       <canvas id="particles2" ref={canvasRef}></canvas>
       <div className="spot l"></div><div className="spot r"></div><div className="spot c"></div>
       <div id="final-flash"></div>
-      <div className="final-corner c1">// 14 · РЕШЕНИЕ</div>
+      <div className="final-corner c1">// 15 · РЕШЕНИЕ</div>
       <div className="final-corner c2">ЗАЛ · 300 МЕСТ</div>
       <div className="final-corner c3">ОТ 5 000 ₽</div>
       <div className="final-corner c4">РОЗЫГРЫШ 150 000 ₽</div>
@@ -41,12 +41,12 @@ export default function FinalCTA() {
           <span className="row2 rv cy" style={{ display: 'block' }}>ТВОЙ КОНКУРЕНТ УЖЕ ЗАБРОНИРОВАЛ</span>
           <span className="row2 rv" style={{ display: 'block' }}>МЕСТО В ЗАЛЕ.</span>
         </h2>
-        <p className="lead rv">Один день. 12 результатов, созданных у тебя на глазах. Билет стоит как ужин на двоих — навыки останутся навсегда.</p>
+        <p className="lead rv">Один день. 11 результатов, созданных у тебя на глазах. Билет стоит как ужин на двоих — навыки останутся навсегда.</p>
         <div className="final-cta rv">
           <a className="btn btn-primary-big magnetic" href="#pricing" style={{ fontSize: 17, padding: '20px 40px' }}>Забронировать место — от 5 000 ₽ <span className="arr">→</span></a>
           <a className="btn btn-ghost magnetic" href="https://t.me/chernikova_dary" target="_blank" rel="noopener">Задать вопрос Дарье <span className="arr">→</span></a>
         </div>
-        <div className="final-meta rv">17 ОКТЯБРЯ · 10:00–18:00 · ВЛАДИВОСТОК, ОТЕЛЬ «ЭКВАТОР» (УЛ. НАБЕРЕЖНАЯ, 20)</div>
+        <div className="final-meta rv">17 ОКТЯБРЯ 2026 · 10:00–18:00 · ВЛАДИВОСТОК, ОТЕЛЬ «ЭКВАТОР» (УЛ. НАБЕРЕЖНАЯ, 20)</div>
       </div>
     </section>
   );

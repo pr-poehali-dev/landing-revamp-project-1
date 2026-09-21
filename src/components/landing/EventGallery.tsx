@@ -46,7 +46,7 @@ export default function EventGallery() {
             onClick={() => setOpenIndex(i % photos.length)}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setOpenIndex(i % photos.length); }}
           >
-            <img src={src} alt="Кадр с прошедшего ИИ ШОУ" loading="lazy" />
+            <img src={src} alt={`Фото с первого ИИ ШОУ БЕЗ ШИРМЫ во Владивостоке — кадр ${(i % photos.length) + 1}`} loading="lazy" width={480} height={320} />
           </div>
         ))}
       </div>
@@ -62,7 +62,7 @@ export default function EventGallery() {
           <img
             className="lb-img"
             src={photos[openIndex]}
-            alt="Кадр с прошедшего ИИ ШОУ"
+            alt={`Фото с первого ИИ ШОУ БЕЗ ШИРМЫ во Владивостоке — кадр ${openIndex + 1}`}
             onClick={(e) => e.stopPropagation()}
           />
           <button className="lb-nav lb-next" aria-label="Следующее фото" onClick={(e) => { e.stopPropagation(); next(); }}>

@@ -22,7 +22,7 @@ function Marquee({ logos, dir }: { logos: string[]; dir: 'left' | 'right' }) {
       <div className={`spx-track spx-${dir}`}>
         {loop.map((logo, i) => (
           <div className="spx-item" key={i}>
-            <img src={logo} alt="Логотип партнёра" loading="lazy" data-tall={tallLogos.has(logo) ? '1' : undefined} />
+            <img src={logo} alt="Логотип партнёра ИИ ШОУ БЕЗ ШИРМЫ во Владивостоке" loading="lazy" data-tall={tallLogos.has(logo) ? '1' : undefined} />
           </div>
         ))}
       </div>

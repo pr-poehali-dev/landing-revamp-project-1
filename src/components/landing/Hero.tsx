@@ -86,7 +86,7 @@ export default function Hero({ ready }: Props) {
       <div className="wrap hero-inner">
         <div className="hero-cols">
           <div className="hero-col-text">
-            <div className="eyebrow rv">// 01 · 17 ОКТЯБРЯ · ВЛАДИВОСТОК</div>
+            <div className="eyebrow rv">// 01 · 17 ОКТЯБРЯ 2026 · ВЛАДИВОСТОК</div>
             <div className="showtimer" id="hero-timer" aria-label="Таймер блока: 30 минут">
               {['3', '0', ':', '0', '0'].map((d, i) => (
                 <span className="dg" key={i}><b ref={(el) => (digitsRef.current[i] = el)}>{d}</b></span>
@@ -96,18 +96,20 @@ export default function Hero({ ready }: Props) {
             <h1>
               <span className="row"><span className="grad-text">ИИ ШОУ</span></span>
               <span className="row o"><span>БЕЗ ШИРМЫ 2.0</span></span>
+              <span className="sr-only"> — практическая конференция по искусственному интеллекту и нейросетям во Владивостоке</span>
             </h1>
-            <p className="lead rv">Это не конференция и не «вдохновляющие истории». Это шоу, где каждые полчаса из воздуха рождается готовый результат для бизнеса — сайт, ролик, агент, презентация инвестору.</p>
+            <p className="hero-sub rv">Практическая конференция по искусственному интеллекту и нейросетям во Владивостоке</p>
+            <p className="lead rv">Это не конференция и не «вдохновляющие истории». Это шоу, где каждые полчаса из воздуха рождается готовый результат для бизнеса — сайт, ролик, ИИ-агент, презентация инвестору.</p>
             <div className="hero-cta rv">
               <a className="btn magnetic" href="#pricing" onClick={(e) => go(e, '#pricing')}>Забронировать место <span className="arr">→</span></a>
               <a className="btn btn-ghost magnetic" href="#program" onClick={(e) => go(e, '#program')}>Смотреть программу <span className="arr">↓</span></a>
             </div>
             <div className="hero-datebar rv">
-              <span className="hdb-item"><Icon name="CalendarDays" size={16} strokeWidth={2} />17 октября · 10:00–18:00</span>
+              <span className="hdb-item"><Icon name="CalendarDays" size={16} strokeWidth={2} />17 октября 2026 · 10:00–18:00</span>
               <span className="hdb-sep">·</span>
               <span className="hdb-item"><Icon name="MapPin" size={16} strokeWidth={2} />Владивосток, отель «Экватор» (ул. Набережная, 20)</span>
             </div>
-            <div className="hero-meta rv">БИЛЕТ ОТ <b>5 000 ₽</b> · <b>12 БЛОКОВ</b> ПРАКТИКИ · РОЗЫГРЫШ КУРСА НА <b>150 000 ₽</b></div>
+            <div className="hero-meta rv">БИЛЕТ ОТ <b>5 000 ₽</b> · <b>11 БЛОКОВ</b> ПРАКТИКИ · РОЗЫГРЫШ КУРСА НА <b>150 000 ₽</b></div>
           </div>
 
           <div className="hero-col-media">

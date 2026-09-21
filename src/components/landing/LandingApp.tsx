@@ -20,6 +20,7 @@ import Partners from './Partners';
 import Sponsorship from './Sponsorship';
 import Pricing from './Pricing';
 import FAQ from './FAQ';
+import Venue from './Venue';
 import FinalCTA from './FinalCTA';
 import Footer from './Footer';
 import RevealAnimations from './RevealAnimations';
@@ -78,6 +79,7 @@ export default function LandingApp() {
       <Sponsorship />
       <Pricing />
       <FAQ />
+      <Venue />
       <FinalCTA />
       <Footer />
       <RevealAnimations />

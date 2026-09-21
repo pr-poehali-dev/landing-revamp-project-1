@@ -43,7 +43,7 @@ export default function Nav() {
       <nav id="nav" ref={navRef}>
         <div className="wrap">
           <a className="brand" href="https://chernikovgpt.ru/" target="_blank" rel="noopener">
-            <img src={logo} alt="ХН" /><span>ХАКНИ<br />НЕЙРОСЕТИ</span>
+            <img src={logo} alt="Школа «Хакни Нейросети»" /><span>ХАКНИ<br />НЕЙРОСЕТИ</span>
           </a>
           <div className="links">
             <a href="#program" onClick={(e) => go(e, '#program')}>Программа</a>

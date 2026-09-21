@@ -8,11 +8,13 @@ import { useEffect } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { initGetcourseReferral } from "@/lib/getcourseReferral";
+import { initAnalytics } from "@/lib/analytics";
 
 const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => initGetcourseReferral(), []);
+  useEffect(() => initAnalytics(), []);
 
   return (
     <QueryClientProvider client={queryClient}>
