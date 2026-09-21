@@ -72,4 +72,5 @@ User-agent: *
 Allow: /
 
 Host: https://chernikovneuro.online
+IndexNow: f3e2e04ec1b913b1c9eaa984d2d8a1cc
 Sitemap: https://chernikovneuro.online/sitemap.xml
