@@ -9,11 +9,12 @@ import mariaShugaiLogo from '@/assets/sponsors/maria-shugai.png';
 import perviyVzrosliyLogo from '@/assets/sponsors/perviy-vzrosliy.png';
 import pacificProtekLogo from '@/assets/sponsors/pacific-protek.png';
 import superSmmLogo from '@/assets/sponsors/super-smm.png';
+import plesyLogo from '@/assets/sponsors/plesy-peschanogo.png';
 
 const rowTop = [hlebImolokoLogo, tbilissimoLogo, oporaRossiiLogo, tatevLogo, bushkovskyLogo, superSmmLogo];
-const rowBottom = [kofeMashinaLogo, ecoCentrLogo, mariaShugaiLogo, perviyVzrosliyLogo, pacificProtekLogo];
+const rowBottom = [kofeMashinaLogo, ecoCentrLogo, plesyLogo, mariaShugaiLogo, perviyVzrosliyLogo, pacificProtekLogo];
 
-const tallLogos = new Set([mariaShugaiLogo]);
+const tallLogos = new Set([mariaShugaiLogo, plesyLogo]);
 
 function Marquee({ logos, dir }: { logos: string[]; dir: 'left' | 'right' }) {
   const loop = [...logos, ...logos, ...logos];
