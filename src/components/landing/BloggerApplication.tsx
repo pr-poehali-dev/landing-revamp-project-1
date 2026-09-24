@@ -47,13 +47,17 @@ export default function BloggerApplication() {
           ref: new URLSearchParams(window.location.search).get('ref') || localStorage.getItem('ref_code') || '',
         }),
       });
-      if (!res.ok) throw new Error('Request failed');
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error || 'Request failed');
+      }
       toast.success('Заявка отправлена! Мы свяжемся с вами.');
       markLeadSubmitted();
       setForm({ name: '', socialLink: '', phone: '' });
       setOpen(false);
-    } catch {
-      toast.error('Не удалось отправить заявку. Попробуйте ещё раз.');
+    } catch (err) {
+      const msg = err instanceof Error && err.message !== 'Request failed' ? err.message : 'Не удалось отправить заявку. Попробуйте ещё раз.';
+      toast.error(msg);
     } finally {
       setSubmitting(false);
     }

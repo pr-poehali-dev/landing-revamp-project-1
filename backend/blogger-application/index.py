@@ -8,10 +8,29 @@ import psycopg2
 
 LEADS_API_URL = 'https://functions.poehali.dev/c39f9717-5033-4220-9c2d-6bd98967430c'
 
+NETWORK_PATTERNS = [
+    ('Instagram', ('instagram.com', 'instagr.am')),
+    ('VK', ('vk.com', 'vkontakte.ru', 'vk.ru')),
+    ('Telegram', ('t.me', 'telegram.me', 'telegram.org')),
+    ('MAX', ('max.ru',)),
+    ('YouTube', ('youtube.com', 'youtu.be')),
+    ('TikTok', ('tiktok.com',)),
+    ('Дзен', ('dzen.ru', 'zen.yandex')),
+]
+
+
+def detect_network(link: str) -> str:
+    low = link.lower()
+    for title, domains in NETWORK_PATTERNS:
+        for domain in domains:
+            if domain in low:
+                return title
+    return 'Другое'
+
 
 def handler(event: dict, context) -> dict:
     """Принимает заявки от блогеров на участие в мероприятии и сохраняет их в базу данных.
-    Args: event с httpMethod, body (name, socialNetwork, socialLink, followersCount, reach, phone); context с request_id
+    Args: event с httpMethod, body (name, socialLink, phone); context с request_id
     Returns: HTTP response с результатом сохранения заявки
     """
     method = event.get('httpMethod', 'GET')
@@ -58,20 +77,19 @@ def handler(event: dict, context) -> dict:
     page = (body.get('page') or '').strip()
     ref = (body.get('ref') or '').strip()
 
-    if not name or not social_network or not social_link or not followers_count or not reach or not phone:
+    if not name or not social_link or not phone:
         return {
             'statusCode': 400,
             'headers': headers,
-            'body': json.dumps({'error': 'Все поля обязательны для заполнения'}),
+            'body': json.dumps({'error': 'Заполните имя, ссылку и телефон'}),
         }
 
-    allowed_networks = {'Instagram', 'VK', 'Telegram', 'MAX'}
-    if social_network not in allowed_networks:
-        return {
-            'statusCode': 400,
-            'headers': headers,
-            'body': json.dumps({'error': 'Некорректная соцсеть'}),
-        }
+    if not social_network:
+        social_network = detect_network(social_link)
+    if not followers_count:
+        followers_count = '—'
+    if not reach:
+        reach = '—'
 
     phone_digits = re.sub(r'\D', '', phone)
     if len(phone_digits) < 10:
@@ -107,12 +125,12 @@ def handler(event: dict, context) -> dict:
     finally:
         conn.close()
 
-    message = (
-        f"Соцсеть: {social_network}\n"
-        f"Ссылка: {social_link}\n"
-        f"Подписчики: {followers_count}\n"
-        f"Охваты: {reach}"
-    )
+    message_lines = [f"Соцсеть: {social_network}", f"Ссылка: {social_link}"]
+    if followers_count != '—':
+        message_lines.append(f"Подписчики: {followers_count}")
+    if reach != '—':
+        message_lines.append(f"Охваты: {reach}")
+    message = "\n".join(message_lines)
     leads_api_key = os.environ.get('LEADS_API_KEY', '')
     if leads_api_key:
         leads_payload = {

@@ -14,7 +14,20 @@
       "expectedStatus": 400
     },
     {
-      "name": "POST valid application",
+      "name": "POST short form",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Иван Иванов",
+        "socialLink": "https://www.instagram.com/test/",
+        "phone": "+79991234567"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {"success": true},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "POST full form",
       "method": "POST",
       "path": "/",
       "body": {
