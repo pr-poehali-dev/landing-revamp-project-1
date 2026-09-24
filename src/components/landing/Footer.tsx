@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Link } from 'react-router-dom';
+import Icon from '@/components/ui/icon';
 import logo from '@/assets/hackni-logo.jpg';
 import wordmark from '@/assets/hackni-wordmark.png';
 import { scrollToEl } from '@/lib/landingScroll';
@@ -63,7 +65,12 @@ export default function Footer() {
           <div className="fm">ВЛАДИВОСТОК, УЛ. НАБЕРЕЖНАЯ, 20 · 43.11°N 131.88°E · ИИ ШОУ БЕЗ ШИРМЫ · v2.0</div>
         </div>
       </div>
-      <div className="foot-copy">© Школа «Хакни Нейросети» · ИИ ШОУ БЕЗ ШИРМЫ 2.0</div>
+      <div className="foot-copy">
+        © Школа «Хакни Нейросети» · ИИ ШОУ БЕЗ ШИРМЫ 2.0
+        <Link to="/blogers" className="foot-admin" aria-label="Служебный вход" title="Служебный вход">
+          <Icon name="Lock" size={13} />
+        </Link>
+      </div>
     </footer>
   );
 }

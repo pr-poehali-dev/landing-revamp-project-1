@@ -1,0 +1,32 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "GET without password",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 401
+    },
+    {
+      "name": "POST wrong password",
+      "method": "POST",
+      "path": "/",
+      "body": {"password": "wrong"},
+      "expectedStatus": 401
+    },
+    {
+      "name": "POST correct password",
+      "method": "POST",
+      "path": "/",
+      "body": {"password": "DASHA18195120"},
+      "expectedStatus": 200,
+      "expectedBody": {"success": true},
+      "bodyMatcher": "partial"
+    }
+  ]
+}
