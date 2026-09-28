@@ -5200,6 +5200,10 @@ html.theme-light .site-texture {
   overflow: hidden;
 }
 /* верхний шов секции */
+.slice {
+  --seam-x: 0;
+  --slice-open: 1;
+}
 .slice::before {
   content: "";
   position: absolute;
@@ -5209,7 +5213,8 @@ html.theme-light .site-texture {
   z-index: 3;
   top: -1px;
   height: 3px;
-  transform: rotate(-2.4deg);
+  transform: rotate(-2.4deg) translateX(calc(var(--seam-x) * 100%));
+  opacity: calc(1 + var(--seam-x));
   transform-origin: 50% 50%;
   background: linear-gradient(
     90deg,
@@ -5320,6 +5325,8 @@ section.slice.red::after {
   width: 128%;
   height: 4px;
   z-index: 3;
+  transform: rotate(-2.4deg) translateX(calc(var(--seam-x) * -100%));
+  opacity: calc(1 + var(--seam-x));
   background: linear-gradient(
     90deg,
     transparent 0%,
@@ -5328,7 +5335,6 @@ section.slice.red::after {
     #8f1015 82%,
     transparent 100%
   );
-  transform: rotate(-2.4deg);
   box-shadow: 0 0 26px rgba(216, 31, 38, 0.45);
 }
 html.theme-light #event-sponsors,
@@ -5352,9 +5358,203 @@ html.theme-light #venue,
 html.theme-light #first-show {
   background: var(--navy);
 }
+
+
+/* ═══ Подвал: кожаный переплёт с красным швом ═══ */
 footer {
-  background: rgba(4, 5, 8, 0.9);
+  background: #0b0b0e !important;
+  color: var(--t1) !important;
+  border-radius: 0 !important;
+  border-top: 0;
+  padding-top: 52px !important;
+}
+footer::before {
+  content: "";
+  position: absolute;
+  left: -14%;
+  width: 128%;
+  top: 0;
+  height: 4px;
+  z-index: 3;
+  transform: rotate(-2.4deg);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #8f1015 18%,
+    var(--red) 50%,
+    #8f1015 82%,
+    transparent 100%
+  );
+  box-shadow: 0 0 30px rgba(216, 31, 38, 0.45);
+}
+footer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    168deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 46%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+footer > .wrap {
+  position: relative;
+  z-index: 2;
+}
+footer a,
+footer span,
+footer div {
+  color: inherit;
+}
+.foot-nav a {
+  color: var(--t1);
+  opacity: 0.88;
+  transition: opacity 0.25s var(--ease);
+}
+.foot-nav a:hover {
+  opacity: 1;
+}
+.foot-nav a::after,
+.foot-contacts .fc a::after {
+  background: var(--red) !important;
+}
+.foot-contacts {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.foot-contacts .fc .lab {
+  color: var(--cyan);
+  opacity: 0.85;
+}
+.foot-contacts .fc a,
+.foot-contacts .fc span {
+  color: var(--t1);
+}
+.foot-contacts .fc a:hover {
+  color: var(--cyan);
+}
+.foot-meta .fm {
+  color: var(--t2);
+}
+.foot-copy {
+  position: relative;
+  z-index: 2;
+  background: #060608 !important;
+  color: var(--t2) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.foot-word img {
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
 }
 html.theme-light footer {
-  background: var(--deep);
+  background: var(--cyan) !important;
+  color: var(--navy) !important;
+}
+html.theme-light footer::after {
+  display: none;
+}
+html.theme-light .foot-nav a,
+html.theme-light .foot-contacts .fc a,
+html.theme-light .foot-contacts .fc span {
+  color: var(--navy);
+}
+html.theme-light .foot-contacts .fc .lab {
+  color: var(--navy);
+  opacity: 0.7;
+}
+html.theme-light .foot-meta .fm {
+  color: var(--navy);
+}
+html.theme-light .foot-copy {
+  background: var(--navy) !important;
+  color: var(--cyan) !important;
+}
+html.theme-light .foot-word img {
+  filter: none;
+  opacity: 1;
+}
+html.theme-light .foot-nav a::after,
+html.theme-light .foot-contacts .fc a::after {
+  background: var(--navy) !important;
+}
+
+/* Навигация: раньше уходим в бургер, чтобы меню не налезало на логотип */
+@media (max-width: 1180px) {
+  #nav .links {
+    display: none;
+  }
+  .burger {
+    display: flex;
+  }
+}
+@media (max-width: 1320px) and (min-width: 1181px) {
+  #nav .links {
+    gap: 16px;
+  }
+  #nav .links a {
+    font-size: 13px;
+  }
+}
+
+/* Адаптация блока «Как прошло первое шоу» */
+@media (max-width: 720px) {
+  .fs-video .float-tag {
+    display: none;
+  }
+  .fs-play {
+    width: 62px;
+    height: 62px;
+  }
+  .fs-fact {
+    gap: 12px;
+    padding: 13px 14px;
+  }
+  .fs-fact-ico {
+    width: 38px;
+    height: 38px;
+  }
+}
+/* Премиум-детали кожаного переплёта */
+.panel-sec::before {
+  border-radius: 2px;
+}
+.slice::before {
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.9));
+}
+section.slice.red::after {
+  filter: drop-shadow(0 0 6px rgba(216, 31, 38, 0.6));
+}
+/* На узких экранах шов менее наклонный, чтобы не срезать край */
+@media (max-width: 640px) {
+  .slice::before,
+  section.slice.red::after {
+    transform: rotate(-1.4deg) translateX(calc(var(--seam-x) * 100%));
+  }
+  section.slice.red::after {
+    transform: rotate(-1.4deg) translateX(calc(var(--seam-x) * -100%));
+  }
+  .panel-sec::before {
+    transform: rotate(-0.8deg);
+  }
+  footer::before {
+    transform: rotate(-1.4deg);
+  }
+}
+/* Карточки получают лёгкий кожаный рельеф */
+.stat,
+.fs-fact,
+.spx-item {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 14px 34px rgba(0, 0, 0, 0.42);
+}
+html.theme-light .stat,
+html.theme-light .fs-fact,
+html.theme-light .spx-item {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 10px 26px rgba(11, 18, 32, 0.08);
 }
