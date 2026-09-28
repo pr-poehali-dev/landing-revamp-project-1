@@ -9,6 +9,7 @@ import zarina from '@/assets/speaker-zarina.jpg';
 import tsybulskaya from '@/assets/speaker-tsybulskaya.jpg';
 import razumovskaya from '@/assets/speaker-razumovskaya.jpg';
 import shumova from '@/assets/speaker-shumova.jpg';
+import grishin from '@/assets/speaker-grishin.jpg';
 
 type Slot = {
   time: string;
@@ -51,6 +52,7 @@ const schedule: Slot[] = [
     title: 'ИИ-ассистент «Стилист»',
     speaker: 'Максим Гришин',
     role: 'Специалист по ИИ-решениям',
+    photo: grishin,
     desc: 'Создаём персонального ассистента, который анализирует внешность и задачи человека, предлагает образы и помогает с подбором гардероба. На этом примере видно, как собирать ассистентов для любой ниши.',
     benefit: 'Понимание принципов создания ИИ-консультантов, которые персонализируют рекомендации и усиливают продукт.',
     result: 'Работающий прототип цифрового ассистента',
@@ -123,6 +125,7 @@ const schedule: Slot[] = [
     title: 'Рекламный ролик с помощью ИИ',
     speaker: 'Максим Гришин',
     role: 'Специалист по ИИ-решениям',
+    photo: grishin,
     desc: 'Как создать рекламное видео без съёмочной группы, актёров и сложного монтажа. Весь путь от идеи и сценария до генерации кадров и сборки готового ролика.',
     benefit: 'Быстрое тестирование рекламных идей и видеоконтент для соцсетей, презентаций и кампаний.',
     result: 'Готовый рекламный ролик, созданный в режиме реального времени',
