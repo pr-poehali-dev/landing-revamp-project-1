@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import Icon from '@/components/ui/icon';
 import { particleField, makeTimer, flashEl } from '@/lib/landingUtils';
 import { scrollToEl } from '@/lib/landingScroll';
+import neiraEye from '@/assets/neira-eye.jpg';
 
 const HERO_VIDEO = '/hero.mp4';
 const HERO_POSTER = '/hero-poster.jpg';
@@ -82,6 +83,11 @@ export default function Hero({ ready }: Props) {
 
   return (
     <header id="hero">
+      <div className="neira" aria-hidden="true">
+        <img src={neiraEye} alt="" loading="eager" fetchPriority="high" />
+        <div className="neira-blind top"></div>
+        <div className="neira-blind bottom"></div>
+      </div>
       <canvas id="particles" ref={canvasRef}></canvas>
       <div className="spot l"></div><div className="spot r"></div>
       <div className="slit-layer" aria-hidden="true">
