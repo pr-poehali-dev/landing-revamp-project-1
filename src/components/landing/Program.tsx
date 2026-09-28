@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Icon from '@/components/ui/icon';
 import { scrollToEl } from '@/lib/landingScroll';
 import chernikov from '@/assets/speaker-chernikov.jpg';
+import kindurus from '@/assets/speaker-kindurus.jpg';
 
 type Slot = {
   time: string;
@@ -67,6 +68,7 @@ const schedule: Slot[] = [
     title: 'Коммерческое предложение и продающая презентация',
     speaker: 'Андрей Киндурус',
     role: 'Эксперт по продажам и переговорам',
+    photo: kindurus,
     desc: 'Превращаем информацию о компании в предложение, которое объясняет ценность и помогает продавать. Собираем структуру, формулируем аргументы, прорабатываем оффер и делаем убедительную презентацию.',
     benefit: 'Понятный алгоритм подготовки КП для клиентов, партнёров и инвесторов.',
     result: 'Готовое КП и структура презентации, которую можно отправить клиенту',
