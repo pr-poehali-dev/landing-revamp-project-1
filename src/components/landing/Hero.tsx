@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import Icon from '@/components/ui/icon';
-import { particleField, makeTimer, flashEl } from '@/lib/landingUtils';
+import { makeTimer, flashEl } from '@/lib/landingUtils';
 import { scrollToEl } from '@/lib/landingScroll';
 import neiraEye from '@/assets/neira-eye.jpg';
+import panelTex from '@/assets/panel-texture.jpg';
 
 const HERO_VIDEO = '/hero.mp4';
 const HERO_POSTER = '/hero-poster.jpg';
@@ -13,7 +14,6 @@ interface Props {
 }
 
 export default function Hero({ ready }: Props) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const digitsRef = useRef<(HTMLElement | null)[]>([]);
   const stateRef = useRef('30:00');
@@ -26,13 +26,6 @@ export default function Hero({ ready }: Props) {
     v.muted = !v.muted;
     setMuted(v.muted);
   };
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const cleanup = particleField(canvas, 160, 1);
-    return cleanup;
-  }, []);
 
   useEffect(() => {
     if (!ready || startedRef.current) return;
@@ -82,18 +75,17 @@ export default function Hero({ ready }: Props) {
   };
 
   return (
-    <header id="hero">
+    <header id="hero" style={{ '--panel-tex': `url(${panelTex})` } as React.CSSProperties}>
       <div className="neira" aria-hidden="true">
         <img src={neiraEye} alt="" loading="eager" fetchPriority="high" />
         <div className="neira-blind top"></div>
         <div className="neira-blind bottom"></div>
       </div>
-      <canvas id="particles" ref={canvasRef}></canvas>
-      <div className="spot l"></div><div className="spot r"></div>
-      <div className="slit-layer" aria-hidden="true">
-        <div className="slit slit-cyan"></div>
-        <div className="slit slit-dark"></div>
-        <div className="slit slit-red"></div>
+      <div className="cover-bg" aria-hidden="true">
+        <div className="cv-panel p1"></div>
+        <div className="cv-panel p2"></div>
+        <div className="cv-panel p3"></div>
+        <div className="cv-red"></div>
       </div>
       <div className="wrap hero-inner">
         <div className="hero-cols">
