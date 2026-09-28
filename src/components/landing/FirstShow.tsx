@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Icon from '@/components/ui/icon';
 
 const SHOW_VIDEO = '/hero.mp4';
@@ -34,6 +34,42 @@ export default function FirstShow() {
     }
   };
 
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          v.muted = true;
+          setMuted(true);
+          const p = v.play();
+          if (p) p.then(() => setPlaying(true)).catch(() => setPlaying(false));
+        } else if (!v.paused) {
+          v.pause();
+          setPlaying(false);
+        }
+      },
+      { threshold: 0.45 },
+    );
+
+    io.observe(v);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const onPlay = () => setPlaying(true);
+    const onPause = () => setPlaying(false);
+    v.addEventListener('play', onPlay);
+    v.addEventListener('pause', onPause);
+    return () => {
+      v.removeEventListener('play', onPlay);
+      v.removeEventListener('pause', onPause);
+    };
+  }, []);
+
   return (
     <section id="first-show" className="slice red panel-sec">
       <div className="wrap">
@@ -53,14 +89,23 @@ export default function FirstShow() {
                 loop
                 muted
                 playsInline
-                preload="none"
+                preload="metadata"
                 aria-label="Видео с первого ИИ ШОУ БЕЗ ШИРМЫ во Владивостоке"
               />
-              <button className="fs-play" onClick={togglePlay} aria-label={playing ? 'Пауза' : 'Смотреть видео'}>
+              <button
+                className={`fs-play${playing ? ' is-playing' : ''}`}
+                onClick={togglePlay}
+                aria-label={playing ? 'Пауза' : 'Смотреть видео'}
+              >
                 <Icon name={playing ? 'Pause' : 'Play'} size={26} strokeWidth={2} />
               </button>
-              <button className="sound-toggle" onClick={toggleSound} aria-label={muted ? 'Включить звук' : 'Выключить звук'}>
+              <button
+                className={`sound-toggle${muted ? ' is-muted' : ''}`}
+                onClick={toggleSound}
+                aria-label={muted ? 'Включить звук' : 'Выключить звук'}
+              >
                 <Icon name={muted ? 'VolumeX' : 'Volume2'} size={16} strokeWidth={2} />
+                {muted && <span className="sound-hint">Включить звук</span>}
               </button>
             </div>
             <div className="brackets"><i></i><i></i><i></i><i></i></div>
