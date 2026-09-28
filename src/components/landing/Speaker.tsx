@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import portrait from '@/assets/speaker-portrait.jpg';
-import portraitAlt from '@/assets/speaker-portrait-alt.jpg';
+import portrait from '@/assets/speaker-neo.jpg';
+import portraitAlt from '@/assets/speaker-neo-alt.jpg';
 
 export default function Speaker() {
   const [glitch, setGlitch] = useState(false);

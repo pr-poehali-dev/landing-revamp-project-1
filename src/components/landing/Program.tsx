@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Icon from '@/components/ui/icon';
 import { scrollToEl } from '@/lib/landingScroll';
+import chernikov from '@/assets/speaker-chernikov.jpg';
 
 type Slot = {
   time: string;
@@ -11,6 +12,7 @@ type Slot = {
   title: string;
   speaker?: string;
   role?: string;
+  photo?: string;
   desc: string;
   benefit?: string;
   result?: string;
@@ -87,6 +89,7 @@ const schedule: Slot[] = [
     title: 'Продающий сайт своими руками',
     speaker: 'Сергей Черников',
     role: 'Основатель школы «Хакни Нейросети»',
+    photo: chernikov,
     desc: 'Можно ли создать работающий сайт без программиста и недель разработки? Весь процесс на сцене: от идеи и структуры до текстов, оформления и публикации.',
     benefit: 'Самостоятельный быстрый запуск сайтов для продуктов, услуг и проверки бизнес-идей.',
     result: 'Готовый опубликованный сайт, созданный с нуля за время выступления',
@@ -133,6 +136,7 @@ const schedule: Slot[] = [
     title: 'ИИ-агенты и мини-приложения',
     speaker: 'Сергей Черников',
     role: 'Основатель школы «Хакни Нейросети»',
+    photo: chernikov,
     desc: 'Создаём решения, которые не просто отвечают, а выполняют задачи бизнеса.',
     bullets: [
       'ИИ-агенты для Telegram и MAX',
@@ -244,8 +248,10 @@ export default function Program() {
 
                   {s.speaker && (
                     <div className="tl-speaker">
-                      <span className="tl-ava" aria-hidden="true">
-                        <Icon name="User" size={18} strokeWidth={2} />
+                      <span className={`tl-ava${s.photo ? ' has-photo' : ''}`} aria-hidden="true">
+                        {s.photo
+                          ? <img src={s.photo} alt="" loading="lazy" width={38} height={38} />
+                          : <Icon name="User" size={18} strokeWidth={2} />}
                       </span>
                       <span className="tl-sp-text">
                         <b>{s.speaker}</b>
