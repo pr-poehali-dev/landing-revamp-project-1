@@ -1,163 +1,293 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Icon from '@/components/ui/icon';
+import { scrollToEl } from '@/lib/landingScroll';
 
-const cards = [
-  { n: '01', title: 'Сайт за 30 минут', desc: 'Лендинг: структура, тексты, дизайн, публикация.', take: 'свой сайт-шаблон и промпт-цепочку' },
-  { n: '02', title: 'Ассистент-стилист', desc: 'ИИ подбирает образ и гардероб по фото и бюджету.', take: 'схему сервиса для своей ниши' },
-  { n: '03', title: 'Карточки товаров, которые продают', desc: 'Название, описание, SEO, инфографика для маркетплейсов.', take: '3 готовые карточки' },
-  { n: '04', title: 'Рекламный видеоролик', desc: 'Сценарий, генерация, озвучка, монтаж — за один блок.', take: 'ролик + список инструментов с тарифами' },
-  { n: '05', title: 'Коммерческое предложение', desc: 'КП по фирменной анкете из 12 пунктов, которое продаёт курсы по 150 000 ₽.', take: 'анкету и структуру КП' },
-  { n: '06', title: 'Презентация для инвестора', desc: 'Дек со структурой, финмоделью и визуалом.', take: 'каркас дека на 10 слайдов' },
-  { n: '07', title: 'Мини-приложение', desc: 'Без строчки кода. Формат выберет зал голосованием: калькулятор, каталог или квиз.', take: 'ссылку на своё приложение' },
-  { n: '08', title: 'Контент-план на 30 дней', desc: 'Темы, хуки, форматы + 3 поста прямо в блоке.', take: 'план + 3 готовых поста' },
-  { n: '09', title: 'ИИ-агент в Telegram', desc: 'Бот 24/7 отвечает клиентам и ведёт к покупке — как Нейра в нашей школе.', take: 'инструкцию запуска' },
-  { n: '10', title: 'Гимн компании', desc: 'Трек под бренд. Две версии.', take: 'свой трек' },
-  { n: '11', title: 'Скрытый блок-сюрприз', desc: 'Про деньги и про то, что ИИ умеет уже сейчас.', take: 'узнаешь только в зале', chip: 'СЮРПРИЗ', surp: true, time: '??:??' },
+type Slot = {
+  time: string;
+  n?: string;
+  kind: 'block' | 'break' | 'final';
+  title: string;
+  speaker?: string;
+  role?: string;
+  desc: string;
+  benefit?: string;
+  result?: string;
+  bullets?: string[];
+};
+
+const schedule: Slot[] = [
+  {
+    time: '10:00–11:00',
+    kind: 'break',
+    title: 'Регистрация',
+    desc: 'Сбор гостей, получение бейджей и знакомство с площадкой. До старта программы можно пообщаться с предпринимателями, экспертами и партнёрами шоу.',
+    benefit: 'Первые деловые знакомства и возможность заранее найти людей с похожими задачами.',
+  },
+  {
+    time: '11:00–11:30',
+    n: '01',
+    kind: 'block',
+    title: 'Контент-план на месяц',
+    speaker: 'Василиса Шумова',
+    role: 'Эксперт по контент-маркетингу',
+    desc: 'Как перестать каждый день придумывать, что опубликовать. На сцене с помощью ИИ создаём полноценный контент-план: темы, рубрики, форматы, заголовки и идеи для постов.',
+    benefit: 'Хаотичное ведение соцсетей превращается в понятную систему, время на контент сокращается в разы.',
+    result: 'Готовая структура контент-плана под свой бизнес или личный бренд',
+  },
+  {
+    time: '11:30–12:00',
+    n: '02',
+    kind: 'block',
+    title: 'ИИ-ассистент «Стилист»',
+    speaker: 'Максим Гришин',
+    role: 'Специалист по ИИ-решениям',
+    desc: 'Создаём персонального ассистента, который анализирует внешность и задачи человека, предлагает образы и помогает с подбором гардероба. На этом примере видно, как собирать ассистентов для любой ниши.',
+    benefit: 'Понимание принципов создания ИИ-консультантов, которые персонализируют рекомендации и усиливают продукт.',
+    result: 'Работающий прототип цифрового ассистента',
+  },
+  {
+    time: '12:00–12:30',
+    n: '03',
+    kind: 'block',
+    title: 'Продающий визуал',
+    speaker: 'Зарина',
+    role: 'Дизайнер, эксперт по визуальному контенту',
+    desc: 'Как создавать профессиональные визуалы без съёмок, команды и долгой работы дизайнера. Разбираем продающие карточки, рекламные плакаты и реальный кейс серии постеров.',
+    benefit: 'Быстрая подготовка визуалов для рекламы, соцсетей, презентаций и маркетплейсов.',
+    result: 'Готовая продающая карточка или рекламный плакат',
+  },
+  {
+    time: '12:30–13:00',
+    n: '04',
+    kind: 'block',
+    title: 'Коммерческое предложение и продающая презентация',
+    speaker: 'Андрей Киндурус',
+    role: 'Эксперт по продажам и переговорам',
+    desc: 'Превращаем информацию о компании в предложение, которое объясняет ценность и помогает продавать. Собираем структуру, формулируем аргументы, прорабатываем оффер и делаем убедительную презентацию.',
+    benefit: 'Понятный алгоритм подготовки КП для клиентов, партнёров и инвесторов.',
+    result: 'Готовое КП и структура презентации, которую можно отправить клиенту',
+  },
+  {
+    time: '13:00–13:30',
+    n: '05',
+    kind: 'block',
+    title: 'Собственный трек с помощью ИИ',
+    speaker: 'Ольга Разумовская',
+    role: 'Эксперт по креативным ИИ-инструментам',
+    desc: 'Создаём музыкальную композицию: от идеи и текста до аранжировки и готового звучания. Гимны компаний, музыка для рекламы, мероприятий и соцсетей.',
+    benefit: 'Оригинальный музыкальный материал без студии, композитора и длительного продакшена.',
+    result: 'Готовый авторский трек, созданный прямо на сцене',
+  },
+  {
+    time: '13:30–14:00',
+    n: '06',
+    kind: 'block',
+    title: 'Продающий сайт своими руками',
+    speaker: 'Сергей Черников',
+    role: 'Основатель школы «Хакни Нейросети»',
+    desc: 'Можно ли создать работающий сайт без программиста и недель разработки? Весь процесс на сцене: от идеи и структуры до текстов, оформления и публикации.',
+    benefit: 'Самостоятельный быстрый запуск сайтов для продуктов, услуг и проверки бизнес-идей.',
+    result: 'Готовый опубликованный сайт, созданный с нуля за время выступления',
+  },
+  {
+    time: '14:00–14:45',
+    kind: 'break',
+    title: 'Обед',
+    desc: 'Перерыв, общение и нетворкинг. Время обсудить увиденные инструменты и познакомиться с участниками, спикерами и партнёрами шоу.',
+  },
+  {
+    time: '14:45–15:30',
+    kind: 'break',
+    title: 'Партнёрская сессия',
+    desc: 'Представители компаний-партнёров рассказывают о своих продуктах и практических решениях для предпринимателей — сервисы для развития бизнеса, автоматизации и роста.',
+    benefit: 'Полезные предложения, новые контакты и знакомство с компаниями, открытыми к сотрудничеству.',
+  },
+  {
+    time: '15:30–16:00',
+    n: '07',
+    kind: 'block',
+    title: 'Рекламный ролик с помощью ИИ',
+    speaker: 'Максим Гришин',
+    role: 'Специалист по ИИ-решениям',
+    desc: 'Как создать рекламное видео без съёмочной группы, актёров и сложного монтажа. Весь путь от идеи и сценария до генерации кадров и сборки готового ролика.',
+    benefit: 'Быстрое тестирование рекламных идей и видеоконтент для соцсетей, презентаций и кампаний.',
+    result: 'Готовый рекламный ролик, созданный в режиме реального времени',
+  },
+  {
+    time: '16:00–16:30',
+    n: '08',
+    kind: 'block',
+    title: 'NotebookLM: персональная база знаний',
+    speaker: 'Даша Цыбульская',
+    role: 'Эксперт по работе с данными и ИИ',
+    desc: 'Превращаем документы, инструкции и материалы компании в интеллектуального помощника. Загружаем материалы, систематизируем информацию и учимся быстро находить ответы по проверенным источникам.',
+    benefit: 'Работа с большими объёмами информации, ускорение обучения сотрудников и внутренние базы знаний.',
+    result: 'Готовый помощник, который отвечает на вопросы по вашим материалам',
+  },
+  {
+    time: '16:30–17:00',
+    n: '09',
+    kind: 'block',
+    title: 'ИИ-агенты и мини-приложения',
+    speaker: 'Сергей Черников',
+    role: 'Основатель школы «Хакни Нейросети»',
+    desc: 'Создаём решения, которые не просто отвечают, а выполняют задачи бизнеса.',
+    bullets: [
+      'ИИ-агенты для Telegram и MAX',
+      'Сценарии автоматического общения с клиентами',
+      'Примеры действующих бизнес-кейсов',
+      'Мини-приложения без классического программирования',
+    ],
+    benefit: 'Автоматизация консультаций, обработки обращений, продаж и внутренних процессов.',
+    result: 'Прототип ИИ-агента или мини-приложения под задачи вашего бизнеса',
+  },
+  {
+    time: '17:00–17:30',
+    n: '10',
+    kind: 'block',
+    title: 'CRM нового поколения',
+    speaker: 'Команда «Интера»',
+    role: 'Партнёр шоу',
+    desc: 'Как выстроить работу с клиентами, не терять обращения и контролировать каждый этап продажи. CRM объединяет заявки, задачи, коммуникации и аналитику в одном пространстве.',
+    benefit: 'Управляемые продажи, меньше потерянных заявок, выше эффективность команды.',
+    result: 'Понятная модель внедрения CRM — от первого обращения до повторной продажи',
+  },
+  {
+    time: '17:30',
+    kind: 'final',
+    title: 'Финал шоу',
+    desc: 'Подводим итоги дня, благодарим спикеров и партнёров, разыгрываем подарки. После официального завершения владельцы VIP-билетов отправляются на закрытое VIP Afterparty в «ТАТЕВ» — вечернее продолжение с неформальным общением и нетворкингом.',
+  },
 ];
 
 export default function Program() {
-  const galRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const fillRef = useRef<HTMLDivElement>(null);
-  const targetRef = useRef(0);
-  const stepRef = useRef((_dir: number) => {});
+  const rootRef = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState<number | null>(1);
 
   useEffect(() => {
-    const gal = galRef.current;
-    const track = trackRef.current;
-    const progFill = fillRef.current;
-    if (!gal || !track || !progFill) return;
-
-    const MOB = window.matchMedia('(max-width: 960px)').matches;
-
-    let pos = 0, vel = 0, dragging = false, startX = 0, startPos = 0, moved = false;
-    const maxDrag = () => Math.max(0, track.scrollWidth - gal.clientWidth + 40);
-
-    let raf = 0;
-    const render = () => {
-      pos += (targetRef.current - pos) * 0.12;
-      track.style.transform = `translateX(${-pos}px)`;
-      const m = maxDrag();
-      progFill.style.transform = `scaleX(${m > 0 ? pos / m : 0})`;
-      raf = requestAnimationFrame(render);
-    };
-    raf = requestAnimationFrame(render);
-
-    const step = (dir: number) => {
-      const cardEl = track.querySelector<HTMLElement>('.pcard');
-      const cardW = (cardEl?.offsetWidth || 340) + 20;
-      const m = maxDrag();
-      targetRef.current = gsap.utils.clamp(0, m, targetRef.current + dir * cardW);
-    };
-    stepRef.current = step;
-
-    const onDown = (e: PointerEvent) => {
-      if (MOB) return;
-      dragging = true; moved = false; startX = e.clientX; startPos = targetRef.current; vel = 0;
-      gal.setPointerCapture(e.pointerId);
-    };
-    const onMoveP = (e: PointerEvent) => {
-      if (!dragging) return;
-      const dx = e.clientX - startX;
-      if (Math.abs(dx) > 4) moved = true;
-      let nt = startPos - dx;
-      const m = maxDrag();
-      if (nt < 0) nt = nt * 0.3;
-      if (nt > m) nt = m + (nt - m) * 0.3;
-      vel = nt - targetRef.current;
-      targetRef.current = nt;
-    };
-    const endDrag = () => {
-      if (!dragging) return;
-      dragging = false;
-      const m = maxDrag();
-      let t = targetRef.current + vel * 14;
-      const cardEl = track.querySelector<HTMLElement>('.pcard');
-      const cardW = (cardEl?.offsetWidth || 340) + 20;
-      const snapped = Math.round(t / cardW) * cardW;
-      if (Math.abs(t - snapped) / (m || 1) < 0.025) t = snapped;
-      targetRef.current = gsap.utils.clamp(0, m, t);
-    };
-    const onClickCapture = (e: MouseEvent) => { if (moved) e.preventDefault(); };
-    const onKeyDown = (e: KeyboardEvent) => {
-      const r = gal.getBoundingClientRect();
-      if (r.top > innerHeight || r.bottom < 0) return;
-      if (e.key === 'ArrowRight') step(1);
-      if (e.key === 'ArrowLeft') step(-1);
-    };
-
-    if (!MOB) {
-      gal.addEventListener('pointerdown', onDown);
-      gal.addEventListener('pointermove', onMoveP);
-      gal.addEventListener('pointerup', endDrag);
-      gal.addEventListener('pointercancel', endDrag);
-      gal.addEventListener('click', onClickCapture, true);
-    }
-    window.addEventListener('keydown', onKeyDown);
-
+    const root = rootRef.current;
+    if (!root) return;
     const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let st: ScrollTrigger | null = null;
-    if (!RM) {
-      const anim = gsap.fromTo(track.querySelectorAll('.pcard'), { opacity: 0, y: 60, rotateY: 8, transformPerspective: 1200 }, {
-        opacity: 1, y: 0, rotateY: 0, z: 0, duration: 0.5, ease: 'expo.out', stagger: 0.07,
-        scrollTrigger: { trigger: gal, start: 'top 78%', once: true },
+    if (RM) return;
+
+    const triggers: ScrollTrigger[] = [];
+    root.querySelectorAll<HTMLElement>('.tl-row').forEach((row, i) => {
+      const anim = gsap.fromTo(row,
+        { opacity: 0, x: -24 },
+        {
+          opacity: 1, x: 0, duration: 0.55, ease: 'expo.out', delay: (i % 4) * 0.04,
+          scrollTrigger: { trigger: row, start: 'top 90%', once: true },
+        },
+      );
+      if (anim.scrollTrigger) triggers.push(anim.scrollTrigger);
+    });
+
+    const line = root.querySelector<HTMLElement>('.tl-spine i');
+    if (line) {
+      const anim = gsap.fromTo(line, { scaleY: 0 }, {
+        scaleY: 1, ease: 'none',
+        scrollTrigger: { trigger: root.querySelector('.tl'), start: 'top 78%', end: 'bottom 70%', scrub: 0.5 },
       });
-      st = anim.scrollTrigger as ScrollTrigger;
+      if (anim.scrollTrigger) triggers.push(anim.scrollTrigger);
     }
 
-    return () => {
-      cancelAnimationFrame(raf);
-      gal.removeEventListener('pointerdown', onDown);
-      gal.removeEventListener('pointermove', onMoveP);
-      gal.removeEventListener('pointerup', endDrag);
-      gal.removeEventListener('pointercancel', endDrag);
-      gal.removeEventListener('click', onClickCapture, true);
-      window.removeEventListener('keydown', onKeyDown);
-      st?.kill();
-    };
+    return () => triggers.forEach((t) => t.kill());
   }, []);
 
+  const go = (e: React.MouseEvent, sel: string) => {
+    e.preventDefault();
+    const t = document.querySelector(sel);
+    if (t) scrollToEl(t as HTMLElement);
+  };
+
   return (
-    <section id="program" className="slice panel-sec">
+    <section id="program" className="slice panel-sec" ref={rootRef}>
       <div className="wrap">
-        <div className="prog-head">
-          <div>
-            <div className="eyebrow rv">// 07 · ПРОГРАММА</div>
-            <h2 className="h2 rv">11 БЛОКОВ. КАЖДЫЙ —<br />ГОТОВЫЙ РЕЗУЛЬТАТ.</h2>
-          </div>
-          <div className="prog-arrows rv">
-            <button className="prog-arrow-btn" aria-label="Предыдущий блок" onClick={() => stepRef.current(-1)}>
-              <Icon name="ChevronLeft" size={20} strokeWidth={2} />
-            </button>
-            <button className="prog-arrow-btn" aria-label="Следующий блок" onClick={() => stepRef.current(1)}>
-              <Icon name="ChevronRight" size={20} strokeWidth={2} />
-            </button>
-          </div>
-          <div className="drag-hint rv">ТЯНИ <span className="arr">→</span></div>
+        <div className="eyebrow rv">// 07 · ПРОГРАММА</div>
+        <h2 className="h2 rv">11 БЛОКОВ. КАЖДЫЙ —<br />ГОТОВЫЙ РЕЗУЛЬТАТ.</h2>
+        <p className="prog-intro rv">
+          Не лекции о будущем, а технологии в действии. Один день, 11 практических блоков и готовые решения, созданные прямо на сцене: сайты, презентации, рекламные ролики, контент-планы, треки, ИИ-ассистенты и Telegram-агенты. Вы увидите не подготовленные кейсы, а весь процесс — от первого запроса до результата.
+        </p>
+
+        <div className="tl">
+          <div className="tl-spine" aria-hidden="true"><i></i></div>
+
+          {schedule.map((s, i) => {
+            const isOpen = open === i;
+            const interactive = s.kind === 'block';
+            return (
+              <div className={`tl-row tl-${s.kind}${isOpen ? ' open' : ''}`} key={s.time + s.title}>
+                <div className="tl-time">
+                  <span className="tl-dot" aria-hidden="true"></span>
+                  {s.time}
+                </div>
+
+                <div className="tl-card">
+                  <button
+                    type="button"
+                    className="tl-head"
+                    onClick={() => interactive && setOpen(isOpen ? null : i)}
+                    aria-expanded={interactive ? isOpen : undefined}
+                  >
+                    <div className="tl-head-main">
+                      {s.n && <span className="tl-n">{s.n}</span>}
+                      <h5>{s.title}</h5>
+                    </div>
+                    {interactive && (
+                      <span className="tl-chev" aria-hidden="true">
+                        <Icon name="ChevronDown" size={18} strokeWidth={2} />
+                      </span>
+                    )}
+                  </button>
+
+                  {s.speaker && (
+                    <div className="tl-speaker">
+                      <span className="tl-ava" aria-hidden="true">
+                        <Icon name="User" size={18} strokeWidth={2} />
+                      </span>
+                      <span className="tl-sp-text">
+                        <b>{s.speaker}</b>
+                        {s.role && <i>{s.role}</i>}
+                      </span>
+                    </div>
+                  )}
+
+                  <div className="tl-body">
+                    <p className="tl-desc">{s.desc}</p>
+
+                    {s.bullets && (
+                      <ul className="tl-list">
+                        {s.bullets.map((b) => (
+                          <li key={b}><Icon name="Check" size={14} strokeWidth={2.5} />{b}</li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {s.benefit && (
+                      <div className="tl-benefit">
+                        <span className="tl-lab">Польза</span>
+                        {s.benefit}
+                      </div>
+                    )}
+
+                    {s.result && (
+                      <div className="tl-result">
+                        <Icon name="Package" size={15} strokeWidth={2} />
+                        <span><b>Унесёшь:</b> {s.result}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
-      </div>
-      <div className="prog-gal" id="prog-gal" data-cursor="drag" ref={galRef}>
-        <div className="prog-track" id="prog-track" ref={trackRef}>
-          {cards.map((c) => (
-            <div className={`pcard brk${c.surp ? ' surp' : ''}`} key={c.n}>
-              <i></i><i></i><i></i><i></i>
-              {c.chip && <span className="chip o">{c.chip}</span>}
-              <div className="p-top"><span className="pn">{c.n}</span><span>{c.time || '30:00'}</span></div>
-              <h5>{c.title}</h5>
-              <div className="pd">{c.desc}</div>
-              <div className="p-take">УНЕСЁШЬ:<b>{c.take}</b></div>
-            </div>
-          ))}
+
+        <div className="prog-cta rv">
+          Всё это — в каждом билете. <a href="#pricing" onClick={(e) => go(e, '#pricing')}>Выбрать тариф →</a>
         </div>
-      </div>
-      <div className="wrap">
-        <div className="prog-nav">
-          <div className="keys">ТЯНИ / СТРЕЛКИ</div>
-          <div className="tr"><i id="prog-fill" ref={fillRef}></i></div>
-        </div>
-        <div className="prog-cta rv">Всё это — в каждом билете. <a href="#pricing">Выбрать тариф →</a></div>
       </div>
     </section>
   );
