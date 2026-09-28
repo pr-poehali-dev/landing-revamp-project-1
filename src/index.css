@@ -83,6 +83,9 @@
   --cyan-dim: rgba(0, 229, 245, 0.08);
   --orange: #ff5c39;
   --orange-dim: rgba(255, 92, 57, 0.12);
+  --red: #d81f26;
+  --red-dim: rgba(216, 31, 38, 0.14);
+  --paper: #e9e6df;
   --t1: #f2f6fa;
   --t2: #93a3b8;
   --t3: #4e5d72;
@@ -103,6 +106,9 @@ html.theme-light {
   --cyan-dim: rgba(0, 167, 184, 0.1);
   --orange: #e24a2b;
   --orange-dim: rgba(226, 74, 43, 0.1);
+  --red: #c4161c;
+  --red-dim: rgba(196, 22, 28, 0.1);
+  --paper: #1b1b1b;
   --t1: #0b1220;
   --t2: #3c4a5c;
   --t3: #6c7a8c;
@@ -4607,4 +4613,133 @@ footer {
 .foot-admin:hover {
   color: var(--cyan);
   background: rgba(0, 229, 245, 0.1);
+}
+
+/* ── Стиль раздатки: диагональные разрезы «ширмы» ── */
+.slit-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+.slit {
+  position: absolute;
+  left: -14%;
+  width: 128%;
+  transform-origin: 50% 50%;
+  transform: rotate(-13deg);
+}
+.slit-red {
+  top: 86%;
+  height: clamp(4px, 0.6vh, 8px);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--red) 22%,
+    var(--red) 78%,
+    transparent 100%
+  );
+  box-shadow: 0 0 26px rgba(216, 31, 38, 0.55);
+  opacity: 0.9;
+}
+.slit-cyan {
+  top: 12%;
+  height: clamp(2px, 0.3vh, 4px);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--cyan) 30%,
+    var(--cyan) 70%,
+    transparent 100%
+  );
+  box-shadow: 0 0 22px var(--cyan-glow);
+  opacity: 0.35;
+}
+.slit-dark {
+  top: 62%;
+  height: clamp(60px, 9vh, 120px);
+  background: linear-gradient(
+    180deg,
+    rgba(3, 8, 16, 0) 0%,
+    rgba(3, 8, 16, 0.55) 45%,
+    rgba(3, 8, 16, 0) 100%
+  );
+  opacity: 0.6;
+}
+html.theme-light .slit-dark {
+  background: linear-gradient(
+    180deg,
+    rgba(11, 18, 32, 0) 0%,
+    rgba(11, 18, 32, 0.08) 45%,
+    rgba(11, 18, 32, 0) 100%
+  );
+}
+@media (prefers-reduced-motion: no-preference) {
+  .slit-red,
+  .slit-cyan {
+    animation: slitPulse 6s ease-in-out infinite alternate;
+  }
+  .slit-cyan {
+    animation-delay: -3s;
+  }
+}
+@keyframes slitPulse {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 0.95;
+  }
+}
+
+/* Фирменная «бумажная» плашка раздатки */
+.hero-strip {
+  position: relative;
+  display: inline-block;
+  margin: 0 0 clamp(10px, 1.6vh, 16px);
+  padding: clamp(6px, 0.9vh, 10px) clamp(16px, 1.8vw, 26px);
+  background: var(--paper);
+  color: #111;
+  transform: rotate(-2.2deg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+html.theme-light .hero-strip {
+  color: #f4f8fb;
+  box-shadow: 0 10px 26px rgba(11, 18, 32, 0.2);
+}
+.hero-strip::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 5px;
+  background: var(--red);
+}
+.hero-strip span {
+  font-family: var(--disp);
+  font-weight: 700;
+  font-size: clamp(11px, 1vw, 13.5px);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.hero-strip b {
+  color: var(--red);
+  font-weight: 700;
+}
+
+/* Красный акцент в hero */
+#hero h1 .row.red > span {
+  color: var(--red);
+  -webkit-text-stroke: 0;
+}
+.hero-meta .hot {
+  color: var(--red);
+  font-weight: 700;
+}
+.float-tag.tred {
+  border-color: rgba(216, 31, 38, 0.6) !important;
+  background: rgba(216, 31, 38, 0.14) !important;
+  color: #ffd9da !important;
 }
