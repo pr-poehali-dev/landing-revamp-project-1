@@ -10,6 +10,7 @@ import tsybulskaya from '@/assets/speaker-tsybulskaya.jpg';
 import razumovskaya from '@/assets/speaker-razumovskaya.jpg';
 import shumova from '@/assets/speaker-shumova.jpg';
 import grishin from '@/assets/speaker-grishin.jpg';
+import belokonsky from '@/assets/speaker-belokonsky.jpg';
 
 type Slot = {
   time: string;
@@ -165,8 +166,9 @@ const schedule: Slot[] = [
     n: '10',
     kind: 'block',
     title: 'CRM нового поколения',
-    speaker: 'Команда «Интера»',
-    role: 'Партнёр шоу',
+    speaker: 'Артём Белоконский',
+    role: 'Команда «Интера», партнёр шоу',
+    photo: belokonsky,
     desc: 'Как выстроить работу с клиентами, не терять обращения и контролировать каждый этап продажи. CRM объединяет заявки, задачи, коммуникации и аналитику в одном пространстве.',
     benefit: 'Управляемые продажи, меньше потерянных заявок, выше эффективность команды.',
     result: 'Понятная модель внедрения CRM — от первого обращения до повторной продажи',
