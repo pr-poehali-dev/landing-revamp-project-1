@@ -8,6 +8,7 @@ import Preloader from './Preloader';
 import Nav from './Nav';
 import Hero from './Hero';
 import EventSponsors from './EventSponsors';
+import FirstShow from './FirstShow';
 import Ticker from './Ticker';
 import Manifest from './Manifest';
 import Stats from './Stats';
@@ -69,6 +70,7 @@ export default function LandingApp() {
       <EventSponsors />
       <Ticker />
       <Manifest />
+      <FirstShow />
       <Stats />
       <Mechanics />
       <Program />

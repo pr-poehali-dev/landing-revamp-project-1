@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import Icon from '@/components/ui/icon';
 import { makeTimer, flashEl } from '@/lib/landingUtils';
@@ -6,27 +6,14 @@ import { scrollToEl } from '@/lib/landingScroll';
 import neiraEye from '@/assets/neira-eye.jpg';
 import panelTex from '@/assets/panel-texture.jpg';
 
-const HERO_VIDEO = '/hero.mp4';
-const HERO_POSTER = '/hero-poster.jpg';
-
 interface Props {
   ready: boolean;
 }
 
 export default function Hero({ ready }: Props) {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const digitsRef = useRef<(HTMLElement | null)[]>([]);
   const stateRef = useRef('30:00');
   const startedRef = useRef(false);
-  const [muted, setMuted] = useState(true);
-
-  const toggleSound = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.muted = !v.muted;
-    setMuted(v.muted);
-  };
-
   useEffect(() => {
     if (!ready || startedRef.current) return;
     startedRef.current = true;
@@ -60,7 +47,6 @@ export default function Hero({ ready }: Props) {
       gsap.to('#hero h1 .row>span', { yPercent: 0, duration: 0.9, ease: 'expo.out', stagger: 0.15, delay: 0.1 });
       gsap.fromTo('#hero-timer .dg b', { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.7, ease: 'expo.out', stagger: 0.06 });
       gsap.fromTo('#hero .rv', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.08, delay: 0.35, overwrite: 'auto' });
-      gsap.fromTo('.hero-video .frame', { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1.1, ease: 'expo.out', delay: 0.5 });
     }
   }, [ready]);
 
@@ -78,14 +64,15 @@ export default function Hero({ ready }: Props) {
     <header id="hero" style={{ '--panel-tex': `url(${panelTex})` } as React.CSSProperties}>
       <div className="neira" aria-hidden="true">
         <img src={neiraEye} alt="" loading="eager" fetchPriority="high" />
-        <div className="neira-blind top"></div>
-        <div className="neira-blind bottom"></div>
       </div>
       <div className="cover-bg" aria-hidden="true">
         <div className="cv-panel p1"></div>
+        <div className="cv-seam s1"></div>
         <div className="cv-panel p2"></div>
         <div className="cv-panel p3"></div>
+        <div className="cv-seam s2"></div>
         <div className="cv-red"></div>
+        <div className="cv-vignette"></div>
       </div>
       <div className="wrap hero-inner">
         <div className="hero-cols">
@@ -118,30 +105,6 @@ export default function Hero({ ready }: Props) {
             <div className="hero-meta rv">БИЛЕТ ОТ <b>5 000 ₽</b> · <b>11 БЛОКОВ</b> ПРАКТИКИ · РОЗЫГРЫШ КУРСА НА <span className="hot">150 000 ₽</span></div>
           </div>
 
-          <div className="hero-col-media">
-            <div className="hero-video rv" data-cursor="view">
-              <div className="frame">
-                <video
-                  ref={videoRef}
-                  src={HERO_VIDEO}
-                  poster={HERO_POSTER}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  aria-label="Видеоролик ИИ ШОУ БЕЗ ШИРМЫ 2.0 — конференция по искусственному интеллекту во Владивостоке"
-                />
-                <button className="sound-toggle" onClick={toggleSound} aria-label={muted ? 'Включить звук' : 'Выключить звук'}>
-                  <Icon name={muted ? 'VolumeX' : 'Volume2'} size={16} strokeWidth={2} />
-                </button>
-              </div>
-              <div className="brackets"><i></i><i></i><i></i><i></i></div>
-              <div className="float-tag t1">ВЕДУЩИЙ — СЕРГЕЙ ЧЕРНИКОВ</div>
-              <div className="float-tag t2">ЗАЛ · 300 МЕСТ</div>
-              <div className="float-tag t3 tred">v2.0</div>
-            </div>
-          </div>
         </div>
       </div>
       <div className="scroll-hint">ЛИСТАЙ ▾</div>

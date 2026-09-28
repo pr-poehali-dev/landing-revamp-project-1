@@ -4,7 +4,7 @@ export default function Venue() {
   return (
     <section id="venue">
       <div className="wrap">
-        <div className="eyebrow rv">// 14 · МЕСТО ПРОВЕДЕНИЯ</div>
+        <div className="eyebrow rv">// 15 · МЕСТО ПРОВЕДЕНИЯ</div>
         <h2 className="h2 rv">ГДЕ ПРОХОДИТ ИИ ШОУ</h2>
         <div className="venue-grid">
           <div className="venue-text">

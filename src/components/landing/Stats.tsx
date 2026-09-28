@@ -72,7 +72,7 @@ export default function Stats() {
   return (
     <section id="stats" ref={rootRef}>
       <div className="wrap">
-        <div className="eyebrow rv">// 04 · ПЕРВОЕ ШОУ УЖЕ БЫЛО</div>
+        <div className="eyebrow rv">// 05 · ЦИФРЫ ПЕРВОГО ШОУ</div>
         <h2 className="h2 rv">ПЕРВЫЙ РАЗ — ПОЛНЫЙ ЗАЛ<br />ОТЕЛЯ «ЭКВАТОР»</h2>
       </div>
       <EventGallery />
@@ -86,7 +86,7 @@ export default function Stats() {
             </div>
           ))}
         </div>
-        <div className="trust rv" id="trust">На сцене первого шоу — зампред правительства Приморья и министр цифрового развития. Версия 2.0 — мощнее.</div>
+        <div className="trust rv" id="trust">Те же люди, тот же зал — но теперь вдвое больше практики и новые инструменты.</div>
       </div>
     </section>
   );

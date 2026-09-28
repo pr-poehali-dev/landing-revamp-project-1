@@ -11,7 +11,7 @@ export default function School() {
   return (
     <section id="school" ref={rootRef}>
       <div className="wrap">
-        <div className="eyebrow rv">// 08 · ШКОЛА</div>
+        <div className="eyebrow rv">// 09 · ШКОЛА</div>
 
         <h2 className="h2 rv">
           ДУМАЕШЬ, МЫ СДЕЛАЛИ ШОУ ПО МЕТОДИЧКЕ?<br />

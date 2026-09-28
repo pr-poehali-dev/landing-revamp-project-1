@@ -64,7 +64,7 @@ export default function Mechanics() {
         <div className="mech-head">
           <div className="wrap">
             <div>
-              <div className="eyebrow">// 05 · МЕХАНИКА</div>
+              <div className="eyebrow">// 06 · МЕХАНИКА</div>
               <h2 className="h2" style={{ marginBottom: 0 }}>ТРИ ШАГА. НОЛЬ ЗАГОТОВОК.</h2>
             </div>
             <div className="mech-timer" id="mech-timer">30:00</div>
