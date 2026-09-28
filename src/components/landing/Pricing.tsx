@@ -34,7 +34,7 @@ export default function Pricing() {
   }, []);
 
   return (
-    <section id="pricing" ref={rootRef}>
+    <section id="pricing" className="slice" ref={rootRef}>
       <div className="wrap">
         <div className="eyebrow rv">// 13 · ТАРИФЫ</div>
         <h2 className="h2 rv">ЗАЛ — 300 МЕСТ. ЭТО ВСЁ.</h2>

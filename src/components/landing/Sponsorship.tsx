@@ -148,7 +148,7 @@ export default function Sponsorship() {
   }, [openTier, compareOpen]);
 
   return (
-    <section id="sponsorship" ref={rootRef}>
+    <section id="sponsorship" className="slice red panel-sec" ref={rootRef}>
       <div className="wrap">
         <div className="eyebrow rv">// 12 · ПАРТНЁРСТВО</div>
         <h2 className="h2 rv">СТАНЬТЕ ЧАСТЬЮ<br />ШОУ БЕЗ ШИРМЫ</h2>

@@ -120,7 +120,7 @@ export default function Program() {
   }, []);
 
   return (
-    <section id="program">
+    <section id="program" className="slice panel-sec">
       <div className="wrap">
         <div className="prog-head">
           <div>

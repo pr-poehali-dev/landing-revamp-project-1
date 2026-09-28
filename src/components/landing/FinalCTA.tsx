@@ -25,7 +25,7 @@ export default function FinalCTA() {
   }, []);
 
   return (
-    <section id="final">
+    <section id="final" className="slice red">
       <canvas id="particles2" ref={canvasRef}></canvas>
       <div className="spot l"></div><div className="spot r"></div><div className="spot c"></div>
       <div id="final-flash"></div>

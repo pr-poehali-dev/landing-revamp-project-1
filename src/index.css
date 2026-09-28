@@ -5161,3 +5161,200 @@ html.theme-light .cv-vignette {
   line-height: 1.55;
   color: var(--t2);
 }
+
+/* ═══ ФИРМЕННЫЙ СТИЛЬ ОБЛОЖКИ НА ВЕСЬ САЙТ ═══ */
+
+/* Глобальная тёмная база с текстурой панели */
+.landing-app {
+  --site-tex: none;
+  position: relative;
+}
+body {
+  background: #07070a;
+}
+html.theme-light body {
+  background: var(--navy);
+}
+.site-texture {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: var(--site-tex);
+  background-size: 760px auto;
+  background-repeat: repeat;
+  opacity: 0.5;
+}
+html.theme-light .site-texture {
+  opacity: 0.05;
+}
+.landing-app > section,
+.landing-app > header,
+.landing-app > footer {
+  z-index: 1;
+}
+
+/* Диагональный разрез-разделитель между секциями */
+.slice {
+  position: relative;
+  overflow: hidden;
+}
+/* верхний шов секции */
+.slice::before {
+  content: "";
+  position: absolute;
+  left: -14%;
+  width: 128%;
+  pointer-events: none;
+  z-index: 3;
+  top: -1px;
+  height: 3px;
+  transform: rotate(-2.4deg);
+  transform-origin: 50% 50%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(168, 175, 186, 0.28) 16%,
+    rgba(206, 212, 222, 0.5) 50%,
+    rgba(168, 175, 186, 0.28) 84%,
+    transparent 100%
+  );
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+}
+/* Тёмная панель секции поверх текстуры */
+.panel-sec {
+  position: relative;
+}
+.panel-sec::before {
+  content: "";
+  position: absolute;
+  inset: -2% -14%;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 8, 11, 0.86) 0%,
+    rgba(8, 8, 11, 0.94) 50%,
+    rgba(8, 8, 11, 0.86) 100%
+  );
+  transform: rotate(-1.4deg);
+  box-shadow:
+    0 -3px 0 rgba(255, 255, 255, 0.07),
+    0 30px 60px rgba(0, 0, 0, 0.7);
+}
+html.theme-light .panel-sec::before {
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow:
+    0 -2px 0 rgba(0, 0, 0, 0.08),
+    0 24px 50px rgba(11, 18, 32, 0.12);
+}
+
+/* Заголовки в стиле печатной раздатки */
+.h2 {
+  position: relative;
+}
+.h2::after {
+  content: "";
+  display: block;
+  width: 96px;
+  height: 4px;
+  margin-top: 16px;
+  background: linear-gradient(90deg, var(--red) 0%, rgba(216, 31, 38, 0) 100%);
+  transform: skewX(-22deg);
+}
+/* Подпись-бейдж секции */
+.eyebrow {
+  position: relative;
+}
+
+
+/* Секции пропускают текстуру: заменяем плотные фоны на полупрозрачные */
+#event-sponsors,
+#partners,
+#sponsorship,
+#manifest,
+#final {
+  background: rgba(9, 10, 14, 0.72) !important;
+}
+#speaker,
+#school,
+#pricing,
+#mech {
+  background: rgba(4, 5, 8, 0.8) !important;
+}
+#stats,
+#program,
+#audience,
+#faq,
+#venue,
+#first-show {
+  background: rgba(9, 10, 14, 0.5);
+}
+/* диагональный блик вдоль панели секции */
+section.slice > .wrap {
+  position: relative;
+  z-index: 2;
+}
+section.slice::after {
+  content: "";
+  position: absolute;
+  left: -14%;
+  right: -14%;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    168deg,
+    rgba(255, 255, 255, 0.045) 0%,
+    rgba(255, 255, 255, 0.012) 24%,
+    transparent 52%,
+    rgba(0, 0, 0, 0.3) 92%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+section.slice.red::after {
+  bottom: 0;
+  top: auto;
+  left: -14%;
+  right: auto;
+  width: 128%;
+  height: 4px;
+  z-index: 3;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #8f1015 18%,
+    var(--red) 50%,
+    #8f1015 82%,
+    transparent 100%
+  );
+  transform: rotate(-2.4deg);
+  box-shadow: 0 0 26px rgba(216, 31, 38, 0.45);
+}
+html.theme-light #event-sponsors,
+html.theme-light #partners,
+html.theme-light #sponsorship,
+html.theme-light #manifest,
+html.theme-light #final {
+  background: var(--navy) !important;
+}
+html.theme-light #speaker,
+html.theme-light #school,
+html.theme-light #pricing,
+html.theme-light #mech {
+  background: var(--deep) !important;
+}
+html.theme-light #stats,
+html.theme-light #program,
+html.theme-light #audience,
+html.theme-light #faq,
+html.theme-light #venue,
+html.theme-light #first-show {
+  background: var(--navy);
+}
+footer {
+  background: rgba(4, 5, 8, 0.9);
+}
+html.theme-light footer {
+  background: var(--deep);
+}

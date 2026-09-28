@@ -19,7 +19,7 @@ export default function Partners() {
   }, []);
 
   return (
-    <section id="partners">
+    <section id="partners" className="slice">
       <div className="wrap">
         <div className="eyebrow rv">// 11 · ПАРТНЁРЫ ПЕРВОГО ШОУ</div>
         <div className="part-sub rv">Кто доверился школе Хакни Нейросети:</div>

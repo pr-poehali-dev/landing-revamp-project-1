@@ -35,9 +35,9 @@ export default function FirstShow() {
   };
 
   return (
-    <section id="first-show">
+    <section id="first-show" className="slice red panel-sec">
       <div className="wrap">
-        <div className="eyebrow rv">// 04 · КАК ЭТО БЫЛО</div>
+        <div className="eyebrow rv">// 02 · КАК ЭТО БЫЛО</div>
         <h2 className="h2 rv">КАК ПРОШЛО НАШЕ<br />ПЕРВОЕ ШОУ</h2>
         <p className="lead rv" style={{ maxWidth: 680 }}>
           Полный зал отеля «Экватор», восемь часов живой практики и результаты, которые рождались прямо на сцене. Посмотрите, как это выглядело.

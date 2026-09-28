@@ -33,9 +33,9 @@ function Marquee({ logos, dir }: { logos: string[]; dir: 'left' | 'right' }) {
 
 export default function EventSponsors() {
   return (
-    <section id="event-sponsors">
+    <section id="event-sponsors" className="slice">
       <div className="wrap">
-        <div className="eyebrow rv">// 02 · СПОНСОРЫ</div>
+        <div className="eyebrow rv">// 03 · СПОНСОРЫ</div>
         <h2 className="h2 rv">БРЕНДЫ, КОТОРЫЕ С НАМИ</h2>
         <p className="lead rv" style={{ maxWidth: 640 }}>Компании, которые поддерживают шоу «Без Ширмы» и стоят рядом с 300 предпринимателями в зале.</p>
       </div>

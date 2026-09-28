@@ -9,7 +9,7 @@ export default function School() {
   useCounters(rootEl);
 
   return (
-    <section id="school" ref={rootRef}>
+    <section id="school" className="slice panel-sec" ref={rootRef}>
       <div className="wrap">
         <div className="eyebrow rv">// 09 · ШКОЛА</div>
 

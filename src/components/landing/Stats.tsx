@@ -70,7 +70,7 @@ export default function Stats() {
   }, []);
 
   return (
-    <section id="stats" ref={rootRef}>
+    <section id="stats" className="slice panel-sec" ref={rootRef}>
       <div className="wrap">
         <div className="eyebrow rv">// 05 · ЦИФРЫ ПЕРВОГО ШОУ</div>
         <h2 className="h2 rv">ПЕРВЫЙ РАЗ — ПОЛНЫЙ ЗАЛ<br />ОТЕЛЯ «ЭКВАТОР»</h2>

@@ -14,7 +14,7 @@ export default function Speaker() {
   }, []);
 
   return (
-    <section id="speaker">
+    <section id="speaker" className="slice red">
       <div className="wrap spk-grid">
         <div className="spk-photo rv" data-cursor="view">
           <div className={`spk-photo-main${glitch ? ' is-glitch' : ''}`}>

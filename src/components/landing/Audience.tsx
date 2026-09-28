@@ -21,7 +21,7 @@ export default function Audience() {
   }, []);
 
   return (
-    <section id="audience" ref={rootRef}>
+    <section id="audience" className="slice red" ref={rootRef}>
       <div className="wrap">
         <div className="eyebrow rv">// 10 · ДЛЯ КОГО</div>
         <h2 className="h2 rv">ПРИХОДИ, ЕСЛИ ТЫ —</h2>

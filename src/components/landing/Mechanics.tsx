@@ -59,7 +59,7 @@ export default function Mechanics() {
   }, []);
 
   return (
-    <section id="mech" ref={rootRef}>
+    <section id="mech" className="slice red" ref={rootRef}>
       <div className="mech-stage">
         <div className="mech-head">
           <div className="wrap">

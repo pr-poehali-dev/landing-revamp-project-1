@@ -55,7 +55,7 @@ export default function FAQ() {
   }, []);
 
   return (
-    <section id="faq">
+    <section id="faq" className="slice red panel-sec">
       <div className="wrap faq-grid">
         <div className="faq-left">
           <div className="eyebrow rv">// 14 · FAQ</div>

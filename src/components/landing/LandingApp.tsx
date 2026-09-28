@@ -27,6 +27,7 @@ import Footer from './Footer';
 import RevealAnimations from './RevealAnimations';
 import GiftPopup from './GiftPopup';
 import { setLenis } from '@/lib/landingScroll';
+import panelTex from '@/assets/panel-texture.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -61,16 +62,17 @@ export default function LandingApp() {
   }, []);
 
   return (
-    <div className="landing-app">
+    <div className="landing-app" style={{ '--site-tex': `url(${panelTex})` } as React.CSSProperties}>
+      <div className="site-texture" aria-hidden="true" />
       <Noise />
       <CustomCursor />
       <Preloader onDone={() => setHeroReady(true)} />
       <Nav />
       <Hero ready={heroReady} />
+      <FirstShow />
       <EventSponsors />
       <Ticker />
       <Manifest />
-      <FirstShow />
       <Stats />
       <Mechanics />
       <Program />

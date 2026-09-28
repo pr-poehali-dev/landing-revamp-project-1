@@ -2,7 +2,7 @@ import Icon from '@/components/ui/icon';
 
 export default function Venue() {
   return (
-    <section id="venue">
+    <section id="venue" className="slice">
       <div className="wrap">
         <div className="eyebrow rv">// 15 · МЕСТО ПРОВЕДЕНИЯ</div>
         <h2 className="h2 rv">ГДЕ ПРОХОДИТ ИИ ШОУ</h2>
