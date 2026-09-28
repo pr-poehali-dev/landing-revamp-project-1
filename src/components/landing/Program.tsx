@@ -5,6 +5,7 @@ import Icon from '@/components/ui/icon';
 import { scrollToEl } from '@/lib/landingScroll';
 import chernikov from '@/assets/speaker-chernikov.jpg';
 import kindurus from '@/assets/speaker-kindurus.jpg';
+import zarina from '@/assets/speaker-zarina.jpg';
 
 type Slot = {
   time: string;
@@ -57,6 +58,7 @@ const schedule: Slot[] = [
     title: 'Продающий визуал',
     speaker: 'Зарина',
     role: 'Дизайнер, эксперт по визуальному контенту',
+    photo: zarina,
     desc: 'Как создавать профессиональные визуалы без съёмок, команды и долгой работы дизайнера. Разбираем продающие карточки, рекламные плакаты и реальный кейс серии постеров.',
     benefit: 'Быстрая подготовка визуалов для рекламы, соцсетей, презентаций и маркетплейсов.',
     result: 'Готовая продающая карточка или рекламный плакат',
