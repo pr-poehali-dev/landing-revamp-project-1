@@ -7,6 +7,7 @@ import chernikov from '@/assets/speaker-chernikov.jpg';
 import kindurus from '@/assets/speaker-kindurus.jpg';
 import zarina from '@/assets/speaker-zarina.jpg';
 import tsybulskaya from '@/assets/speaker-tsybulskaya.jpg';
+import razumovskaya from '@/assets/speaker-razumovskaya.jpg';
 
 type Slot = {
   time: string;
@@ -83,6 +84,7 @@ const schedule: Slot[] = [
     title: 'Собственный трек с помощью ИИ',
     speaker: 'Ольга Разумовская',
     role: 'Эксперт по креативным ИИ-инструментам',
+    photo: razumovskaya,
     desc: 'Создаём музыкальную композицию: от идеи и текста до аранжировки и готового звучания. Гимны компаний, музыка для рекламы, мероприятий и соцсетей.',
     benefit: 'Оригинальный музыкальный материал без студии, композитора и длительного продакшена.',
     result: 'Готовый авторский трек, созданный прямо на сцене',
