@@ -5287,7 +5287,6 @@ html.theme-light .panel-sec::before {
   position: relative;
 }
 
-
 /* Секции пропускают текстуру: заменяем плотные фоны на полупрозрачные */
 #event-sponsors,
 #partners,
@@ -5374,7 +5373,6 @@ html.theme-light #venue,
 html.theme-light #first-show {
   background: var(--navy);
 }
-
 
 /* ═══ Подвал: кожаный переплёт с красным швом ═══ */
 footer {
@@ -5826,6 +5824,19 @@ html.theme-light .spx-item {
   border: 1px solid rgba(0, 229, 245, 0.35);
   background: rgba(0, 229, 245, 0.08);
   color: var(--cyan);
+}
+.tl-ava.has-photo {
+  padding: 0;
+  overflow: hidden;
+  border-color: rgba(0, 229, 245, 0.55);
+  background: #0b0b0e;
+}
+.tl-ava.has-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%;
+  display: block;
 }
 .tl-sp-text {
   display: flex;
