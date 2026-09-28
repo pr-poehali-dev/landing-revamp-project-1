@@ -4765,14 +4765,12 @@ html.theme-light .hero-strip {
 .neira img {
   position: absolute;
   top: 50%;
-  right: -2%;
+  right: -4%;
   transform: translateY(-50%);
-  height: 124%;
-  width: auto;
-  min-width: 108%;
-  object-fit: cover;
-  object-position: 50% 26%;
-  opacity: 0.62;
+  height: auto;
+  width: 100%;
+  object-fit: contain;
+  opacity: 0.66;
   filter: contrast(1.06) saturate(1.05);
   -webkit-mask-image:
     linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.35) 22%, #000 58%),
