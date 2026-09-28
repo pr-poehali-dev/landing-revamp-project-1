@@ -8,6 +8,7 @@ import kindurus from '@/assets/speaker-kindurus.jpg';
 import zarina from '@/assets/speaker-zarina.jpg';
 import tsybulskaya from '@/assets/speaker-tsybulskaya.jpg';
 import razumovskaya from '@/assets/speaker-razumovskaya.jpg';
+import shumova from '@/assets/speaker-shumova.jpg';
 
 type Slot = {
   time: string;
@@ -38,6 +39,7 @@ const schedule: Slot[] = [
     title: 'Контент-план на месяц',
     speaker: 'Василиса Шумова',
     role: 'Эксперт по контент-маркетингу',
+    photo: shumova,
     desc: 'Как перестать каждый день придумывать, что опубликовать. На сцене с помощью ИИ создаём полноценный контент-план: темы, рубрики, форматы, заголовки и идеи для постов.',
     benefit: 'Хаотичное ведение соцсетей превращается в понятную систему, время на контент сокращается в разы.',
     result: 'Готовая структура контент-плана под свой бизнес или личный бренд',
