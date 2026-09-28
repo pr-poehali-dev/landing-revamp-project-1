@@ -6,6 +6,7 @@ import { scrollToEl } from '@/lib/landingScroll';
 import chernikov from '@/assets/speaker-chernikov.jpg';
 import kindurus from '@/assets/speaker-kindurus.jpg';
 import zarina from '@/assets/speaker-zarina.jpg';
+import tsybulskaya from '@/assets/speaker-tsybulskaya.jpg';
 
 type Slot = {
   time: string;
@@ -129,6 +130,7 @@ const schedule: Slot[] = [
     title: 'NotebookLM: персональная база знаний',
     speaker: 'Даша Цыбульская',
     role: 'Эксперт по работе с данными и ИИ',
+    photo: tsybulskaya,
     desc: 'Превращаем документы, инструкции и материалы компании в интеллектуального помощника. Загружаем материалы, систематизируем информацию и учимся быстро находить ответы по проверенным источникам.',
     benefit: 'Работа с большими объёмами информации, ускорение обучения сотрудников и внутренние базы знаний.',
     result: 'Готовый помощник, который отвечает на вопросы по вашим материалам',
