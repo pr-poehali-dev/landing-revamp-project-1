@@ -10,8 +10,9 @@ import perviyVzrosliyLogo from '@/assets/sponsors/perviy-vzrosliy.png';
 import pacificProtekLogo from '@/assets/sponsors/pacific-protek.png';
 import superSmmLogo from '@/assets/sponsors/super-smm.png';
 import plesyLogo from '@/assets/sponsors/plesy-peschanogo.png';
+import pokrovskyLogo from '@/assets/sponsors/pokrovsky.png';
 
-const rowTop = [hlebImolokoLogo, tbilissimoLogo, oporaRossiiLogo, tatevLogo, bushkovskyLogo, superSmmLogo];
+const rowTop = [hlebImolokoLogo, tbilissimoLogo, oporaRossiiLogo, tatevLogo, bushkovskyLogo, superSmmLogo, pokrovskyLogo];
 const rowBottom = [kofeMashinaLogo, ecoCentrLogo, plesyLogo, mariaShugaiLogo, perviyVzrosliyLogo, pacificProtekLogo];
 
 const tallLogos = new Set([mariaShugaiLogo, plesyLogo]);
