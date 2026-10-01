@@ -5979,3 +5979,92 @@ html.theme-light .tl-card {
 html.theme-light .tl-break .tl-card {
   background: rgba(11, 18, 32, 0.02);
 }
+
+/* Генеральный спонсор в hero */
+.hero-sponsor {
+  position: absolute;
+  top: clamp(0px, 1vh, 12px);
+  right: 0;
+  width: clamp(300px, 27vw, 400px);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.hero-sponsor-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: clamp(10px, 0.8vw, 12px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+.hero-sponsor-label::before {
+  content: "";
+  flex: none;
+  width: 28px;
+  height: 1px;
+  background: var(--cyan);
+}
+.hero-sponsor-card {
+  position: relative;
+  padding: clamp(16px, 1.6vw, 24px) clamp(18px, 2vw, 28px) clamp(14px, 1.4vw, 20px);
+  background: var(--paper);
+  border-radius: 6px;
+  text-align: center;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--cyan-dim);
+}
+html.theme-light .hero-sponsor-card {
+  background: #ffffff;
+  box-shadow: 0 14px 34px rgba(11, 18, 32, 0.16), 0 0 0 1px var(--line);
+}
+.hero-sponsor-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  border-radius: 0 0 6px 6px;
+  background: var(--red);
+}
+.hero-sponsor-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 120px;
+  object-fit: contain;
+}
+.hero-sponsor-card p {
+  margin: 10px 0 0;
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: clamp(11px, 0.9vw, 13px);
+  line-height: 1.35;
+  color: #111;
+}
+html.theme-light .hero-sponsor-card p {
+  color: #0b1220;
+}
+@media (max-width: 1080px) {
+  .hero-sponsor {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: min(360px, 100%);
+    margin-top: 32px;
+  }
+}
+@media (max-width: 480px) {
+  .hero-sponsor {
+    width: 100%;
+    margin-top: 28px;
+  }
+  .hero-sponsor-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+  }
+}

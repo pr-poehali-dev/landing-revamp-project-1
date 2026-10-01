@@ -5,6 +5,7 @@ import { makeTimer, flashEl } from '@/lib/landingUtils';
 import { scrollToEl } from '@/lib/landingScroll';
 import neiraEye from '@/assets/neira-eye.jpg';
 import panelTex from '@/assets/panel-texture.jpg';
+import schoolLogo from '@/assets/sponsors/school-logo.png';
 
 interface Props {
   ready: boolean;
@@ -106,6 +107,13 @@ export default function Hero({ ready }: Props) {
           </div>
 
         </div>
+        <aside className="hero-sponsor rv" aria-label="Генеральный спонсор события">
+          <div className="hero-sponsor-label">Генеральный спонсор события</div>
+          <div className="hero-sponsor-card">
+            <img src={schoolLogo} alt="Хакни нейросети — школа ИИ" loading="eager" />
+            <p>Первая школа на Дальнем Востоке по работе с ИИ</p>
+          </div>
+        </aside>
       </div>
       <div className="scroll-hint">ЛИСТАЙ ▾</div>
       <div className="geo-vert">43.11°N 131.88°E</div>
