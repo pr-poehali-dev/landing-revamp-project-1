@@ -1,3 +1,4 @@
+import Icon from '@/components/ui/icon';
 import hlebImolokoLogo from '@/assets/sponsors/hleb-i-moloko-white.png';
 import tbilissimoLogo from '@/assets/sponsors/tbilissimo.png';
 import oporaRossiiLogo from '@/assets/sponsors/opora-rossii.png';
@@ -47,6 +48,15 @@ export default function EventSponsors() {
       <div className="spx rv">
         <Marquee logos={rowTop} dir="left" />
         <Marquee logos={rowBottom} dir="right" />
+      </div>
+      <div className="wrap">
+        <div className="spx-prize rv">
+          <div className="spx-prize-icon" aria-hidden="true"><Icon name="Gift" size={34} strokeWidth={2} /></div>
+          <div className="spx-prize-text">
+            <span className="spx-prize-eb">// ПОДАРКИ ДЛЯ ГОСТЕЙ</span>
+            <p>Розыгрыш призов от партнеров <b>более чем на 250.000 ₽</b></p>
+          </div>
+        </div>
       </div>
     </section>
   );
