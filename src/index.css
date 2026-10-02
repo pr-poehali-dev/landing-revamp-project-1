@@ -1261,7 +1261,7 @@ section {
   gap: 44px;
   width: max-content;
   will-change: transform;
-  animation: marq 32s linear infinite;
+  animation: marq 48s linear infinite;
 }
 .ticker span {
   font-family: var(--body);
@@ -6011,15 +6011,20 @@ html.theme-light .tl-break .tl-card {
 }
 .hero-sponsor-card {
   position: relative;
-  padding: clamp(16px, 1.6vw, 24px) clamp(18px, 2vw, 28px) clamp(14px, 1.4vw, 20px);
+  padding: clamp(16px, 1.6vw, 24px) clamp(18px, 2vw, 28px)
+    clamp(14px, 1.4vw, 20px);
   background: var(--paper);
   border-radius: 6px;
   text-align: center;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--cyan-dim);
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.5),
+    0 0 0 1px var(--cyan-dim);
 }
 html.theme-light .hero-sponsor-card {
   background: #ffffff;
-  box-shadow: 0 14px 34px rgba(11, 18, 32, 0.16), 0 0 0 1px var(--line);
+  box-shadow:
+    0 14px 34px rgba(11, 18, 32, 0.16),
+    0 0 0 1px var(--line);
 }
 .hero-sponsor-card::after {
   content: "";
