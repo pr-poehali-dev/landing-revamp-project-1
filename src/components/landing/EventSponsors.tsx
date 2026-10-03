@@ -16,12 +16,13 @@ import interaLogo from '@/assets/sponsors/intera.png';
 import izumrudLogo from '@/assets/sponsors/izumrud.png';
 import aquatoriaLogo from '@/assets/sponsors/aquatoria.png';
 import literaLogo from '@/assets/sponsors/litera-tipografiya.png';
+import everNeatLogo from '@/assets/sponsors/ever-neat.png';
 import auditNalogiPravoLogo from '@/assets/sponsors/audit-nalogi-pravo.png';
 
-const rowTop = [hlebImolokoLogo, tbilissimoLogo, oporaRossiiLogo, tatevLogo, bushkovskyLogo, superSmmLogo, pokrovskyLogo, izumrudLogo, auditNalogiPravoLogo];
+const rowTop = [hlebImolokoLogo, tbilissimoLogo, oporaRossiiLogo, tatevLogo, bushkovskyLogo, superSmmLogo, pokrovskyLogo, izumrudLogo, auditNalogiPravoLogo, everNeatLogo];
 const rowBottom = [kofeMashinaLogo, ecoCentrLogo, plesyLogo, mariaShugaiLogo, perviyVzrosliyLogo, pacificProtekLogo, interaLogo, aquatoriaLogo, literaLogo];
 
-const tallLogos = new Set([mariaShugaiLogo, plesyLogo, auditNalogiPravoLogo, literaLogo]);
+const tallLogos = new Set([mariaShugaiLogo, plesyLogo, auditNalogiPravoLogo, literaLogo, everNeatLogo]);
 
 function Marquee({ logos, dir }: { logos: string[]; dir: 'left' | 'right' }) {
   const loop = [...logos, ...logos, ...logos];
