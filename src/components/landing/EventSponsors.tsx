@@ -18,12 +18,13 @@ import aquatoriaLogo from '@/assets/sponsors/aquatoria.png';
 import literaLogo from '@/assets/sponsors/litera-tipografiya.png';
 import everNeatLogo from '@/assets/sponsors/ever-neat.png';
 import travelAustraliaLogo from '@/assets/sponsors/travel-australia.png';
+import proektLitsaLogo from '@/assets/sponsors/proekt-litsa.png';
 import auditNalogiPravoLogo from '@/assets/sponsors/audit-nalogi-pravo.png';
 
-const rowTop = [hlebImolokoLogo, tbilissimoLogo, oporaRossiiLogo, tatevLogo, bushkovskyLogo, superSmmLogo, pokrovskyLogo, izumrudLogo, auditNalogiPravoLogo, everNeatLogo];
+const rowTop = [hlebImolokoLogo, tbilissimoLogo, oporaRossiiLogo, tatevLogo, bushkovskyLogo, superSmmLogo, pokrovskyLogo, izumrudLogo, auditNalogiPravoLogo, everNeatLogo, proektLitsaLogo];
 const rowBottom = [kofeMashinaLogo, ecoCentrLogo, plesyLogo, mariaShugaiLogo, perviyVzrosliyLogo, pacificProtekLogo, interaLogo, aquatoriaLogo, literaLogo, travelAustraliaLogo];
 
-const tallLogos = new Set([mariaShugaiLogo, plesyLogo, auditNalogiPravoLogo, literaLogo, everNeatLogo]);
+const tallLogos = new Set([mariaShugaiLogo, plesyLogo, auditNalogiPravoLogo, literaLogo, everNeatLogo, proektLitsaLogo]);
 
 function Marquee({ logos, dir }: { logos: string[]; dir: 'left' | 'right' }) {
   const loop = [...logos, ...logos, ...logos];
