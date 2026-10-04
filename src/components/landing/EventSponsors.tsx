@@ -21,8 +21,15 @@ import travelAustraliaLogo from '@/assets/sponsors/travel-australia.png';
 import proektLitsaLogo from '@/assets/sponsors/proekt-litsa.png';
 import auditNalogiPravoLogo from '@/assets/sponsors/audit-nalogi-pravo.png';
 
-const rowTop = [hlebImolokoLogo, tbilissimoLogo, oporaRossiiLogo, tatevLogo, bushkovskyLogo, superSmmLogo, pokrovskyLogo, izumrudLogo, auditNalogiPravoLogo, everNeatLogo, proektLitsaLogo];
-const rowBottom = [kofeMashinaLogo, ecoCentrLogo, plesyLogo, mariaShugaiLogo, perviyVzrosliyLogo, pacificProtekLogo, interaLogo, aquatoriaLogo, literaLogo, travelAustraliaLogo];
+const rowTop = [hlebImolokoLogo, tbilissimoLogo, oporaRossiiLogo, tatevLogo, bushkovskyLogo, superSmmLogo, izumrudLogo, everNeatLogo, proektLitsaLogo];
+const rowBottom = [kofeMashinaLogo, plesyLogo, mariaShugaiLogo, pacificProtekLogo, interaLogo, aquatoriaLogo, literaLogo, travelAustraliaLogo];
+
+const official = [
+  { logo: perviyVzrosliyLogo, name: 'Первый взрослый' },
+  { logo: ecoCentrLogo, name: 'ЭкоЦентр' },
+  { logo: pokrovskyLogo, name: 'Покровский клубный дом' },
+  { logo: auditNalogiPravoLogo, name: 'Аудит-Налоги-Право' },
+];
 
 const tallLogos = new Set([mariaShugaiLogo, plesyLogo, auditNalogiPravoLogo, literaLogo, everNeatLogo, proektLitsaLogo]);
 
@@ -48,6 +55,18 @@ export default function EventSponsors() {
         <div className="eyebrow rv">// 03 · СПОНСОРЫ</div>
         <h2 className="h2 rv">БРЕНДЫ, КОТОРЫЕ С НАМИ</h2>
         <p className="lead rv" style={{ maxWidth: 640 }}>Компании, которые поддерживают шоу «Без Ширмы» и стоят рядом с 300 предпринимателями в зале.</p>
+      </div>
+      <div className="wrap">
+        <div className="spx-off rv">
+          <div className="spx-off-eb">// ОФИЦИАЛЬНЫЕ ПАРТНЁРЫ</div>
+          <div className="spx-off-grid">
+            {official.map((o) => (
+              <div className="spx-off-item" key={o.name}>
+                <img src={o.logo} alt={`Официальный партнёр ${o.name}`} loading="lazy" />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
       <div className="spx rv">
         <Marquee logos={rowTop} dir="left" />
