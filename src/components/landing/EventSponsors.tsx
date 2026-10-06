@@ -77,7 +77,7 @@ export default function EventSponsors() {
           <div className="spx-prize-icon" aria-hidden="true"><Icon name="Gift" size={34} strokeWidth={2} /></div>
           <div className="spx-prize-text">
             <span className="spx-prize-eb">// ПОДАРКИ ДЛЯ ГОСТЕЙ</span>
-            <p>Розыгрыш призов от партнеров <b>более чем на 250.000 ₽</b></p>
+            <p>Розыгрыш призов от партнеров <b>более чем на 450.000 ₽</b></p>
           </div>
         </div>
       </div>
