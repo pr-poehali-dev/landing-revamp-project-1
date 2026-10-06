@@ -15,10 +15,10 @@ export default function IphonePrize() {
           <div className="ipz-text">
             <div className="ipz-eb">// РОЗЫГРЫШ НА ШОУ</div>
             <h2 className="ipz-title">
-              <span className="ipz-shine">iPhone 18</span>
+              <span className="ipz-shine">iPhone<br />18 на 512 ГБ</span>
               <span className="ipz-line">может стать твоим.</span>
             </h2>
-            <p className="ipz-sub">Разыгрываем iPhone 18</p>
+            <p className="ipz-sub">Разыгрываем iPhone 18 на 512 ГБ</p>
             <a className="btn magnetic" href="#pricing" onClick={go}>Хочу на шоу <span className="arr">→</span></a>
           </div>
           <div className="ipz-stage" aria-hidden="true">
