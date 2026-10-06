@@ -19,6 +19,7 @@ export default function IphonePrize() {
               <span className="ipz-line">может стать твоим.</span>
             </h2>
             <p className="ipz-sub">Разыгрываем iPhone 18</p>
+            <div className="ipz-mem"><span>512 ГБ</span> памяти</div>
             <a className="btn magnetic" href="#pricing" onClick={go}>Хочу на шоу <span className="arr">→</span></a>
           </div>
           <div className="ipz-stage" aria-hidden="true">
