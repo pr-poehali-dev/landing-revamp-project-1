@@ -26,6 +26,7 @@ import FinalCTA from './FinalCTA';
 import Footer from './Footer';
 import RevealAnimations from './RevealAnimations';
 import GiftPopup from './GiftPopup';
+import IphonePrize from './IphonePrize';
 import { setLenis } from '@/lib/landingScroll';
 import panelTex from '@/assets/panel-texture.jpg';
 
@@ -69,6 +70,7 @@ export default function LandingApp() {
       <Preloader onDone={() => setHeroReady(true)} />
       <Nav />
       <Hero ready={heroReady} />
+      <IphonePrize />
       <FirstShow />
       <EventSponsors />
       <Ticker />
