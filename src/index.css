@@ -6468,26 +6468,19 @@ html.theme-light .ipz-line { color: #0b1220; }
   .ipz-rays, .ipz-core, .ipz-spark { animation: none; }
 }
 
-.ipz-mem {
-  display: inline-flex;
+.ipz-head {
+  display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: 10px;
-  margin: -12px 0 26px;
-  padding: 8px 18px;
-  border: 1px solid rgba(255, 220, 120, 0.7);
-  border-radius: 999px;
-  background: rgba(255, 200, 80, 0.1);
-  font-family: var(--mono);
-  font-weight: 700;
-  font-size: clamp(13px, 1.2vw, 16px);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text, #fff);
-  box-shadow: 0 0 22px rgba(255, 200, 80, 0.25);
+  column-gap: clamp(10px, 1.6vw, 22px);
 }
-.ipz-mem span {
-  font-size: clamp(18px, 1.8vw, 24px);
+.ipz-gb {
+  font-size: clamp(26px, 4.2vw, 60px);
   color: #ffd76a;
+  text-shadow: 0 0 24px rgba(255, 200, 80, 0.55);
+  white-space: nowrap;
 }
-html.theme-light .ipz-mem { color: #0b1220; }
-html.theme-light .ipz-mem span { color: #a86b00; }
+html.theme-light .ipz-gb { color: #a86b00; text-shadow: none; }
+@media (max-width: 800px) {
+  .ipz-head { justify-content: center; }
+}
