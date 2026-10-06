@@ -6401,3 +6401,69 @@ html.theme-light .ipz-line { color: #0b1220; }
   .ipz-spin, .ipz-shine, .ipz-gloss, .ipz-glow, .ipz-floor { animation: none; }
   .ipz-spin { transform: rotateY(-14deg); }
 }
+
+.ipz-rays {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 170%;
+  aspect-ratio: 1;
+  margin: -85% 0 0 -85%;
+  border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg, rgba(255, 236, 170, 0.55) 0deg 5deg, transparent 5deg 20deg);
+  -webkit-mask-image: radial-gradient(circle, #000 0%, rgba(0, 0, 0, 0.6) 25%, transparent 62%);
+  mask-image: radial-gradient(circle, #000 0%, rgba(0, 0, 0, 0.6) 25%, transparent 62%);
+  mix-blend-mode: screen;
+  animation: ipz-rays-spin 24s linear infinite, ipz-rays-pulse 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+.ipz-rays-2 {
+  background: repeating-conic-gradient(from 8deg, rgba(0, 229, 245, 0.45) 0deg 3deg, transparent 3deg 14deg);
+  animation: ipz-rays-spin 36s linear infinite reverse, ipz-rays-pulse 3.4s ease-in-out infinite;
+}
+.ipz-core {
+  position: absolute;
+  width: 62%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 244, 200, 0.95) 0%, rgba(255, 200, 80, 0.55) 30%, transparent 68%);
+  filter: blur(18px);
+  mix-blend-mode: screen;
+  animation: ipz-core 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+.ipz-spark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff6c8;
+  box-shadow: 0 0 10px 3px rgba(255, 220, 120, 0.9);
+  opacity: 0;
+  animation: ipz-spark 3.2s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.32s);
+  --a: calc(var(--i) * 36deg + 12deg);
+  pointer-events: none;
+}
+.ipz-spin { z-index: 2; }
+@keyframes ipz-rays-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes ipz-rays-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+@keyframes ipz-core {
+  0%, 100% { opacity: 0.6; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+@keyframes ipz-spark {
+  0% { opacity: 0; transform: rotate(var(--a)) translateX(30px) scale(0.4); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: rotate(var(--a)) translateX(clamp(120px, 16vw, 230px)) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ipz-rays, .ipz-core, .ipz-spark { animation: none; }
+}

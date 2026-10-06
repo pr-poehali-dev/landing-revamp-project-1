@@ -23,6 +23,12 @@ export default function IphonePrize() {
           </div>
           <div className="ipz-stage" aria-hidden="true">
             <div className="ipz-glow" />
+            <div className="ipz-rays" />
+            <div className="ipz-rays ipz-rays-2" />
+            <div className="ipz-core" />
+            {[...Array(10)].map((_, i) => (
+              <span className="ipz-spark" key={i} style={{ '--i': i } as React.CSSProperties} />
+            ))}
             <div className="ipz-spin">
               <img src={iphone} alt="" loading="lazy" />
               <span className="ipz-gloss" />
