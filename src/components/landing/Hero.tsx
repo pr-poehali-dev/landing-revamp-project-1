@@ -5,6 +5,7 @@ import { makeTimer, flashEl } from '@/lib/landingUtils';
 import { scrollToEl } from '@/lib/landingScroll';
 import neiraEye from '@/assets/neira-eye.jpg';
 import panelTex from '@/assets/panel-texture.jpg';
+import vgtrkLogo from '@/assets/sponsors/vgtrk.png';
 import schoolLogo from '@/assets/sponsors/school-logo.png';
 
 interface Props {
@@ -107,13 +108,22 @@ export default function Hero({ ready }: Props) {
           </div>
 
         </div>
-        <aside className="hero-sponsor rv" aria-label="Генеральный спонсор события">
-          <div className="hero-sponsor-label">Генеральный спонсор события</div>
-          <div className="hero-sponsor-card">
-            <img src={schoolLogo} alt="Хакни нейросети — школа ИИ" loading="eager" />
-            <p>Первая школа на Дальнем Востоке по работе с ИИ</p>
-          </div>
-        </aside>
+        <div className="hero-side">
+          <aside className="hero-sponsor rv" aria-label="Генеральный спонсор события">
+            <div className="hero-sponsor-label">Генеральный спонсор события</div>
+            <div className="hero-sponsor-card">
+              <img src={schoolLogo} alt="Хакни нейросети — школа ИИ" loading="eager" />
+              <p>Первая школа на Дальнем Востоке по работе с ИИ</p>
+            </div>
+          </aside>
+          <aside className="hero-sponsor hero-info rv" aria-label="Информационный партнёр события">
+            <div className="hero-sponsor-label">Информационный партнёр</div>
+            <div className="hero-info-card">
+              <img src={vgtrkLogo} alt="ВГТРК Владивосток — информационный партнёр" loading="eager" />
+              <p>Государственная телерадиокомпания Приморья</p>
+            </div>
+          </aside>
+        </div>
       </div>
       <div className="scroll-hint">ЛИСТАЙ ▾</div>
       <div className="geo-vert">43.11°N 131.88°E</div>
