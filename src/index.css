@@ -6260,9 +6260,9 @@ html.theme-light .hero-sponsor-card p {
 .ipz {
   position: relative;
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: 1.15fr 1fr;
   align-items: center;
-  gap: clamp(16px, 3vw, 40px);
+  gap: clamp(16px, 4vw, 56px);
   padding: clamp(28px, 4vw, 56px) clamp(24px, 5vw, 72px);
   border: 1px solid var(--cyan);
   border-radius: 28px;
@@ -6466,28 +6466,4 @@ html.theme-light .ipz-line { color: #0b1220; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ipz-rays, .ipz-core, .ipz-spark { animation: none; }
-}
-
-.ipz-head {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: baseline;
-  gap: 0.22em;
-  font-size: clamp(30px, 5vw, 76px);
-  line-height: 1;
-}
-.ipz-head .ipz-shine {
-  font-size: 1em;
-  flex: none;
-}
-.ipz-gb {
-  font-size: 0.5em;
-  flex: none;
-  color: #ffd76a;
-  text-shadow: 0 0 24px rgba(255, 200, 80, 0.55);
-  white-space: nowrap;
-}
-html.theme-light .ipz-gb { color: #a86b00; text-shadow: none; }
-@media (max-width: 800px) {
-  .ipz-head { justify-content: center; }
 }
