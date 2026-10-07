@@ -8,7 +8,7 @@ import kindurus from '@/assets/speaker-kindurus.jpg';
 import zarina from '@/assets/speaker-zarina.jpg';
 import tsybulskaya from '@/assets/speaker-tsybulskaya.jpg';
 import razumovskaya from '@/assets/speaker-razumovskaya.jpg';
-import shumova from '@/assets/speaker-shumova.jpg';
+import evtushenko from '@/assets/speaker-evtushenko.jpg';
 import grishin from '@/assets/speaker-grishin.jpg';
 import belokonsky from '@/assets/speaker-belokonsky.jpg';
 
@@ -39,9 +39,9 @@ const schedule: Slot[] = [
     n: '01',
     kind: 'block',
     title: 'Контент-план на месяц',
-    speaker: 'Василиса Шумова',
-    role: 'Маркетолог',
-    photo: shumova,
+    speaker: 'Евгений Евтушенко',
+    role: 'Основатель компании «Люди в Худи»',
+    photo: evtushenko,
     desc: 'Как перестать каждый день придумывать, что опубликовать. На сцене с помощью ИИ создаём полноценный контент-план: темы, рубрики, форматы, заголовки и идеи для постов.',
     benefit: 'Хаотичное ведение соцсетей превращается в понятную систему, время на контент сокращается в разы.',
     result: 'Готовая структура контент-плана под свой бизнес или личный бренд',
