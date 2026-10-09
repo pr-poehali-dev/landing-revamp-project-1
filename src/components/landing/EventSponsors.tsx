@@ -14,6 +14,7 @@ import plesyLogo from '@/assets/sponsors/plesy-peschanogo.png';
 import pokrovskyLogo from '@/assets/sponsors/pokrovsky.png';
 import interaLogo from '@/assets/sponsors/intera.png';
 import izumrudLogo from '@/assets/sponsors/izumrud.png';
+import zvezdaMoreLogo from '@/assets/sponsors/zvezda-more.png';
 import aquatoriaLogo from '@/assets/sponsors/aquatoria.png';
 import literaLogo from '@/assets/sponsors/litera-tipografiya.png';
 import everNeatLogo from '@/assets/sponsors/ever-neat.png';
@@ -22,7 +23,7 @@ import proektLitsaLogo from '@/assets/sponsors/proekt-litsa.png';
 import auditNalogiPravoLogo from '@/assets/sponsors/audit-nalogi-pravo.png';
 
 const rowTop = [hlebImolokoLogo, tbilissimoLogo, oporaRossiiLogo, tatevLogo, bushkovskyLogo, superSmmLogo, izumrudLogo, everNeatLogo, proektLitsaLogo];
-const rowBottom = [kofeMashinaLogo, plesyLogo, mariaShugaiLogo, pacificProtekLogo, interaLogo, aquatoriaLogo, literaLogo, travelAustraliaLogo];
+const rowBottom = [kofeMashinaLogo, plesyLogo, mariaShugaiLogo, pacificProtekLogo, interaLogo, aquatoriaLogo, literaLogo, zvezdaMoreLogo, travelAustraliaLogo];
 
 const official = [
   { logo: perviyVzrosliyLogo, name: 'Первый взрослый' },

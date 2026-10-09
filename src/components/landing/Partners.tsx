@@ -1,12 +1,11 @@
 import { useEffect, useRef } from 'react';
-import zvezdaMore from '@/assets/partner-zvezda-more.jpg';
 
 const p1 = ['ОПОРА РОССИИ', 'МОЙ БИЗНЕС', 'ЦРП ВЛАДИВОСТОК'];
-const p2 = ['ПАО «ДАЛЬПРИБОР»', 'АЭРОПОРТ ВЛАДИВОСТОК', 'РОСМОЛОДЁЖЬ', 'IMG:zvezda'];
+const p2 = ['ПАО «ДАЛЬПРИБОР»', 'АЭРОПОРТ ВЛАДИВОСТОК', 'РОСМОЛОДЁЖЬ'];
 
 function fillPart(el: HTMLElement, arr: string[]) {
   let h = '';
-  for (let r = 0; r < 4; r++) arr.forEach((t) => { h += t === 'IMG:zvezda' ? `<span class="part-logo"><img src="${zvezdaMore}" alt="Звезда Моря — отель" /></span><span>·</span>` : `<span>${t}</span><span>·</span>`; });
+  for (let r = 0; r < 4; r++) arr.forEach((t) => { h += `<span>${t}</span><span>·</span>`; });
   el.innerHTML = h;
 }
 
