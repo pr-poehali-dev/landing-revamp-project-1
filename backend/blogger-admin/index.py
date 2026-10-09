@@ -17,9 +17,9 @@ CORS = {
 def check_password(value: str) -> bool:
     if not value:
         return False
-    env_password = os.environ.get('BLOGGER_ADMIN_PASSWORD', '')
+    env_password = (os.environ.get('ADMIN_PASSWORD') or os.environ.get('BLOGGER_ADMIN_PASSWORD') or '').strip()
     if env_password:
-        return value == env_password
+        return value.strip() == env_password
     return hashlib.sha256(value.encode('utf-8')).hexdigest() == PASSWORD_HASH
 
 
