@@ -2399,6 +2399,16 @@ section {
   transition: color 0.2s;
   cursor: default;
 }
+.part-logo {
+  display: inline-flex;
+  align-items: center;
+}
+.part-logo img {
+  height: clamp(36px, 4.6vw, 60px);
+  width: auto;
+  mix-blend-mode: screen;
+  opacity: 0.85;
+}
 .part-row span:hover {
   color: var(--cyan);
 }
