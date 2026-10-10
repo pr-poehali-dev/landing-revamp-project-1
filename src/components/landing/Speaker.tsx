@@ -30,7 +30,7 @@ export default function Speaker() {
           <div className="eyebrow rv">// 08 · ВЕДУЩИЙ</div>
           <h2 className="h2 rv">СЕРГЕЙ ЧЕРНИКОВ</h2>
           <div className="spk-sub rv">ОСНОВАТЕЛЬ ШКОЛЫ «ХАКНИ НЕЙРОСЕТИ»</div>
-          <p className="spk-bio rv">Сооснователь и CEO IT-компании Super-SMM. 6+ лет внедрения ИИ в бизнес. Путь — от грузчика и директора сахарного производства до собственных ИИ-продуктов GPT-BOSS и MultiChat.</p>
+          <p className="spk-bio rv">Сооснователь и CEO IT-компании Super-SMM. С 2017 года внедряет ИИ в бизнес. Путь — от грузчика и директора сахарного производства до собственных ИИ-продуктов GPT-BOSS и MultiChat.</p>
           <ul className="spk-facts">
             <li className="rv">Школа «Хакни Нейросети»: рейтинг 4.9/5, 10 000+ выпускников</li>
             <li className="rv">Спикер «Опоры России» и форума «Бизнес у моря»</li>
