@@ -16,6 +16,7 @@ import interaLogo from '@/assets/sponsors/intera.png';
 import izumrudLogo from '@/assets/sponsors/izumrud.png';
 import zvezdaMoreLogo from '@/assets/sponsors/zvezda-more.png';
 import wellwayLogo from '@/assets/sponsors/wellway.png';
+import grigorenkoLogo from '@/assets/sponsors/grigorenko.png';
 import aquatoriaLogo from '@/assets/sponsors/aquatoria.png';
 import literaLogo from '@/assets/sponsors/litera-tipografiya.png';
 import everNeatLogo from '@/assets/sponsors/ever-neat.png';
@@ -31,6 +32,7 @@ const official = [
   { logo: ecoCentrLogo, name: 'ЭкоЦентр' },
   { logo: pokrovskyLogo, name: 'Покровский клубный дом' },
   { logo: auditNalogiPravoLogo, name: 'Аудит-Налоги-Право' },
+  { logo: grigorenkoLogo, name: 'Клиника доктора Григоренко' },
 ];
 
 const tallLogos = new Set([mariaShugaiLogo, plesyLogo, auditNalogiPravoLogo, literaLogo, everNeatLogo, proektLitsaLogo]);
