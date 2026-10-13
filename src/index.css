@@ -2496,6 +2496,18 @@ section {
   max-height: 120px;
   object-fit: contain;
 }
+.spx-off-item {
+  height: 210px;
+  padding: 16px;
+}
+.spx-off-item img[data-size='lg'] {
+  max-width: 94%;
+  max-height: 160px;
+}
+.spx-off-item img[data-size='xl'] {
+  max-width: 98%;
+  max-height: 180px;
+}
 .spx-off-item:hover {
   transform: translateY(-4px);
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 34px rgba(0, 229, 245, 0.4);
@@ -2506,10 +2518,15 @@ section {
     gap: 12px;
   }
   .spx-off-item {
-    height: 140px;
-    padding: 16px;
+    height: 150px;
+    padding: 12px;
   }
-  .spx-off-item img {
+  .spx-off-item img,
+  .spx-off-item img[data-size='lg'],
+  .spx-off-item img[data-size='xl'] {
+    max-height: 120px;
+  }
+  .spx-off-item img[data-size='base'] {
     max-height: 90px;
   }
 }

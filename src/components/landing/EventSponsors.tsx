@@ -66,7 +66,7 @@ export default function EventSponsors() {
           <div className="spx-off-grid">
             {official.map((o) => (
               <div className="spx-off-item" key={o.name}>
-                <img src={o.logo} alt={`Официальный партнёр ${o.name}`} loading="lazy" />
+                <img src={o.logo} alt={`Официальный партнёр ${o.name}`} loading="lazy" data-size={o.logo === auditNalogiPravoLogo ? 'base' : o.logo === grigorenkoLogo ? 'xl' : 'lg'} />
               </div>
             ))}
           </div>
