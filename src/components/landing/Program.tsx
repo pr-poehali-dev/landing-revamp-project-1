@@ -10,6 +10,7 @@ import tsybulskaya from '@/assets/speaker-tsybulskaya.jpg';
 import razumovskaya from '@/assets/speaker-razumovskaya.jpg';
 import evtushenko from '@/assets/speaker-evtushenko.jpg';
 import grishin from '@/assets/speaker-grishin.jpg';
+import shevchenko from '@/assets/speaker-shevchenko.jpg';
 import belokonsky from '@/assets/speaker-belokonsky.jpg';
 
 type Slot = {
@@ -113,7 +114,17 @@ const schedule: Slot[] = [
     desc: 'Перерыв, общение и нетворкинг. Время обсудить увиденные инструменты и познакомиться с участниками, спикерами и партнёрами шоу.',
   },
   {
-    time: '14:45–15:30',
+    time: '14:45–15:00',
+    n: '07',
+    kind: 'block',
+    title: 'Цифровая платформа с ИИ для управления бизнесом',
+    speaker: 'Андрей Шевченко',
+    role: 'Исполнительный директор Центра «Мой бизнес» Приморского края',
+    photo: shevchenko,
+    desc: 'Как цифровая платформа с искусственным интеллектом помогает предпринимателям управлять бизнесом и находить новые возможности для роста.',
+  },
+  {
+    time: '15:00–15:30',
     kind: 'break',
     title: 'Партнёрская сессия',
     desc: 'Представители компаний-партнёров рассказывают о своих продуктах и практических решениях для предпринимателей — сервисы для развития бизнеса, автоматизации и роста.',
@@ -121,7 +132,7 @@ const schedule: Slot[] = [
   },
   {
     time: '15:30–16:00',
-    n: '07',
+    n: '08',
     kind: 'block',
     title: 'Рекламный ролик с помощью ИИ',
     speaker: 'Максим Гришин',
@@ -133,7 +144,7 @@ const schedule: Slot[] = [
   },
   {
     time: '16:00–16:30',
-    n: '08',
+    n: '09',
     kind: 'block',
     title: 'NotebookLM: персональная база знаний',
     speaker: 'Дарья Цыбульская',
@@ -145,7 +156,7 @@ const schedule: Slot[] = [
   },
   {
     time: '16:30–17:00',
-    n: '09',
+    n: '10',
     kind: 'block',
     title: 'ИИ-агенты и мини-приложения',
     speaker: 'Сергей Черников',
@@ -163,7 +174,7 @@ const schedule: Slot[] = [
   },
   {
     time: '17:00–17:30',
-    n: '10',
+    n: '11',
     kind: 'block',
     title: 'CRM нового поколения',
     speaker: 'Артём Белоконский',
